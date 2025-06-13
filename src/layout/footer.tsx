@@ -3,6 +3,7 @@ import { FaGooglePlay, FaInstagram, FaFacebook, FaXTwitter, FaGlobe, FaChevronDo
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { westham, lyon, liverpool, logo1, logo2, logo3, logo4, logo5, logo6, lyon_logo, westham_logo } from "../assets";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,7 @@ const Footer = () => {
           start: "bottom center",
           end: "top top",
           scrub: 1,
+          // markers: true, // Re-enable if needed for further debugging
         }
       });
     }, jetonH1Ref);
@@ -109,15 +111,14 @@ const Footer = () => {
           </a>
         </div>
         
-        {/* Logos/Badges Placeholder */}
+        {/* Logos/Badges */}
         <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8 md:mb-0">
-            {/* These should ideally be actual images or SVG components */}
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
-            <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Logo</div>
+            <img src={logo1} alt="Partner Logo" className="w-10 h-10 object-contain" />
+            <img src={logo2} alt="Partner Logo" className="w-10 h-10 object-contain" />
+            <img src={logo3} alt="Partner Logo" className="w-10 h-10 object-contain" />
+            <img src={logo4} alt="Partner Logo" className="w-10 h-10 object-contain" />
+            <img src={logo5} alt="Partner Logo" className="w-10 h-10 object-contain" />
+            <img src={logo6} alt="Partner Logo" className="w-10 h-10 object-contain" />
         </div>
 
         {/* Social Media Icons */}
@@ -169,9 +170,9 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-6 mt-12">
         {/* West Ham United Card */}
         <div className="bg-[#8B0000] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/west-ham-players.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${westham})` }}></div> {/* Placeholder Image */}
           <div className="relative z-10 text-center">
-            <img src="/path/to/west-ham-logo.png" alt="West Ham Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
+            <img src={westham_logo} alt="West Ham Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
             <p className="text-sm font-semibold">Official Partner of</p>
             <p className="text-lg font-bold">West Ham United F.C.</p>
           </div>
@@ -179,9 +180,9 @@ const Footer = () => {
 
         {/* Legia Warsaw Card */}
         <div className="bg-[#006400] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/legia-players.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${lyon})` }}></div> {/* Placeholder Image */}
           <div className="relative z-10 text-center">
-            <img src="/path/to/legia-logo.png" alt="Legia Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
+            <img src={lyon_logo} alt="Legia Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
             <p className="text-sm font-semibold">Official Sponsor of</p>
             <p className="text-lg font-bold">Legia Warsaw</p>
           </div>
@@ -189,7 +190,7 @@ const Footer = () => {
 
         {/* Brand Ambassadors Card */}
         <div className="bg-orange-500 text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/ambassadors.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${liverpool})` }}></div> {/* Placeholder Image */}
           <div className="relative z-10 text-center">
             <p className="text-sm font-semibold">Online Payments Brand Ambassadors</p>
             <p className="text-lg font-bold">Alexis Mac Allister & Kou Itakura</p>
