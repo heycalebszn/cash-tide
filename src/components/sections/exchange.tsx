@@ -6,4 +6,4 @@ const Exchange = () => {
   )
 }
 
-export default Exchange
+export default Exchange;
