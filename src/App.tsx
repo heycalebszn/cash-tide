@@ -6,10 +6,12 @@ import { useRef } from 'react';
 import FinanceSection from "./components/sections/finance";
 import JettonCardSection from "./components/sections/jetton-card";
 import ExchangeSection from "./components/sections/exchange";
+import TestimonialsSection from "./components/sections/testimonials";
 
 const App = () => {
   const financeSectionRef = useRef<HTMLDivElement>(null);
   const exchangeSectionRef = useRef<HTMLDivElement>(null);
+  const testimonialsSectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToFinance = () => {
     financeSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -24,6 +26,7 @@ const App = () => {
       <FinanceSection ref={financeSectionRef} />
       <ExchangeSection ref={exchangeSectionRef} />
       <JettonCardSection />
+      <TestimonialsSection ref={testimonialsSectionRef} />
     </div>
   );
 };

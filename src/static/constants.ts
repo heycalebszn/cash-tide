@@ -1,0 +1,30 @@
+export const testimonialsData = [
+    {
+        brief: "Recommended",
+        desc: "Very happy with the app. Does what it says, simple payments and transactions. Quick account verification and withdrawals. 24/7 support available.",
+        name: "Vamsi K.",
+        avatar: "VK",
+        avatarBgColor: "bg-green-500"
+    },
+    {
+        brief: "Awesome app very user friendly",
+        desc: "Would highly recommend Jeton to my friends.",
+        name: "Leonie A.",
+        avatar: "LA",
+        avatarBgColor: "bg-purple-500"
+    },
+    {
+        brief: "The best payment solution for German customers",
+        desc: "I've been a Jeton user for a few years! The support was always great and I'm always able to make my payments to the websites I want with no problem.",
+        name: "Karl R.",
+        avatar: "KR",
+        avatarBgColor: "bg-yellow-500"
+    },
+    {
+        brief: "Great app for fast and easy transfers",
+        desc: "I have been using Jeton for a while now without any problem. I have recommended it to my friends and family and I'm very happy with it!",
+        name: "David P.",
+        avatar: "DP",
+        avatarBgColor: "bg-blue-500"
+    },
+]
