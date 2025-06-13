@@ -79,7 +79,7 @@ const Footer = () => {
             <li><a href="#" className="link-underline">AML Policy</a></li>
           </ul>
         </div>
-        <div>
+    <div>
           <h3 className="text-[15px] mb-2 text-orange-300">Help</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">Developers</a></li>
@@ -192,7 +192,7 @@ const Footer = () => {
             <p className="text-lg font-bold">Alexis Mac Allister & Kou Itakura</p>
           </div>
         </div>
-      </div>
+    </div>
     </footer>
   )
 }
