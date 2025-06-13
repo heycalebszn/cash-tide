@@ -8,6 +8,7 @@ import JettonCardSection from "./components/sections/jetton-card";
 import ExchangeSection from "./components/sections/exchange";
 import TestimonialsSection from "./components/sections/testimonials";
 import CallToActionSection from "./components/sections/call-to-action";
+import Footer from "./layout/footer";
 
 const App = () => {
   const financeSectionRef = useRef<HTMLDivElement>(null);
@@ -29,6 +30,7 @@ const App = () => {
       <JettonCardSection />
       <TestimonialsSection ref={testimonialsSectionRef} />
       <CallToActionSection />
+      <Footer />
     </div>
   );
 };

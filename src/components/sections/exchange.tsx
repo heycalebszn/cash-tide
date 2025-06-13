@@ -22,12 +22,12 @@ const ExchangeSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivEleme
       // Set initial states
       gsap.set(addRef.current, {
         opacity: 0,
-        yPercent: -100, // Start from above
+        yPercent: -100, 
       });
 
       gsap.set([sendRef.current, exchangeRef.current], {
         opacity: 0,
-        yPercent: 100, // Start from below
+        yPercent: 100, 
       });
 
       const tl = gsap.timeline({

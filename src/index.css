@@ -6,3 +6,24 @@
   box-sizing: border-box;
   font-family: "Poppins" sans-serif;
 }
+
+/* Custom styles for smooth underline animation */
+.link-underline {
+  position: relative;
+  text-decoration: none; /* Remove default underline */
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px; /* Underline thickness */
+  bottom: 0;
+  left: 0;
+  background-color: currentColor; /* Use current text color for underline */
+  transition: width 0.3s ease-out; /* Smooth transition */
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
