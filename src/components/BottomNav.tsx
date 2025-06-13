@@ -209,7 +209,7 @@ const BottomNav = () => {
           ref={personalDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">About</a>
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Newsroom</a>
@@ -230,7 +230,7 @@ const BottomNav = () => {
           ref={businessDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option A</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option B</a>
@@ -244,7 +244,7 @@ const BottomNav = () => {
           ref={companyDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item X</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Y</a>
