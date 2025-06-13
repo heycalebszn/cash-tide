@@ -21,22 +21,17 @@ const Footer = () => {
 
     const ctx = gsap.context(() => {
       gsap.set(jetonH1Ref.current, {
-        xPercent: 0,
         yPercent: 0,
-        scaleX: 1,
         opacity: 1,
-        transformOrigin: "right center",
       });
 
       gsap.to(jetonH1Ref.current, {
-        xPercent: -0.01,
-        yPercent: 0.02,
-        scaleX: 0.9999,
+        yPercent: 5,
         ease: "none",
         scrollTrigger: {
           trigger: jetonH1Ref.current,
-          start: "center center",
-          end: "top -100%",
+          start: "bottom center",
+          end: "top top",
           scrub: 1,
         }
       });
@@ -168,6 +163,38 @@ const Footer = () => {
         <h1 ref={jetonH1Ref} className="text-center text-[18rem] sm:text-[25rem] text-orange-500 font-bold leading-none mb-8 relative z-10">Jeton</h1>
         <p className="mb-4 text-xs text-gray-500 text-center md:text-left">© 2023 | www.jeton.com is owned and operated by LA Orange CY Limited (Gladstonos, 116 M. Kyprianou House, 3-4th Floor, 3032, Limassol, Cyprus.) LA Orange CY Limited trading as Jeton, is authorised by the Central Bank of Cyprus under the Electronic Money Law of 2012 and 2018 (Law 81(I)/2012) for distributing or redeeming electronic money (e-money), with Licence No: 115.1.3.66. LA Orange CY Limited has been incorporated in the Republic of Cyprus under the provisions of the Companies Law (Cap 113) with registration number HE 424807, with its registered office address at Gladstonos, 116 M. Kyprianou House, 3&4th Floor, 3032, Limassol, Cyprus.</p>
         <p className="text-xs text-gray-500 text-center md:text-left">LA Orange Limited, trading as Jeton, is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011 for distributing or redeeming electronic money (e-money) and providing certain payment services on behalf of an e-money institution, with FCA registration number 902088. Company Name: LA ORANGE LIMITED, LEI code: 8945009G46MP0DAD211, BIC Value: ORAGGB22 (Swift Code). LA Orange Limited is registered in England and Wales, Company Number 11535714, with its registered office address at The Shard Floor 24/25, 32 London Bridge Street, London, SE1 9SG, United Kingdom.</p>
+      </div>
+
+      {/* Partner/Ambassador Cards */}
+      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-6 mt-12">
+        {/* West Ham United Card */}
+        <div className="bg-[#8B0000] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/west-ham-players.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="relative z-10 text-center">
+            <img src="/path/to/west-ham-logo.png" alt="West Ham Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
+            <p className="text-sm font-semibold">Official Partner of</p>
+            <p className="text-lg font-bold">West Ham United F.C.</p>
+          </div>
+        </div>
+
+        {/* Legia Warsaw Card */}
+        <div className="bg-[#006400] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/legia-players.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="relative z-10 text-center">
+            <img src="/path/to/legia-logo.png" alt="Legia Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
+            <p className="text-sm font-semibold">Official Sponsor of</p>
+            <p className="text-lg font-bold">Legia Warsaw</p>
+          </div>
+        </div>
+
+        {/* Brand Ambassadors Card */}
+        <div className="bg-orange-500 text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('/path/to/ambassadors.jpg')` }}></div> {/* Placeholder Image */}
+          <div className="relative z-10 text-center">
+            <p className="text-sm font-semibold">Online Payments Brand Ambassadors</p>
+            <p className="text-lg font-bold">Alexis Mac Allister & Kou Itakura</p>
+          </div>
+        </div>
       </div>
     </footer>
   )
