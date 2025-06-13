@@ -4,8 +4,8 @@ import ChatSupportButton from "./components/ChatSupportButton";
 import HeroSection from "./components/sections/hero";
 import { useRef } from 'react';
 import FinanceSection from "./components/sections/finance";
-import ExchangeSection from "./components/sections/exchange";
 import JettonCardSection from "./components/sections/jetton-card";
+import ExchangeSection from "./components/sections/exchange";
 
 const App = () => {
   const financeSectionRef = useRef<HTMLDivElement>(null);
