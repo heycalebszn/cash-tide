@@ -43,7 +43,7 @@ const CurrencyExchange = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 p-6 bg-gradient-to-br min-h-screen justify-center">
+    <div className="flex flex-col items-center gap-2 p-6 bg-gradient-to-br h-screen justify-center">
       <div className="w-full max-w-md space-y-4">
         
         {/* From Currency Card */}
@@ -146,11 +146,6 @@ const CurrencyExchange = () => {
             selectedCurrencyCode={toCurrency}
             onClose={() => setIsToDropdownOpen(false)}
           />
-        </div>
-
-        {/* Exchange Rate Info */}
-        <div className="text-center text-sm text-gray-500 mt-4">
-          1 {fromCurrency} = 0.48 {toCurrency}
         </div>
       </div>
     </div>

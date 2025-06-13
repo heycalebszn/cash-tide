@@ -26,7 +26,7 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-full left-0 z-10 w-full  bg-white rounded-xl shadow-lg mt-2 py-2 px-2">
+    <div className="absolute top-full left-0 z-10 w-full  bg-white rounded-xl shadow-lg -mt-16 py-2 px-2">
       {currencies.map((currency) => (
         <div
           key={currency.code}
