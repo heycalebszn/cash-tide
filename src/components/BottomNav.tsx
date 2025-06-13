@@ -144,9 +144,9 @@ const BottomNav = () => {
     }
   }, []);
 
-  const navClass = `fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-50 shadow-lg ${
+  const navClass = `fixed bottom-4 left-1/2 -translate-x-1/2 max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-50 shadow-lg ${
     isAnyDropdownOpen
-      ? 'rounded-b-full rounded-tl-none rounded-tr-none' 
+      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[50%]' 
       : 'rounded-full' 
   }`;
 
@@ -209,7 +209,7 @@ const BottomNav = () => {
           ref={personalDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-[#DE352F] text-white rounded-t-3xl shadow-lg py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
         >
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">About</a>
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Newsroom</a>
@@ -230,7 +230,7 @@ const BottomNav = () => {
           ref={businessDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-[#DE352F] text-white rounded-t-3xl shadow-lg py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option A</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option B</a>
@@ -244,7 +244,7 @@ const BottomNav = () => {
           ref={companyDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-[#DE352F] text-white rounded-t-3xl shadow-lg py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item X</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Y</a>
