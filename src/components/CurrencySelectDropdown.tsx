@@ -1,18 +1,11 @@
 import React, { type ReactNode } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
-// Placeholder for flag imports (you will need to replace these with actual image imports)
-// import audFlag from '../assets/flags/aud.png';
-// import eurFlag from '../assets/flags/eur.png';
-// import bhdFlag from '../assets/flags/bhd.png';
-// import gbpFlag from '../assets/flags/gbp.png';
-
 interface CurrencyOption {
   symbol?: any;
   flag?: ReactNode;
   code: string;
   name: string;
-  // flag: string; // Uncomment and use when you have actual flag image paths
 }
 
 export const currencies: CurrencyOption[] = [

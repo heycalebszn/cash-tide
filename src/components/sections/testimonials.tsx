@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const TestimonialsSection = forwardRef<HTMLDivElement>((props, ref) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
+  console.log(props)
 
   useEffect(() => {
     if (!sectionRef.current) return;
