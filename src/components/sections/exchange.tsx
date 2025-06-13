@@ -11,7 +11,6 @@ const ExchangeSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivEleme
   const addRef = useRef<HTMLDivElement>(null);
   const sendRef = useRef<HTMLDivElement>(null);
   const exchangeRef = useRef<HTMLDivElement>(null);
-  console.log(props);
 
   useEffect(() => {
     if (!ref || typeof ref === 'function' || !ref.current) {

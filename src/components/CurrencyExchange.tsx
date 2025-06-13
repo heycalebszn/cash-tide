@@ -1,94 +1,160 @@
-import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { BiTransfer } from 'react-icons/bi';
-import CurrencySelectDropdown from './CurrencySelectDropdown';
-
-// Placeholder for flag imports (you will need to replace these with actual image imports)
-// import audFlag from '../assets/flags/aud.png';
-// import gbpFlag from '../assets/flags/gbp.png';
+import { useState } from "react";
+import { BiTransfer } from "react-icons/bi";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import CurrencySelectDropdown, { currencies } from "./CurrencySelectDropdown";
 
 const CurrencyExchange = () => {
   const [fromCurrency, setFromCurrency] = useState('AUD');
   const [toCurrency, setToCurrency] = useState('GBP');
   const [fromAmount, setFromAmount] = useState('10');
   const [toAmount, setToAmount] = useState('4.8');
-
   const [isFromDropdownOpen, setIsFromDropdownOpen] = useState(false);
   const [isToDropdownOpen, setIsToDropdownOpen] = useState(false);
 
-  const handleFromSelect = (code: string) => {
+  const getSelectedCurrency = (code: any) => {
+    return currencies.find(curr => curr.code === code) || currencies[0];
+  };
+
+  const handleFromSelect = (code: any) => {
     setFromCurrency(code);
     setIsFromDropdownOpen(false);
+    // Add exchange rate calculation logic here
   };
 
-  const handleToSelect = (code: string) => {
+  const handleToSelect = (code: any) => {
     setToCurrency(code);
     setIsToDropdownOpen(false);
+    // Add exchange rate calculation logic here
   };
 
-  const handleExchange = () => {
-    // Implement actual exchange logic here
-    alert('Exchange initiated!');
+  const handleSwapCurrencies = () => {
+    const tempCurrency = fromCurrency;
+    const tempAmount = fromAmount;
+    
+    setFromCurrency(toCurrency);
+    setToCurrency(tempCurrency);
+    setFromAmount(toAmount);
+    setToAmount(tempAmount);
+  };
+
+  const formatAmount = (amount: any, currencyCode: any) => {
+    const currency = getSelectedCurrency(currencyCode);
+    return `${currency.symbol} ${amount}`;
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
-      {/* From Currency Card */}
-      <div className="relative bg-pink-100/50 rounded-xl p-4 flex flex-col justify-between w-[550px] max-w-sm cursor-pointer mt-[30px]" onClick={() => setIsFromDropdownOpen(!isFromDropdownOpen)}>
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-3">
-            {/* Placeholder for From Flag */}
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-xs">{fromCurrency.substring(0, 3)}</div>
-            <span className="font-semibold text-black text-lg">{fromCurrency}</span>
+    <div className="flex flex-col items-center gap-2 p-6 bg-gradient-to-br min-h-screen justify-center">
+      <div className="w-full max-w-md space-y-4">
+        
+        {/* From Currency Card */}
+        <div className="relative">
+          <div 
+            className={`bg-pink-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer w-[450px] h-fit ${
+              isFromDropdownOpen ? 'border-red-400 shadow-xl' : 'border-gray-100'
+            }`}
+            onClick={() => {
+              setIsFromDropdownOpen(!isFromDropdownOpen);
+              setIsToDropdownOpen(false);
+            }}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
+                  {getSelectedCurrency(fromCurrency).flag}
+                </div>
+                <span className="font-semibold text-gray-800 text-lg">
+                  {fromCurrency}
+                </span>
+              </div>
+              {isFromDropdownOpen ? (
+                <FaChevronUp className="text-red-500 text-lg transition-transform duration-200" />
+              ) : (
+                <FaChevronDown className="text-red-500 text-lg transition-transform duration-200" />
+              )}
+            </div>
+            <input 
+              type="text" 
+              className="text-2xl font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
+              value={formatAmount(fromAmount, fromCurrency)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9.]/g, '');
+                setFromAmount(value);
+              }}
+              onClick={(e) => e.stopPropagation()}
+              placeholder="0.00"
+            />
           </div>
-          <FaChevronDown className="text-red-500 text-lg" />
+          <CurrencySelectDropdown
+            isOpen={isFromDropdownOpen}
+            onSelect={handleFromSelect}
+            selectedCurrencyCode={fromCurrency}
+            onClose={() => setIsFromDropdownOpen(false)}
+          />
         </div>
-        <input 
-          type="text" 
-          className="text-xl font-bold text-black bg-transparent border-none outline-none w-full"
-          value={`$${fromAmount}`}
-          onChange={(e) => setFromAmount(e.target.value.replace('$', ''))}
-          onClick={(e) => e.stopPropagation()} // Prevent dropdown from closing when input is clicked
-        />
-        <CurrencySelectDropdown
-          isOpen={isFromDropdownOpen}
-          onSelect={handleFromSelect}
-          selectedCurrencyCode={fromCurrency}
-          onClose={() => setIsFromDropdownOpen(false)}
-        />
-      </div>
 
-      {/* Exchange Icon */}
-      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border border-gray-200 cursor-pointer" onClick={handleExchange}>
-        <BiTransfer className="text-blue-500 text-2xl rotate-90" />
-      </div>
+        {/* Exchange Icon */}
+        <div className="flex justify-center">
+          <button
+            className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-gray-200 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            onClick={handleSwapCurrencies}
+          >
+            <BiTransfer className="text-blue-500 text-[1rem] rotate-90" />
+          </button>
+        </div>
 
-      {/* To Currency Card */}
-      <div className="relative bg-pink-100/50 rounded-xl p-4 flex flex-col justify-between w-full max-w-sm cursor-pointer" onClick={() => setIsToDropdownOpen(!isToDropdownOpen)}>
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-3">
-            {/* Placeholder for To Flag */}
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-xs">{toCurrency.substring(0, 3)}</div>
-            <span className="font-semibold text-black text-lg">{toCurrency}</span>
+        {/* To Currency Card */}
+        <div className="relative">
+          <div 
+            className={`bg-pink-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer w-[450px] h-fit ${
+              isToDropdownOpen ? 'border-red-400 shadow-xl' : 'border-gray-100 hover:border-gray-200'
+            }`}
+            onClick={() => {
+              setIsToDropdownOpen(!isToDropdownOpen);
+              setIsFromDropdownOpen(false);
+            }}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
+                  {getSelectedCurrency(toCurrency).flag}
+                </div>
+                <span className="font-semibold text-gray-800 text-lg">
+                  {toCurrency}
+                </span>
+              </div>
+              {isToDropdownOpen ? (
+                <FaChevronUp className="text-red-500 text-lg transition-transform duration-200" />
+              ) : (
+                <FaChevronDown className="text-red-500 text-lg transition-transform duration-200" />
+              )}
+            </div>
+            <input 
+              type="text" 
+              className="text-2xl font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
+              value={formatAmount(toAmount, toCurrency)}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9.]/g, '');
+                setToAmount(value);
+              }}
+              onClick={(e) => e.stopPropagation()}
+              placeholder="0.00"
+            />
           </div>
-          <FaChevronDown className="text-red-500 text-lg" />
+          <CurrencySelectDropdown
+            isOpen={isToDropdownOpen}
+            onSelect={handleToSelect}
+            selectedCurrencyCode={toCurrency}
+            onClose={() => setIsToDropdownOpen(false)}
+          />
         </div>
-        <input 
-          type="text" 
-          className="text-xl font-bold text-black bg-transparent border-none outline-none w-full"
-          value={`£ ${toAmount}`}
-          onChange={(e) => setToAmount(e.target.value.replace('£ ', ''))}
-          onClick={(e) => e.stopPropagation()} // Prevent dropdown from closing when input is clicked
-        />
-        <CurrencySelectDropdown
-          isOpen={isToDropdownOpen}
-          onSelect={handleToSelect}
-          selectedCurrencyCode={toCurrency}
-          onClose={() => setIsToDropdownOpen(false)}
-        />
+
+        {/* Exchange Rate Info */}
+        <div className="text-center text-sm text-gray-500 mt-4">
+          1 {fromCurrency} = 0.48 {toCurrency}
+        </div>
       </div>
     </div>
   );
 };
 
-export default CurrencyExchange; 
+export default CurrencyExchange;
