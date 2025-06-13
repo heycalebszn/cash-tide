@@ -172,9 +172,7 @@ const Footer = () => {
         <div className="bg-[#8B0000] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${westham})` }}></div> {/* Placeholder Image */}
           <div className="relative z-10 text-center">
-            <img src={westham_logo} alt="West Ham Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
-            <p className="text-sm font-semibold">Official Partner of</p>
-            <p className="text-lg font-bold">West Ham United F.C.</p>
+            <img src={westham_logo} alt="West Ham Logo" className="h-16 mb-2" /> 
           </div>
         </div>
 
@@ -182,9 +180,7 @@ const Footer = () => {
         <div className="bg-[#006400] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${lyon})` }}></div> {/* Placeholder Image */}
           <div className="relative z-10 text-center">
-            <img src={lyon_logo} alt="Legia Logo" className="h-16 mb-2" /> {/* Placeholder Logo */}
-            <p className="text-sm font-semibold">Official Sponsor of</p>
-            <p className="text-lg font-bold">Legia Warsaw</p>
+            <img src={lyon_logo} alt="Legia Logo" className="h-16 mb-2" /> 
           </div>
         </div>
 
