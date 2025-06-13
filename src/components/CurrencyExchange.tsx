@@ -43,7 +43,7 @@ const CurrencyExchange = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 p-6 bg-gradient-to-br h-screen justify-center">
+    <div className="flex flex-col items-center gap-2 p-4 bg-gradient-to-br justify-center mt-[15px]">
       <div className="w-full max-w-md space-y-4">
         
         {/* From Currency Card */}
