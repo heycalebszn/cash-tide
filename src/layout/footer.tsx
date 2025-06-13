@@ -21,16 +21,24 @@ const Footer = () => {
 
     const ctx = gsap.context(() => {
       gsap.set(jetonH1Ref.current, {
+        xPercent: 0,
+        yPercent: 0,
         scaleX: 1,
         opacity: 1,
-        yPercent: 0,
         transformOrigin: "right center",
       });
 
       gsap.to(jetonH1Ref.current, {
-        y: 200,
-        duration: 2,
+        xPercent: -0.01,
+        yPercent: 0.02,
+        scaleX: 0.9999,
         ease: "none",
+        scrollTrigger: {
+          trigger: jetonH1Ref.current,
+          start: "center center",
+          end: "top -100%",
+          scrub: 1,
+        }
       });
     }, jetonH1Ref);
 
