@@ -5,6 +5,7 @@ import HeroSection from "./components/sections/hero";
 import { useRef } from 'react';
 import FinanceSection from "./components/sections/finance";
 import ExchangeSection from "./components/sections/exchange";
+import JettonCardSection from "./components/sections/jetton-card";
 
 const App = () => {
   const financeSectionRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ const App = () => {
       <ChatSupportButton />
       <FinanceSection ref={financeSectionRef} />
       <ExchangeSection ref={exchangeSectionRef} />
+      <JettonCardSection />
     </div>
   );
 };
