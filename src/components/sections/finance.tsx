@@ -11,6 +11,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
   const image2Ref = useRef<HTMLImageElement>(null);
   const image3Ref = useRef<HTMLImageElement>(null);
   const image4Ref = useRef<HTMLImageElement>(null);
+  console.log(props)
 
   useEffect(() => {
     if (!ref || typeof ref === 'function' || !ref.current) {
@@ -34,9 +35,10 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
         scrollTrigger: {
           trigger: ref.current,
           start: 'top top',
-          end: '+=1000',    // End after 1000 pixels of scrolling
-          scrub: true,
-          pin: true,       // Pin the section during the animation
+          end: '+=2000',    // Increased scroll distance to overlap with exchange section
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1
         }
       });
 
