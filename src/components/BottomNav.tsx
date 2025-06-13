@@ -14,6 +14,9 @@ const BottomNav = () => {
   const businessTimeoutRef = useRef<number | null>(null);
   const companyTimeoutRef = useRef<number | null>(null);
 
+  // Derive if any dropdown is open
+  const isAnyDropdownOpen = showPersonalDropdown || showBusinessDropdown || showCompanyDropdown;
+
   const handleMouseEnterDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<number | null>, name: string) => {
     console.log(`Mouse ENTERED ${name} area`);
     if (timeoutRef.current) {
@@ -141,8 +144,14 @@ const BottomNav = () => {
     }
   }, []);
 
+  const navClass = `fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-50 shadow-lg ${
+    isAnyDropdownOpen
+      ? 'rounded-b-full rounded-tl-none rounded-tr-none' 
+      : 'rounded-full' 
+  }`;
+
   return (
-    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-orange-600 text-white py-2 px-2 rounded-full flex justify-around items-center z-50 shadow-lg">
+    <nav className={navClass}>
       <div className="flex items-center space-x-2">
         {/* Home Icon (Active State) */}
         <a href="#" className="p-2 bg-red-700 rounded-full flex items-center justify-center shadow-md">
@@ -200,7 +209,7 @@ const BottomNav = () => {
           ref={personalDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">About</a>
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Newsroom</a>
@@ -221,7 +230,7 @@ const BottomNav = () => {
           ref={businessDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option A</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option B</a>
@@ -235,7 +244,7 @@ const BottomNav = () => {
           ref={companyDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-[#DE352F] text-white rounded-t-3xl shadow-lg p-4 flex flex-col z-60"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item X</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Y</a>
