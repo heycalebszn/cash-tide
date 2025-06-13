@@ -1,11 +1,11 @@
-import React, { forwardRef, useRef, useEffect } from 'react';
+import { forwardRef, useRef, useEffect, type Ref } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { finance_image1, finance_image2, finance_image3, finance_image4 } from '../../assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FinanceSection = forwardRef<HTMLDivElement>((props, ref) => {
+const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElement>) => {
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const image1Ref = useRef<HTMLImageElement>(null);
   const image2Ref = useRef<HTMLImageElement>(null);
@@ -18,17 +18,17 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref) => {
     }
 
     const ctx = gsap.context(() => {
-      // Set initial states for all images
       gsap.set([image1Ref.current, image2Ref.current, image3Ref.current, image4Ref.current], { 
-        opacity: 0,
+        opacity: 1,
         scale: 0.5,
         position: 'absolute',
         top: '50%',
         left: '50%',
         xPercent: -50, // Center horizontally
         yPercent: -50,  // Center vertically
-        zIndex: 1 // Default z-index
+        zIndex: 1 // Default z-index for images
       });
+      // Initial state for h1 is handled by its CSS class and will be animated
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -45,26 +45,26 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref) => {
 
       // Animate image1 (top-left to center)
       tl.fromTo(image1Ref.current, 
-        { x: '-300%', y: '-300%', opacity: 0, scale: 0.5, xPercent: -50, yPercent: -50 }, // Start far offset, invisible, tiny
-        { x: '0%', y: '0%', opacity: 1, scale: 1, ease: 'power2.out' }, 0
+        { xPercent: -300, yPercent: -150, opacity: 1, scale: 0.5 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image2 (top-right to center)
       tl.fromTo(image2Ref.current, 
-        { x: '300%', y: '-300%', opacity: 0, scale: 0.5, xPercent: -50, yPercent: -50, zIndex: 3 }, 
-        { x: '0%', y: '0%', opacity: 1, scale: 1, ease: 'power2.out' }, 0
+        { xPercent: 300, yPercent: -150, opacity: 1, scale: 0.5, zIndex: 3 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image3 (bottom-left to center)
       tl.fromTo(image3Ref.current, 
-        { x: '-300%', y: '300%', opacity: 0, scale: 0.5, xPercent: -50, yPercent: -50, zIndex: 4 }, 
-        { x: '0%', y: '0%', opacity: 1, scale: 1, ease: 'power2.out' }, 0
+        { xPercent: -300, yPercent: 50, opacity: 1, scale: 0.5, zIndex: 4 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image4 (bottom-right to center)
       tl.fromTo(image4Ref.current, 
-        { x: '300%', y: '300%', opacity: 0, scale: 0.5, xPercent: -50, yPercent: -50, zIndex: 5 }, 
-        { x: '0%', y: '0%', opacity: 1, scale: 1, ease: 'power2.out' }, 0
+        { xPercent: 300, yPercent: 50, opacity: 1, scale: 0.5, zIndex: 5 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
     }, ref);
@@ -73,15 +73,13 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref) => {
   }, [ref]);
 
   return (
-    <div ref={ref} className="relative flex flex-col items-center justify-center bg-white h-screen overflow-hidden">
-      <h1 ref={h1Ref} className="text-[200px] text-center leading-[200px] text-orange-600 font-semibold">Unify your finances</h1>
+    <div ref={ref} className="relative bg-white h-screen overflow-hidden">
+      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] text-center leading-[200px] text-orange-600 font-semibold whitespace-nowrap z-50">Unify your <br /> finances</h1>
 
-      <div className="relative w-full h-full">
-        <img ref={image1Ref} src={finance_image1} alt="" className="absolute" />
-        <img ref={image2Ref} src={finance_image2} alt="" className="absolute" />
-        <img ref={image3Ref} src={finance_image3} alt="" className="absolute" />
-        <img ref={image4Ref} src={finance_image4} alt="" className="absolute" />
-      </div>
+      <img ref={image1Ref} src={finance_image1} alt="" className="absolute w-[300px]" />
+      <img ref={image2Ref} src={finance_image2} alt="" className="absolute w-[300px]" />
+      <img ref={image3Ref} src={finance_image3} alt="" className="absolute w-[300px]" />
+      <img ref={image4Ref} src={finance_image4} alt="" className="absolute w-[300px]" />
     </div>
   );
 });

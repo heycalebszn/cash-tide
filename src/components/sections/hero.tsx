@@ -4,7 +4,7 @@ import { FaGooglePlay } from "react-icons/fa";
 
 const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void }) => {
   return (
-    <div className="relative h-screen flex items-center text-white mx-[50px] bg-gradient-to-r from-pink-500 to-orange-400 overflow-x-hidden">
+    <div className="relative h-screen flex items-center text-white px-[50px] bg-gradient-to-r from-pink-500 to-orange-400 overflow-x-hidden w-full">
       {/* Placeholder for background video - User will handle this */}
       
 
@@ -38,7 +38,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
       {/* Scroll indicator */}
       <div 
-        className="absolute bottom-[30px] left-0 z-10 flex items-center justify-center gap-2 text-white border border-white rounded-full px-4 py-2 cursor-pointer"
+        className="absolute bottom-[30px] left-[50px] z-10 flex items-center justify-center gap-2 text-white border border-white rounded-full px-4 py-2 cursor-pointer"
         onClick={onScrollButtonClick}
       >
         <BsArrowDown className="text-[0.8rem]" />
