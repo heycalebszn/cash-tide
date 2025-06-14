@@ -15,7 +15,7 @@ const Navbar = () => {
               Log in
             </a>
           </li>
-          <li className="relative z-10">
+          <li className="relative z-10 md:flex hidden">
             <a 
               href="https://portal.jeton.com/signup" 
               target="_blank" 

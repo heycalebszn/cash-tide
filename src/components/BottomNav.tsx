@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { BiMenu } from 'react-icons/bi';
 
 const BottomNav = () => {
   const [showPersonalDropdown, setShowPersonalDropdown] = useState(false);
@@ -154,14 +155,20 @@ const BottomNav = () => {
     <nav className={navClass}>
       <div className="flex items-center space-x-2">
         {/* Home Icon (Active State) */}
-        <a href="#" className="p-2 bg-red-700 rounded-full flex items-center justify-center shadow-md">
+        <a href="#" className="p-2 bg-red-700 rounded-full md:flex items-center justify-center shadow-md hidden">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125h9.75a1.125 1.125 0 001.125-1.125V9.75m-6 2.25h.008v.008H10.5v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
           </svg>
         </a>
-        
+
+        {/* Mobile view */}
+        <div className='md:hidden flex gap-3 items-center'>
+        <h1>Menu</h1>
+        <BiMenu />
+        </div>
+
         {/* Navigation Links */}
-        <div className="flex space-x-1">
+        <div className="md:flex space-x-1 hidden">
           <div 
             className="group relative flex items-center"
             onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal')}
@@ -209,7 +216,7 @@ const BottomNav = () => {
           ref={personalDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
         >
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">About</a>
           <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Newsroom</a>
@@ -230,7 +237,7 @@ const BottomNav = () => {
           ref={businessDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option A</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option B</a>
@@ -244,7 +251,7 @@ const BottomNav = () => {
           ref={companyDropdownRef} 
           onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
           onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 flex flex-col z-60"
+          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
         >
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item X</a>
           <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Y</a>

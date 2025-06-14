@@ -4,15 +4,16 @@ import { FaGooglePlay } from "react-icons/fa";
 
 const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void }) => {
   return (
-    <div className="relative h-screen flex items-center text-white px-[50px] overflow-x-hidden w-full">
-      {/* Background Video */}
+    <div className="relative h-screen overflow-x-hidden w-full">
+      {/* Background Video (common to both mobile and desktop) */}
       <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline preload="metadata">
         <source src="https://jetonbucket.fra1.cdn.digitaloceanspaces.com/jeton/2024-08-08T10-52-41.402Z-jeton-homepage-hd2.mp4#t=0.01" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative z-10 space-y-8 text-left flex justify-between items-center w-full mt-[230px]">
-        <h2 className="text-8xl font-bold leading-[90px]">
+      {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
+      <div className="relative z-10 space-y-8 text-left md:flex hidden justify-between items-center w-full mt-[350px] text-white">
+        <h2 className="text-8xl font-bold leading-[90px] pl-[50px]">
           One app <br /> for all needs
         </h2>
 
@@ -41,11 +42,48 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
       {/* Scroll indicator */}
       <div 
-        className="absolute bottom-[30px] left-[50px] z-10 flex items-center justify-center gap-2 text-white border border-white rounded-full px-4 py-2 cursor-pointer"
+        className="absolute bottom-[30px] left-[50px] z-10 md:flex items-center justify-center gap-2 text-white border border-white rounded-full px-4 py-2 cursor-pointer hidden"
         onClick={onScrollButtonClick}
       >
         <BsArrowDown className="text-[0.8rem]" />
         <span className="text-[0.7rem]">Scroll</span>
+      </div>
+
+      {/* Mobile View (hidden on desktop) */}
+      <div className="block md:hidden relative h-screen overflow-x-hidden w-full">
+        {/* Content for mobile */}
+        <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
+          {/* Top part: H1 heading for mobile */}
+          <h2 className="text-5xl font-bold leading-[60px] text-left pt-[50px]">
+            One app for all needs
+          </h2>
+
+          {/* Spacer to push content to bottom on mobile */}
+          <div className="flex-grow"></div> 
+
+          {/* Bottom part: Paragraph and Buttons for mobile */}
+          <div className="flex flex-col text-left ml-0">
+            <p className="text-lg mb-4">
+              Single account for all your payments.
+            </p>
+            <div className="flex flex-col justify-start items-start gap-4">
+              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
+                <AiFillApple className="text-2xl" />
+                <div className="flex flex-col text-left">
+                  <span className="text-xs">Download on the</span>
+                  <span className="text-base font-semibold">App Store</span>
+                </div>
+              </a>
+              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
+                <FaGooglePlay className="text-2xl" />
+                <div className="flex flex-col text-left">
+                  <span className="text-xs">GET IT ON</span>
+                  <span className="text-base font-semibold">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
