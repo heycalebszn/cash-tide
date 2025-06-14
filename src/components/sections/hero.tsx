@@ -4,9 +4,15 @@ import { FaGooglePlay } from "react-icons/fa";
 
 const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void }) => {
   return (
-    <div className="relative h-screen flex items-center text-white px-[50px] bg-gradient-to-r from-pink-500 to-orange-400 overflow-x-hidden w-full">
-      {/* Placeholder for background video - User will handle this */}
-      
+    <div className="relative h-screen flex items-center text-white px-[50px] overflow-x-hidden w-full">
+      {/* Background Video */}
+      <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline preload="metadata">
+        <source src="https://jetonbucket.fra1.cdn.digitaloceanspaces.com/jeton/2024-08-08T10-52-41.402Z-jeton-homepage-hd2.mp4#t=0.01" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-5"></div>
 
       <div className="relative z-10 space-y-8 text-left flex justify-between items-center w-full mt-[230px]">
         <h2 className="text-8xl font-bold leading-[90px]">

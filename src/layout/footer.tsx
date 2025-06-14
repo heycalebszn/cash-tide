@@ -169,25 +169,28 @@ const Footer = () => {
       {/* Partner/Ambassador Cards */}
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-6 mt-12">
         {/* West Ham United Card */}
-        <div className="bg-[#8B0000] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${westham})` }}></div> {/* Placeholder Image */}
-          <div className="relative z-10 text-center">
-            <img src={westham_logo} alt="West Ham Logo" className="h-16 mb-2" /> 
+        <div className="text-white rounded-xl w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" style={{ backgroundImage: `url(${westham})` }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 bg-[rgba(139,0,0,0.9)] z-10"></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 z-20 flex flex-col items-center justify-end p-4 text-center">
+            <img src={westham_logo} alt="West Ham Logo" className="h-16 mb-2" />
           </div>
         </div>
 
         {/* Legia Warsaw Card */}
-        <div className="bg-[#006400] text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${lyon})` }}></div> {/* Placeholder Image */}
-          <div className="relative z-10 text-center">
-            <img src={lyon_logo} alt="Legia Logo" className="h-16 mb-2" /> 
+        <div className="text-white rounded-xl w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" style={{ backgroundImage: `url(${lyon})` }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 bg-[rgba(0,100,0,0.9)] z-10"></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 z-20 flex flex-col items-center justify-end p-4 text-center">
+            <img src={lyon_logo} alt="Legia Logo" className="h-16 mb-2" />
           </div>
         </div>
 
         {/* Brand Ambassadors Card */}
-        <div className="bg-orange-500 text-white rounded-xl p-4 flex flex-col items-center justify-end w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${liverpool})` }}></div> {/* Placeholder Image */}
-          <div className="relative z-10 text-center">
+        <div className="text-white rounded-xl w-full md:w-1/3 max-w-sm h-[250px] relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0" style={{ backgroundImage: `url(${liverpool})` }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 bg-[rgba(249,115,22,0.9)] z-10"></div>
+          <div className="absolute bottom-0 left-0 w-full h-2/5 z-20 flex flex-col items-center justify-end p-4 text-center">
             <p className="text-sm font-semibold">Online Payments Brand Ambassadors</p>
             <p className="text-lg font-bold">Alexis Mac Allister & Kou Itakura</p>
           </div>

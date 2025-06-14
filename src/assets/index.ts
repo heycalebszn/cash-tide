@@ -17,6 +17,7 @@ import logo3 from "./images/logos/logo3.png"
 import logo4 from "./images/logos/logo4.png"
 import logo5 from "./images/logos/logo5.png"
 import logo6 from "./images/logos/logo6.png"
+import manage_bg from "./videos/manage/finance.mp4"
 
 export {
     playstore,
@@ -38,4 +39,5 @@ export {
     logo6,
     westham_logo,
     lyon_logo,
+    manage_bg,
 }

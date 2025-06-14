@@ -3,7 +3,7 @@ import CurrencyExchange from '../CurrencyExchange';
 
 const JettonCardSection = () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-4">
+    <section className="flex flex-col items-center justify-center gap-4 mt-[150px]">
       <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.8rem]">Jeton Card</div>
 
       <div className="flex flex-col gap-[100px] items-center justify-center">
@@ -11,7 +11,9 @@ const JettonCardSection = () => {
     Spending limits? Check.
     Card freezing? Also check.</h1>
 
-    <video src={jeton_card_video} className="h-[500px] w- rounded-xl" />
+    <video autoPlay loop muted playsInline className="h-[500px] w- rounded-xl">
+    <source src={jeton_card_video} />
+    </video>
 
     <div className="flex flex-col gap-8 items-center justify-center">
     <h1 className="text-orange-600 text-[4.5rem] w-[800px] text-center font-semibold leading-[80px]">Jeton Card: Your Go-To for Every Purchase</h1>
