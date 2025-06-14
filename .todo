@@ -1,2 +1,2 @@
-1. Testimonials animation - the items should be in their normal position in full screen view and when i scroll down (move down e.g moving to footer) but when i start to scroll up, immediately the last item on the list reaches the bottom nav edge or screen bottom edge, it should stop and the other elements should begin to stack on it one after another one after another until the animation is done(all these while i'm scrolling up)
-5. Mobile and tablet responsiveness - Do the mobile and tablet responsiveness for all the pages (in a standard way).
+1. Mobile popup
+2. 
