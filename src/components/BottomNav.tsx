@@ -163,8 +163,8 @@ const BottomNav = () => {
 
   const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg ${
     isAnyDropdownOpen
-      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[300px] px-[20px]'
-      : 'rounded-full w-[300px]'
+      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[400px] px-[20px]'
+      : 'rounded-full w-[400px]'
   }`;
 
   const openMenu = (e: any) => {
@@ -216,7 +216,7 @@ const BottomNav = () => {
                   ref={dropdownRefs.current[key]}
                   onMouseEnter={(e) => openDropdown(key, e)}
                   onMouseLeave={() => closeDropdown(key)}
-                  className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[300px] bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
+                  className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[400px] bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
                 >
                   {DROPDOWNS.find(d => d.key === key)?.links.map((link, i) => (
                     <a
