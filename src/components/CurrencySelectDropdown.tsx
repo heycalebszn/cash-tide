@@ -28,7 +28,12 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
   if (!isOpen) return null;
 
   return (
-    <div className={`absolute top-full left-0 z-50 w-full bg-white rounded-xl shadow-lg -mt-16 py-2 px-2 ${className || ''}`}>
+    <div className={`fixed z-[9999] w-full bg-white rounded-xl shadow-lg py-2 px-2 ${className || ''}`} style={{
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      maxWidth: '450px'
+    }}>
       {currencies.map((currency) => (
         <div
           key={currency.code}

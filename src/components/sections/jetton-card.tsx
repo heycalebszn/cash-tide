@@ -54,15 +54,15 @@ const JettonCardSection = () => {
     <section className="flex flex-col items-center justify-center gap-4 mt-[150px]">
       <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.9rem]">Jeton Card</div>
 
-      <div className="flex flex-col gap-[100px] items-center justify-center">
-        <h1 className="text-orange-600 md:text-[2.5rem] text-[1.8rem] md:w-[550px] w-[400px] text-center font-semibold md:leading-normal leading-[50px]">Contactless payments? Sure.<br/>Spending limits? Check.<br/>Card freezing? Also check.</h1>
+      <div className="flex flex-col gap-[50px] md:gap-[100px] items-center justify-center">
+        <h1 className="text-orange-600 md:text-[2.5rem] text-[1.8rem] md:w-[550px] w-[400px] text-center font-semibold md:leading-normal leading-[40px]">Contactless payments? Sure.<br/>Spending limits? Check.<br/>Card freezing? Also check.</h1>
 
-        <video autoPlay loop muted playsInline className="h-[800px] md:w-[800px] w-[350px] rounded-xl">
+        <video autoPlay loop muted playsInline className="h-[400px] md:h-[800px] md:w-[800px] w-[350px] rounded-xl object-cover">
           <source src={jeton_card_video} />
         </video>
 
-        <div className="flex flex-col gap-8 items-center justify-center">
-          <h1 className="text-orange-600 md:text-[4.5rem] text-[3rem] md:w-[500px] w-[250px] text-center md:font-semibold font-bold md:leading-[80px] leading-[50px]">Jeton Card: Your Go-To for Every Purchase</h1>
+        <div className="flex flex-col gap-4 md:gap-8 items-center justify-center">
+          <h1 className="text-orange-600 md:text-[4rem] text-[2.5rem] md:w-[500px] w-[250px] text-center md:font-semibold font-bold md:leading-[80px] leading-[40px]">Jeton Card: Your Go-To for Every Purchase</h1>
           <a href="#" className="p-4 bg-orange-500 text-white text-[1rem] rounded-[15px] w-[150px] text-center">Learn more</a>
         </div>
       </div>
