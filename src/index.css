@@ -51,3 +51,48 @@
 .link-underline:hover::after {
   width: 100%;
 }
+
+/* Add these styles to your global CSS */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  scroll-padding: 0;
+  scroll-margin: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar but keep functionality */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add momentum scrolling for iOS */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Add resistance to scrolling */
+.scroll-container {
+  overscroll-behavior: contain;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  scroll-padding: 0;
+  scroll-margin: 0;
+}
+
+/* Add smooth deceleration */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}

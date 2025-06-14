@@ -10,6 +10,7 @@ const BottomNav = () => {
   const [showBusinessDropdown, setShowBusinessDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [mobileMenuView, setMobileMenuView] = useState<boolean>(false);
+  const [menuMounted, setMenuMounted] = useState<boolean>(false);
   const [clickX, setClickX] = useState(0); // New state for click X coordinate
   const [clickY, setClickY] = useState(0); // New state for click Y coordinate
 
@@ -192,6 +193,18 @@ const BottomNav = () => {
       : 'rounded-full'
   }`;
 
+  const openMenu = (e: any) => {
+    setMenuMounted(true);
+    setClickX(e.clientX);
+    setClickY(e.clientY);
+    setMobileMenuView(true);
+  };
+
+  const closeMenu = () => {
+    setMobileMenuView(false);
+    setTimeout(() => setMenuMounted(false), 800); // match GSAP duration
+  };
+
   return (
     <nav className={navClass}>
       <div className="flex items-center space-x-2">
@@ -205,11 +218,7 @@ const BottomNav = () => {
         {/* Mobile view - Toggle button for the full-screen menu */}
         <div className='md:hidden flex gap-3 items-center'>
         <h1>Menu</h1>
-        <BiMenu onClick={(e) => { // Capture click coordinates
-            setClickX(e.clientX);
-            setClickY(e.clientY);
-            setMobileMenuView(true);
-        }} />
+        <BiMenu onClick={openMenu} />
         </div>
 
         {/* Navigation Links (Desktop) */}
@@ -305,7 +314,7 @@ const BottomNav = () => {
       )}
 
       {/* Mobile Menu Overlay - Conditional Rendering */}
-      {mobileMenuView && (
+      {menuMounted && (
         <div ref={mobileMenuRef} className="fixed inset-0 bg-red-600 text-white z-[9999] flex flex-col">
           {/* Top Bar: Language and Sign up */}
           <div className="flex justify-between items-center px-4 py-4 border-b border-red-500">
@@ -395,7 +404,7 @@ const BottomNav = () => {
 
           {/* Close Button */}
           <div className="flex justify-center pb-8 pt-4">
-            <button onClick={() => setMobileMenuView(false)} className="px-6 py-3 bg-white text-red-600 rounded-full font-semibold flex items-center gap-2">
+            <button onClick={closeMenu} className="px-6 py-3 bg-white text-red-600 rounded-full font-semibold flex items-center gap-2">
               <span>Menu</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
