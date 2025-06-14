@@ -43,7 +43,6 @@ const JettonCardSection = () => {
         scrollTrigger: {
           trigger: exchangeSectionRef.current,
           start: "top center",
-          once: true,
         }
       });
     });
