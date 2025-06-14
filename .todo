@@ -1,5 +1,2 @@
 1. Testimonials animation - the items should be in their normal position in full screen view and when i scroll down (move down e.g moving to footer) but when i start to scroll up, immediately the last item on the list reaches the bottom nav edge or screen bottom edge, it should stop and the other elements should begin to stack on it one after another one after another until the animation is done(all these while i'm scrolling up)
-2. Footer triangle animation.
-3. Exchange falling flags animation - Do the animation of the flags falling and rolling on the exchange section as i go into the screen (full view) but they should only fall once and make it look like they fell from the top of the section and rolling on the section cards (e.g exchange card) and they remain at the bottom after falling and rolling.
-4. Navbar alignment - done
 5. Mobile and tablet responsiveness - Do the mobile and tablet responsiveness for all the pages (in a standard way).
