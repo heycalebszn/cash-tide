@@ -35,7 +35,7 @@ const JettonCardSection = () => {
 
       // Simple bounce animation with varying final positions
       gsap.to(flagsRefs.current, {
-        y: (index) => index % 2 === 0 ? 700 : 400, // Alternate between bottom and top positions
+        y: (index) => index % 2 === 0 ? 720 : 370, // Adjusted middle position to land exactly at top edge of first form
         opacity: 1,
         duration: 2,
         ease: "bounce.out",
@@ -67,35 +67,57 @@ const JettonCardSection = () => {
         </div>
       </div>
 
-      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative overflow-hidden h-[800px]">
-        <div className="absolute inset-0 z-10">
-          {flagsData.map((flag, index) => (
+      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative overflow-hidden h-[800px] pb-[20px]">
+        {/* Bottom flags container */}
+        <div className="absolute inset-0 z-30 pointer-events-none">
+          {flagsData.filter((_, index) => index % 2 === 0).map((flag, index) => (
             <img
               key={index}
               ref={el => {
-                if (el) flagsRefs.current[index] = el;
+                if (el) flagsRefs.current[index * 2] = el;
               }}
               src={flag.src}
               alt={flag.alt}
-              className="rounded-full w-[80px] h-[80px] object-cover absolute"
+              className="rounded-full w-[80px] h-[80px] object-cover absolute pointer-events-none"
               style={{ 
                 left: `${Math.random() * 80}%`,
                 top: '0px',
-                zIndex: index % 2 === 0 ? 10 : 20,
                 borderRadius: '50%'
               }}
             />
           ))}
         </div>
 
-        <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.9rem] mt-[200px] w-fit">Exchange</div>
+        {/* Middle flags container */}
+        <div className="absolute inset-0 z-20 pointer-events-none">
+          {flagsData.filter((_, index) => index % 2 === 1).map((flag, index) => (
+            <img
+              key={index}
+              ref={el => {
+                if (el) flagsRefs.current[index * 2 + 1] = el;
+              }}
+              src={flag.src}
+              alt={flag.alt}
+              className="rounded-full w-[80px] h-[80px] object-cover absolute pointer-events-none"
+              style={{ 
+                left: `${Math.random() * 80}%`,
+                top: '0px',
+                borderRadius: '50%'
+              }}
+            />
+          ))}
+        </div>
 
-        <div className="flex flex-col gap-[30px] items-center justify-center mt-[10px]">
+        <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.9rem] mt-[200px] w-fit z-10">Exchange</div>
+
+        <div className="flex flex-col gap-[30px] items-center justify-center mt-[10px] z-10">
           <h1 className="text-orange-600 md:text-[4.5rem] text-[2.5rem] md:w-[500px] w-[250px] text-center font-semibold md:leading-[70px] leading-[50px]">Convert fiat cash easily.</h1>
           <p className="text-orange-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*The displayed conversion rates and fees may vary during the currency exchange process, d the rates shown were last updated at 00:59 on 05:06.2025.</p>
         </div>
 
-        <CurrencyExchange />
+        <div className="z-10">
+          <CurrencyExchange />
+        </div>
       </section>
     </section>
   )

@@ -73,7 +73,7 @@ const TestimonialsSection = forwardRef<HTMLDivElement>((props, ref) => {
       className="w-full min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden md:p-16"
       style={{ backgroundImage: `url(${testimonials_bg})` }}
     >
-      <h1 className="text-4xl text-white mb-6 text-center relative z-20 md:text-[5rem] md:mb-10">Hear from our clients</h1>
+      <h1 className="text-[2.5rem] text-white mb-6 text-center relative z-20 md:text-[5rem] md:mb-10">Hear from our clients</h1>
 
       <div className="flex flex-col gap-2 relative z-30 items-center"> 
         {testimonialsData.map((testimonial, index) => (

@@ -10,7 +10,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ brief, desc, name, avatar, avatarBgColor }) => {
   return (
-    <div className="w-[450px] bg-transparent bg-opacity-60 backdrop-blur-md rounded-[15px] p-6 text-white">
+    <div className="md:w-[450px] w-[350px] bg-transparent bg-opacity-60 backdrop-blur-md rounded-[15px] p-6 text-white">
       <p className="text-sm font-semibold mb-2 text-gray-300">{brief}</p>
       <p className="text-base mb-4 leading-relaxed text-gray-300">{desc}</p>
       <div className="flex items-center mt-4">

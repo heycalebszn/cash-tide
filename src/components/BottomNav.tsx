@@ -188,7 +188,7 @@ const BottomNav = () => {
 
   const navClass = `fixed bottom-4 left-0 right-0 mx-auto max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg w-fit ${
     isAnyDropdownOpen
-      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[50%]'
+      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[50%] px-[20px]'
       : 'rounded-full'
   }`;
 
