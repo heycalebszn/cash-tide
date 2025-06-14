@@ -12,7 +12,7 @@ const ManageSection = () => {
 
             {/* Content */}
             <div className="relative z-20 flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between">
-                <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left w-[450px]">All your finances, in one app.</h1>
+                <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[450px] w-[300px]">All your finances, in one app.</h1>
                 <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
                 
                 <a href="#" className="px-8 py-4 bg-white text-orange-500 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors mb-8">

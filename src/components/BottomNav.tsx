@@ -70,7 +70,7 @@ const BottomNav = () => {
       [key]: { open: true, mounted: true },
     }));
   };
-  const closeDropdown = (key: string, duration = 200) => {
+  const closeDropdown = (key: string) => {
     setDropdownState(prev => ({
       ...prev,
       [key]: { ...prev[key], open: false },
@@ -80,7 +80,7 @@ const BottomNav = () => {
         ...prev,
         [key]: { ...prev[key], mounted: false },
       }));
-    }, duration);
+    }, 300);
   };
 
   // GSAP animation for dropdowns
@@ -161,10 +161,30 @@ const BottomNav = () => {
     }
   }, [mobileMenuView, clickX, clickY]); // Add clickX, clickY to dependencies
 
-  const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg ${
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  console.log(activeDropdown)
+
+  // const toggleDropdown = (key: string) => {
+  //   setActiveDropdown(activeDropdown === key ? null : key);
+  // };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg transition-all duration-300 ease-in-out ${
     isAnyDropdownOpen
       ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[400px] px-[20px]'
-      : 'rounded-full w-[400px]'
+      : 'rounded-full md:w-[400px] w-fit'
   }`;
 
   const openMenu = (e: any) => {
@@ -179,6 +199,20 @@ const BottomNav = () => {
     setTimeout(() => setMenuMounted(false), 800); // match GSAP duration
   };
 
+  // const handleMouseLeaveDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<number | null>, name: string) => {
+  //   console.log(`Mouse LEFT ${name} area`);
+  //   timeoutRef.current = window.setTimeout(() => {
+  //     setter(false);
+  //   }, 300); // Reduced delay for better responsiveness
+  // };
+
+  // Add click handler for dropdown items
+  // const handleDropdownItemClick = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   // Prevent the dropdown from closing immediately
+  //   e.stopPropagation();
+  // };
+
   return (
     <nav className={navClass}>
       <div className="flex items-center space-x-2">
@@ -190,9 +224,9 @@ const BottomNav = () => {
         </a>
 
         {/* Mobile view - Toggle button for the full-screen menu */}
-        <div className='md:hidden flex gap-3 items-center'>
-        <h1>Menu</h1>
-        <BiMenu onClick={openMenu} />
+        <div className='md:hidden flex gap-3 items-center w-fit'>
+          <h1>Menu</h1>
+          <BiMenu onClick={openMenu} />
         </div>
 
         {/* Navigation Links (Desktop) */}

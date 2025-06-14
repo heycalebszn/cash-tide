@@ -64,7 +64,7 @@ const CallToActionSection = () => {
       <div ref={sectionBgRef} className="absolute inset-0 z-0"></div> {/* Animating section background */}
       <div className="overflow-hidden relative z-10"> {/* Wrapper for h1 parts and animating triangle */}
         {/* H1 text: Mobile-first size and leading, desktop overrides, and responsive width */}
-        <h1 ref={h1TopRef} className="text-[3rem] w-[300px] font-bold leading-[3.5rem] md:text-[8rem] md:w-[1000px] md:leading-[130px]">1 million users,</h1> {/* Top part of h1 */}
+        <h1 ref={h1TopRef} className="text-[4rem] w-[400px] font-bold leading-[3.5rem] md:text-[8rem] md:w-[1000px] md:leading-[130px]">1 million users, plus you.</h1> {/* Top part of h1 */}
         <div ref={triangleBgRef} className="absolute inset-0 bg-white z-0"> {/* Animating white triangle background */}
           {/* H1 text: Mobile-first size and leading, desktop overrides, and responsive width */}
           <h1 ref={h1BottomRef} className="text-[3rem] w-[300px] font-bold leading-[3.5rem] relative md:text-[8rem] md:w-[1000px] md:leading-[130px]">plus you.</h1> {/* Bottom part of h1 */}

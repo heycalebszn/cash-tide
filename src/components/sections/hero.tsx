@@ -54,7 +54,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         {/* Content for mobile */}
         <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
           {/* Top part: H1 heading for mobile */}
-          <h2 className="text-5xl font-bold leading-[60px] text-left pt-[50px]">
+          <h2 className="text-[2.5rem] font-bold leading-[60px] text-left pt-[50px]">
             One app for all needs
           </h2>
 
@@ -63,7 +63,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
           {/* Bottom part: Paragraph and Buttons for mobile */}
           <div className="flex flex-col text-left ml-0">
-            <p className="text-lg mb-4">
+            <p className="text-[1.5rem] mb-4">
               Single account for all your payments.
             </p>
             <div className="flex justify-start items-start gap-4">
