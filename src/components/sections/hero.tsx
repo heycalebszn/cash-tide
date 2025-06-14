@@ -66,7 +66,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
             <p className="text-lg mb-4">
               Single account for all your payments.
             </p>
-            <div className="flex flex-col justify-start items-start gap-4">
+            <div className="flex justify-start items-start gap-4">
               <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
                 <AiFillApple className="text-2xl" />
                 <div className="flex flex-col text-left">

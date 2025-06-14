@@ -76,12 +76,14 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
 
   return (
     <div ref={ref} className="relative bg-white h-screen overflow-hidden">
-      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] text-center leading-[200px] text-orange-600 font-semibold whitespace-nowrap z-50">Unify your <br /> finances</h1>
+      {/* H1: Mobile-first size, desktop override */}
+      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-center leading-[60px] text-orange-600 font-semibold whitespace-nowrap z-50 md:text-[200px] md:leading-[200px]">Unify your <br /> finances</h1>
 
-      <img ref={image1Ref} src={finance_image1} alt="" className="absolute w-[300px]" />
-      <img ref={image2Ref} src={finance_image2} alt="" className="absolute w-[300px]" />
-      <img ref={image3Ref} src={finance_image3} alt="" className="absolute w-[300px]" />
-      <img ref={image4Ref} src={finance_image4} alt="" className="absolute w-[300px]" />
+      {/* Images: Mobile-first width, desktop override */}
+      <img ref={image1Ref} src={finance_image1} alt="" className="absolute w-[200px] md:w-[300px]" />
+      <img ref={image2Ref} src={finance_image2} alt="" className="absolute w-[200px] md:w-[300px]" />
+      <img ref={image3Ref} src={finance_image3} alt="" className="absolute w-[200px] md:w-[300px]" />
+      <img ref={image4Ref} src={finance_image4} alt="" className="absolute w-[200px] md:w-[300px]" />
     </div>
   );
 });

@@ -52,18 +52,18 @@ const JettonCardSection = () => {
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 mt-[150px]">
-      <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.8rem]">Jeton Card</div>
+      <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.9rem]">Jeton Card</div>
 
       <div className="flex flex-col gap-[100px] items-center justify-center">
-        <h1 className="text-orange-600 text-[2.5rem] w-[550px] text-center font-semibold">Contactless payments? Sure.<br/>Spending limits? Check.<br/>Card freezing? Also check.</h1>
+        <h1 className="text-orange-600 md:text-[2.5rem] text-[1.8rem] md:w-[550px] w-[400px] text-center font-semibold md:leading-normal leading-[50px]">Contactless payments? Sure.<br/>Spending limits? Check.<br/>Card freezing? Also check.</h1>
 
-        <video autoPlay loop muted playsInline className="h-[500px] w- rounded-xl">
+        <video autoPlay loop muted playsInline className="h-[500px] md:w-[500px] w-[350px] rounded-xl">
           <source src={jeton_card_video} />
         </video>
 
         <div className="flex flex-col gap-8 items-center justify-center">
-          <h1 className="text-orange-600 text-[4.5rem] w-[800px] text-center font-semibold leading-[80px]">Jeton Card: Your Go-To for Every Purchase</h1>
-          <a href="#" className="p-4 bg-orange-500 text-white text-[0.9rem] rounded-[15px] w-[150px] text-center">Learn more</a>
+          <h1 className="text-orange-600 md:text-[4.5rem] text-[3rem] md:w-[500px] w-[250px] text-center md:font-semibold font-bold md:leading-[80px] leading-[50px]">Jeton Card: Your Go-To for Every Purchase</h1>
+          <a href="#" className="p-4 bg-orange-500 text-white text-[1rem] rounded-[15px] w-[150px] text-center">Learn more</a>
         </div>
       </div>
 
@@ -88,11 +88,11 @@ const JettonCardSection = () => {
           ))}
         </div>
 
-        <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.8rem] mt-[200px] w-fit">Exchange</div>
+        <div className="text-orange-500 border border-orange-500 rounded-full px-4 py-1 text-[0.9rem] mt-[200px] w-fit">Exchange</div>
 
         <div className="flex flex-col gap-[30px] items-center justify-center mt-[10px]">
-          <h1 className="text-orange-600 text-[4.5rem] w-[500px] text-center font-semibold leading-[70px]">Convert fiat cash easily.</h1>
-          <p className="text-orange-500 text-[0.8rem] w-[450px] text-center">*The displayed conversion rates and fees may vary during the currency exchange process, d the rates shown were last updated at 00:59 on 05:06.2025.</p>
+          <h1 className="text-orange-600 md:text-[4.5rem] text-[2.5rem] md:w-[500px] w-[250px] text-center font-semibold md:leading-[70px] leading-[50px]">Convert fiat cash easily.</h1>
+          <p className="text-orange-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*The displayed conversion rates and fees may vary during the currency exchange process, d the rates shown were last updated at 00:59 on 05:06.2025.</p>
         </div>
 
         <CurrencyExchange />

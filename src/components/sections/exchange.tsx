@@ -73,16 +73,16 @@ const ExchangeSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivEleme
   return (
     <div ref={ref} className="min-h-screen flex flex-col bg-white items-center justify-center overflow-hidden">
       <div className="flex gap-3 items-center">
-        <PiPlus className="bg-green-400 rounded-[15px] text-[4rem] p-1 text-white" />
-        <span className="text-green-400 text-[7rem] font-semibold">Add</span>
+        <PiPlus className="bg-green-400 rounded-[15px] md:text-[4rem] text-[3rem] p-1 text-white" />
+        <span className="text-green-400 md:text-[7rem] text-[3rem] font-semibold">Add</span>
       </div>
       <div ref={sendRef} className="flex gap-3 items-center">
-        <BiSend className="bg-blue-400 rounded-[15px] text-[4rem] p-1 text-white" />
-        <span className="text-blue-400 text-[7rem] font-semibold">Send</span>
+        <BiSend className="bg-blue-400 rounded-[15px] md:text-[4rem] text-[3rem] p-1 text-white" />
+        <span className="text-blue-400 md:text-[7rem] text-[3rem] font-semibold">Send</span>
       </div>
       <div ref={exchangeRef} className="flex gap-3 items-center">
-        <SiExpertsexchange className="bg-red-400 rounded-[15px] text-[4rem] p-1 text-white" />
-        <span className="text-red-400 text-[7rem] font-semibold">Exchange</span>
+        <SiExpertsexchange className="bg-red-400 rounded-[15px] md:text-[4rem] text-[3rem] p-1 text-white" />
+        <span className="text-red-400 md:text-[7rem] text-[3rem] font-semibold">Exchange</span>
       </div>
     </div>
   )
