@@ -5,156 +5,130 @@ import { IoGlobeOutline } from 'react-icons/io5'; // For language icon
 import { FiCreditCard } from 'react-icons/fi'; // Placeholder icons for Jeton Card, Fees
 import { HiOutlineLightBulb, HiOutlineNewspaper, HiOutlineBriefcase, HiOutlineDocumentText } from 'react-icons/hi'; // Placeholder icons for Company section
 
+const DROPDOWNS = [
+  {
+    key: 'personal',
+    label: 'Personal',
+    links: [
+      { text: 'About', href: '#' },
+      { text: 'Newsroom', href: '#' },
+      { text: 'Partnerships', href: '#' },
+      { text: 'Media Assets', href: '#' },
+      { text: 'Release Notes', href: '#', highlight: true },
+    ],
+  },
+  {
+    key: 'business',
+    label: 'Business',
+    links: [
+      { text: 'Option A', href: '#' },
+      { text: 'Option B', href: '#' },
+      { text: 'Option C', href: '#' },
+    ],
+  },
+  {
+    key: 'company',
+    label: 'Company',
+    links: [
+      { text: 'Item X', href: '#' },
+      { text: 'Item Y', href: '#' },
+      { text: 'Item Z', href: '#' },
+    ],
+  },
+];
+
 const BottomNav = () => {
-  const [showPersonalDropdown, setShowPersonalDropdown] = useState(false);
-  const [showBusinessDropdown, setShowBusinessDropdown] = useState(false);
-  const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [mobileMenuView, setMobileMenuView] = useState<boolean>(false);
   const [menuMounted, setMenuMounted] = useState<boolean>(false);
-  const [clickX, setClickX] = useState(0); // New state for click X coordinate
-  const [clickY, setClickY] = useState(0); // New state for click Y coordinate
+  const [clickX, setClickX] = useState(0);
+  const [clickY, setClickY] = useState(0);
+  const mobileMenuRef = useRef<HTMLDivElement>(null); 
 
-  const personalDropdownRef = useRef<HTMLDivElement>(null);
-  const businessDropdownRef = useRef<HTMLDivElement>(null);
-  const companyDropdownRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null); // Ref for mobile menu container
-
-  const personalTimeoutRef = useRef<number | null>(null);
-  const businessTimeoutRef = useRef<number | null>(null);
-  const companyTimeoutRef = useRef<number | null>(null);
+  // Dynamic state for dropdowns
+  const [dropdownState, setDropdownState] = useState(
+    DROPDOWNS.reduce((acc, d) => {
+      acc[d.key] = { open: false, mounted: false };
+      return acc;
+    }, {} as Record<string, { open: boolean; mounted: boolean }>)
+  );
+  const dropdownRefs = useRef(
+    DROPDOWNS.reduce((acc, d) => {
+      acc[d.key] = React.createRef<HTMLDivElement | null>();
+      return acc;
+    }, {} as Record<string, React.RefObject<HTMLDivElement | null>>)
+  );
 
   // Derive if any dropdown is open
-  const isAnyDropdownOpen = showPersonalDropdown || showBusinessDropdown || showCompanyDropdown;
+  const isAnyDropdownOpen = Object.values(dropdownState).some(d => d.open);
 
-  const handleMouseEnterDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<number | null>, name: string) => {
-    console.log(`Mouse ENTERED ${name} area`);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    setter(true);
+  // Handlers
+  const openDropdown = (key: string, e: React.MouseEvent) => {
+    setClickX(e.clientX);
+    setClickY(e.clientY);
+    setDropdownState(prev => ({
+      ...prev,
+      [key]: { open: true, mounted: true },
+    }));
+  };
+  const closeDropdown = (key: string, duration = 200) => {
+    setDropdownState(prev => ({
+      ...prev,
+      [key]: { ...prev[key], open: false },
+    }));
+    setTimeout(() => {
+      setDropdownState(prev => ({
+        ...prev,
+        [key]: { ...prev[key], mounted: false },
+      }));
+    }, duration);
   };
 
-  const handleMouseLeaveDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>, timeoutRef: React.MutableRefObject<number | null>, name: string) => {
-    console.log(`Mouse LEFT ${name} area`);
-    timeoutRef.current = window.setTimeout(() => {
-      setter(false);
-    }, 600); // Increased delay for better clickability
-  };
-
-  // GSAP animation for Personal dropdown
+  // GSAP animation for dropdowns
   useEffect(() => {
-    console.log('PersonalDropdown: isVisible changed to', showPersonalDropdown);
-    if (personalDropdownRef.current) {
-      if (showPersonalDropdown) {
-        console.log('PersonalDropdown: Animating IN', personalDropdownRef.current);
-        gsap.to(personalDropdownRef.current, { 
-          y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', 
-          pointerEvents: 'auto', // Enable pointer events when visible
-          onComplete: () => {
-            if (personalDropdownRef.current) {
-              personalDropdownRef.current.style.visibility = 'visible';
-            }
-            console.log('PersonalDropdown: Animation IN complete');
-          }
+    DROPDOWNS.forEach(({ key }) => {
+      const ref = dropdownRefs.current[key].current;
+      if (!ref) return;
+      if (dropdownState[key].open) {
+        // Set initial state at click point
+        gsap.set(ref, {
+          clipPath: `circle(0% at ${clickX}px ${clickY}px)`,
+          visibility: 'visible',
+          opacity: 1,
+          pointerEvents: 'auto'
+        });
+        // Animate to full screen
+        gsap.to(ref, {
+          clipPath: 'circle(150% at 50% 50%)',
+          duration: 0.5,
+          ease: 'power2.out'
         });
       } else {
-        console.log('PersonalDropdown: Animating OUT', personalDropdownRef.current);
-        gsap.to(personalDropdownRef.current, { 
-          y: 10, opacity: 0, duration: 0.2, ease: 'power2.in',
-          pointerEvents: 'none', // Disable pointer events when hidden
+        // Animate back to click point
+        gsap.to(ref, {
+          clipPath: `circle(0% at ${clickX}px ${clickY}px)`,
+          duration: 0.3,
+          ease: 'power2.in',
           onComplete: () => {
-            if (personalDropdownRef.current) {
-              personalDropdownRef.current.style.visibility = 'hidden';
-            }
-            console.log('PersonalDropdown: Animation OUT complete');
+            ref.style.visibility = 'hidden';
+            ref.style.pointerEvents = 'none';
           }
         });
       }
-    }
-  }, [showPersonalDropdown]);
+    });
+  }, [dropdownState, clickX, clickY]);
 
-  // GSAP animation for Business dropdown
+  // Initial GSAP set
   useEffect(() => {
-    console.log('BusinessDropdown: isVisible changed to', showBusinessDropdown);
-    if (businessDropdownRef.current) {
-      if (showBusinessDropdown) {
-        console.log('BusinessDropdown: Animating IN', businessDropdownRef.current);
-        gsap.to(businessDropdownRef.current, { 
-          y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', 
-          pointerEvents: 'auto', // Enable pointer events when visible
-          onComplete: () => {
-            if (businessDropdownRef.current) {
-              businessDropdownRef.current.style.visibility = 'visible';
-            }
-            console.log('BusinessDropdown: Animation IN complete');
-          }
-        });
-      } else {
-        console.log('BusinessDropdown: Animating OUT', businessDropdownRef.current);
-        gsap.to(businessDropdownRef.current, { 
-          y: 10, opacity: 0, duration: 0.2, ease: 'power2.in',
-          pointerEvents: 'none', // Disable pointer events when hidden
-          onComplete: () => {
-            if (businessDropdownRef.current) {
-              businessDropdownRef.current.style.visibility = 'hidden';
-            }
-            console.log('BusinessDropdown: Animation OUT complete');
-          }
+    DROPDOWNS.forEach(({ key }) => {
+      const ref = dropdownRefs.current[key].current;
+      if (ref) {
+        gsap.set(ref, { 
+          clipPath: 'circle(0% at 50% 50%)',
+          visibility: 'hidden',
+          pointerEvents: 'none'
         });
       }
-    }
-  }, [showBusinessDropdown]);
-
-  // GSAP animation for Company dropdown
-  useEffect(() => {
-    console.log('CompanyDropdown: isVisible changed to', showCompanyDropdown);
-    if (companyDropdownRef.current) {
-      if (showCompanyDropdown) {
-        console.log('CompanyDropdown: Animating IN', companyDropdownRef.current);
-        gsap.to(companyDropdownRef.current, { 
-          y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', 
-          pointerEvents: 'auto', // Enable pointer events when visible
-          onComplete: () => {
-            if (companyDropdownRef.current) {
-              companyDropdownRef.current.style.visibility = 'visible';
-            }
-            console.log('CompanyDropdown: Animation IN complete');
-          }
-        });
-      } else {
-        console.log('CompanyDropdown: Animating OUT', companyDropdownRef.current);
-        gsap.to(companyDropdownRef.current, { 
-          y: 10, opacity: 0, duration: 0.2, ease: 'power2.in',
-          pointerEvents: 'none', // Disable pointer events when hidden
-          onComplete: () => {
-            if (companyDropdownRef.current) {
-              companyDropdownRef.current.style.visibility = 'hidden';
-            }
-            console.log('CompanyDropdown: Animation OUT complete');
-          }
-        });
-      }
-    }
-  }, [showCompanyDropdown]);
-
-  // Initialize dropdowns as hidden to prevent flicker
-  useEffect(() => {
-    if (personalDropdownRef.current) {
-      gsap.set(personalDropdownRef.current, { y: 10, opacity: 0, pointerEvents: 'none', visibility: 'hidden' });
-      console.log('PersonalDropdown: Initial GSAP set', personalDropdownRef.current);
-    }
-    if (businessDropdownRef.current) {
-      gsap.set(businessDropdownRef.current, { y: 10, opacity: 0, pointerEvents: 'none', visibility: 'hidden' });
-      console.log('BusinessDropdown: Initial GSAP set', businessDropdownRef.current);
-    }
-    if (companyDropdownRef.current) {
-      gsap.set(companyDropdownRef.current, { y: 10, opacity: 0, pointerEvents: 'none', visibility: 'hidden' });
-      console.log('CompanyDropdown: Initial GSAP set', companyDropdownRef.current);
-    }
-    // Initial state for mobile menu (hidden below viewport)
-    if (mobileMenuRef.current) {
-      gsap.set(mobileMenuRef.current, { autoAlpha: 0, pointerEvents: 'none', clipPath: 'circle(0% at 50% 50%)' }); // Default hidden and clipped
-    }
+    });
   }, []);
 
   // GSAP animation for Mobile Menu
@@ -187,10 +161,10 @@ const BottomNav = () => {
     }
   }, [mobileMenuView, clickX, clickY]); // Add clickX, clickY to dependencies
 
-  const navClass = `fixed bottom-4 left-0 right-0 mx-auto max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg w-fit ${
+  const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg ${
     isAnyDropdownOpen
-      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[50%] px-[20px]'
-      : 'rounded-full'
+      ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[300px] px-[20px]'
+      : 'rounded-full w-[300px]'
   }`;
 
   const openMenu = (e: any) => {
@@ -223,95 +197,48 @@ const BottomNav = () => {
 
         {/* Navigation Links (Desktop) */}
         <div className="md:flex space-x-1 hidden">
-          <div 
-            className="group relative flex items-center"
-            onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal')}
-            onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal')}
-          >
-            <a href="#" className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-red-600">
-              <span className='text-[0.8rem]'>Personal</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </a>
-          </div>
-
-          <div 
-            className="group relative flex items-center"
-            onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business')}
-            onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business')}
-          >
-            <a href="#" className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-red-600">
-              <span className='text-[0.8rem]'>Business</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3 ml-1">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-            </a>
-          </div>
-
-          <div 
-            className="group relative flex items-center"
-            onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company')}
-            onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company')}
-          >
-            <a href="#" className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-red-600">
-              <span className='text-[0.8rem]'>Company</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </a>
-          </div>
+          {DROPDOWNS.map(({ key, label }) => (
+            <div
+              key={key}
+              className="group relative flex items-center"
+              onMouseEnter={(e) => openDropdown(key, e)}
+              onMouseLeave={() => closeDropdown(key)}
+            >
+              <a href="#" className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-red-600">
+                <span className='text-[0.8rem]'>{label}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </a>
+              {/* Dropdown Content */}
+              {dropdownState[key].mounted && (
+                <div
+                  ref={dropdownRefs.current[key]}
+                  onMouseEnter={(e) => openDropdown(key, e)}
+                  onMouseLeave={() => closeDropdown(key)}
+                  className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[300px] bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
+                >
+                  {DROPDOWNS.find(d => d.key === key)?.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className={`block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm${link.highlight ? ' bg-red-700 font-semibold' : ''}`}
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                  {/* Placeholder for the image on the right for Personal */}
+                  {key === 'personal' && (
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-red-800 rounded-md flex items-center justify-center text-xs">
+                      Icon
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* Personal Dropdown Content (Desktop) */}
-      {showPersonalDropdown && (
-        <div 
-          ref={personalDropdownRef} 
-          onMouseEnter={() => handleMouseEnterDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          onMouseLeave={() => handleMouseLeaveDropdown(setShowPersonalDropdown, personalTimeoutRef, 'Personal Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
-        >
-          <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">About</a>
-          <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Newsroom</a>
-          <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Partnerships</a>
-          <a href="#" className="block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm">Media Assets</a>
-          <a href="#" className="block px-3 py-1.5 bg-red-700 font-semibold rounded-md text-sm">Release Notes</a>
-          {/* Placeholder for the image on the right */}
-          <div className="absolute top-4 right-4 w-12 h-12 bg-red-800 rounded-md flex items-center justify-center text-xs">
-            {/* Replace with actual image */}
-            Icon
-          </div>
-        </div>
-      )}
-
-      {/* Business Dropdown Content (Desktop) */}
-      {showBusinessDropdown && (
-        <div 
-          ref={businessDropdownRef} 
-          onMouseEnter={() => handleMouseEnterDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          onMouseLeave={() => handleMouseLeaveDropdown(setShowBusinessDropdown, businessTimeoutRef, 'Business Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
-        >
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option A</a>
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option B</a>
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Option C</a>
-        </div>
-      )}
-
-      {/* Company Dropdown Content (Desktop) */}
-      {showCompanyDropdown && (
-        <div 
-          ref={companyDropdownRef} 
-          onMouseEnter={() => handleMouseEnterDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          onMouseLeave={() => handleMouseLeaveDropdown(setShowCompanyDropdown, companyTimeoutRef, 'Company Dropdown')}
-          className="absolute bottom-full left-0 w-full bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60 hidden"
-        >
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item X</a>
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Y</a>
-          <a href="#" className="block px-4 py-2 hover:bg-red-700 rounded-md">Item Z</a>
-        </div>
-      )}
 
       {/* Mobile Menu Overlay - Conditional Rendering */}
       {menuMounted && (
