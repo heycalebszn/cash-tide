@@ -10,6 +10,8 @@ const BottomNav = () => {
   const [showBusinessDropdown, setShowBusinessDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [mobileMenuView, setMobileMenuView] = useState<boolean>(false);
+  const [clickX, setClickX] = useState(0); // New state for click X coordinate
+  const [clickY, setClickY] = useState(0); // New state for click Y coordinate
 
   const personalDropdownRef = useRef<HTMLDivElement>(null);
   const businessDropdownRef = useRef<HTMLDivElement>(null);
@@ -150,7 +152,7 @@ const BottomNav = () => {
     }
     // Initial state for mobile menu (hidden below viewport)
     if (mobileMenuRef.current) {
-      gsap.set(mobileMenuRef.current, { y: '100%', opacity: 0, pointerEvents: 'none' });
+      gsap.set(mobileMenuRef.current, { autoAlpha: 0, pointerEvents: 'none', clipPath: 'circle(0% at 50% 50%)' }); // Default hidden and clipped
     }
   }, []);
 
@@ -158,14 +160,31 @@ const BottomNav = () => {
   useEffect(() => {
     if (mobileMenuRef.current) {
       if (mobileMenuView) {
-        // Animate in from bottom
-        gsap.to(mobileMenuRef.current, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out', pointerEvents: 'auto' });
+        // Animate in from click point
+        // 1. Set initial clipped state at click point and make visible
+        gsap.set(mobileMenuRef.current, {
+            clipPath: `circle(0% at ${clickX}px ${clickY}px)`,
+            autoAlpha: 1, // Make it visible instantly, but clipped
+            pointerEvents: 'auto'
+        });
+        // 2. Animate to full screen
+        gsap.to(mobileMenuRef.current, {
+            clipPath: 'circle(150% at 50% 50%)', // Animate to a large circle covering the screen
+            duration: 0.8,
+            ease: 'power2.out'
+        });
       } else {
-        // Animate out to bottom
-        gsap.to(mobileMenuRef.current, { y: '100%', opacity: 0, duration: 0.5, ease: 'power2.in', pointerEvents: 'none' });
+        // Animate out to click point
+        gsap.to(mobileMenuRef.current, {
+            clipPath: `circle(0% at ${clickX}px ${clickY}px)`, // Animate back to a tiny circle at click point
+            autoAlpha: 0,
+            duration: 0.8,
+            ease: 'power2.in',
+            pointerEvents: 'none' // Disable pointer events when hidden
+        });
       }
     }
-  }, [mobileMenuView]);
+  }, [mobileMenuView, clickX, clickY]); // Add clickX, clickY to dependencies
 
   const navClass = `fixed bottom-4 left-0 right-0 mx-auto max-w-lg bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg w-fit ${
     isAnyDropdownOpen
@@ -186,7 +205,11 @@ const BottomNav = () => {
         {/* Mobile view - Toggle button for the full-screen menu */}
         <div className='md:hidden flex gap-3 items-center'>
         <h1>Menu</h1>
-        <BiMenu onClick={() => setMobileMenuView(true)} />
+        <BiMenu onClick={(e) => { // Capture click coordinates
+            setClickX(e.clientX);
+            setClickY(e.clientY);
+            setMobileMenuView(true);
+        }} />
         </div>
 
         {/* Navigation Links (Desktop) */}
@@ -283,7 +306,7 @@ const BottomNav = () => {
 
       {/* Mobile Menu Overlay - Conditional Rendering */}
       {mobileMenuView && (
-        <div ref={mobileMenuRef} className="fixed inset-0 bg-red-600 text-white z-[9999px] flex flex-col">
+        <div ref={mobileMenuRef} className="fixed inset-0 bg-red-600 text-white z-[9999] flex flex-col">
           {/* Top Bar: Language and Sign up */}
           <div className="flex justify-between items-center px-4 py-4 border-b border-red-500">
             {/* Language Dropdown */}
