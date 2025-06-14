@@ -89,6 +89,7 @@ const CurrencyExchange = () => {
             onSelect={handleFromSelect}
             selectedCurrencyCode={fromCurrency}
             onClose={() => setIsFromDropdownOpen(false)}
+            className="z-50"
           />
         </div>
 
@@ -145,6 +146,7 @@ const CurrencyExchange = () => {
             onSelect={handleToSelect}
             selectedCurrencyCode={toCurrency}
             onClose={() => setIsToDropdownOpen(false)}
+            className="z-50"
           />
         </div>
       </div>

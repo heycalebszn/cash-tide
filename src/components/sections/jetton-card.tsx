@@ -68,8 +68,8 @@ const JettonCardSection = () => {
       </div>
 
       <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative overflow-hidden h-[800px] pb-[20px]">
-        {/* Bottom flags container */}
-        <div className="absolute inset-0 z-30 pointer-events-none">
+        {/* Bottom flags container - behind form */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           {flagsData.filter((_, index) => index % 2 === 0).map((flag, index) => (
             <img
               key={index}
@@ -88,7 +88,7 @@ const JettonCardSection = () => {
           ))}
         </div>
 
-        {/* Middle flags container */}
+        {/* Middle flags container - in front of form */}
         <div className="absolute inset-0 z-20 pointer-events-none">
           {flagsData.filter((_, index) => index % 2 === 1).map((flag, index) => (
             <img

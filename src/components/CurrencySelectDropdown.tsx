@@ -21,13 +21,14 @@ interface CurrencySelectDropdownProps {
   onSelect: (currencyCode: string) => void;
   selectedCurrencyCode: string;
   onClose: () => void;
+  className?: string;
 }
 
-const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen, onSelect, selectedCurrencyCode, onClose }) => {
+const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen, onSelect, selectedCurrencyCode, onClose, className }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-full left-0 z-10 w-full  bg-white rounded-xl shadow-lg -mt-16 py-2 px-2">
+    <div className={`absolute top-full left-0 z-50 w-full bg-white rounded-xl shadow-lg -mt-16 py-2 px-2 ${className || ''}`}>
       {currencies.map((currency) => (
         <div
           key={currency.code}
