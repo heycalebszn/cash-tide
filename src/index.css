@@ -5,8 +5,7 @@
 /* Font declarations */
 @font-face {
   font-family: 'Sequel Sans';
-  src: url('./assets/fonts/SequelSans-Regular.woff2') format('woff2'),
-       url('./assets/fonts/SequelSans-Regular.woff') format('woff');
+  src: url('./assets/fonts/SequelSansBoldOblBody.otf') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -14,9 +13,15 @@
 
 @font-face {
   font-family: 'Sequel Sans';
-  src: url('./assets/fonts/SequelSans-Bold.woff2') format('woff2'),
-       url('./assets/fonts/SequelSans-Bold.woff') format('woff');
-  font-weight: bold;
+  src: url('./assets/fonts/SequelSansMediumOblBody.ttf') format('woff2'),;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sequel Sans';
+  src: url('./assets/fonts/SequelSansLightOblHead.ttf') format('woff2'),;
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }

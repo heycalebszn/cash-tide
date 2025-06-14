@@ -1,7 +1,7 @@
 const Navbar = () => {
 
   return (
-    <nav className="fixed top-0 flex justify-center bg-transparent w-full z-50">
+    <nav className="absolute top-0 flex justify-center bg-transparent w-full z-50">
       <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 lg:px-[50px] py-6">
         <h1 className="text-white text-4xl font-semibold">Jeton</h1>
 
