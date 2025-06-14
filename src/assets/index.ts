@@ -18,6 +18,12 @@ import logo4 from "./images/logos/logo4.png"
 import logo5 from "./images/logos/logo5.png"
 import logo6 from "./images/logos/logo6.png"
 import manage_bg from "./videos/manage/finance.mp4"
+import is_flag from "./images/countries/is.svg"
+import pk_flag from "./images/countries/pk.svg"
+import au_flag from "./images/countries/au.svg"
+import eu_flag from "./images/countries/eu.svg"
+import uk_flag from "./images/countries/uk.svg"
+import sen_flag from "./images/countries/sen.svg"
 
 export {
     playstore,
@@ -40,4 +46,10 @@ export {
     westham_logo,
     lyon_logo,
     manage_bg,
+    is_flag,
+    pk_flag,
+    sen_flag,
+    au_flag,
+    eu_flag,
+    uk_flag,
 }

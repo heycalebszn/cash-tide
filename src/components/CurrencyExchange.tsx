@@ -60,7 +60,7 @@ const CurrencyExchange = () => {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
-                  {getSelectedCurrency(fromCurrency).flag}
+                  <img src={getSelectedCurrency(fromCurrency).flag} alt="" />
                 </div>
                 <span className="font-semibold text-gray-800 text-lg">
                   {fromCurrency}
@@ -116,7 +116,7 @@ const CurrencyExchange = () => {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
-                  {getSelectedCurrency(toCurrency).flag}
+                <img src={getSelectedCurrency(fromCurrency).flag} alt="" />
                 </div>
                 <span className="font-semibold text-gray-800 text-lg">
                   {toCurrency}

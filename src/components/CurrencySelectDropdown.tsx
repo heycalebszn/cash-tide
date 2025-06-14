@@ -1,18 +1,19 @@
-import React, { type ReactNode } from 'react';
+import React from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { au_flag, eu_flag, is_flag, uk_flag } from '../assets';
 
 interface CurrencyOption {
   symbol?: any;
-  flag?: ReactNode;
+  flag?: string;
   code: string;
   name: string;
 }
 
 export const currencies: CurrencyOption[] = [
-  { code: 'AUD', name: 'Australian Dollar', flag: "", symbol: 'A$' },
-  { code: 'EUR', name: 'Euro', flag: "", symbol: '€' },
-  { code: 'BHD', name: 'Bahraini Dinar', flag: "", symbol: '.د.ب' },
-  { code: 'GBP', name: 'British Pound', flag: "", symbol: '£' },
+  { code: 'AUD', name: 'Australian Dollar', flag: au_flag, symbol: 'A$' },
+  { code: 'EUR', name: 'Euro', flag: eu_flag, symbol: '€' },
+  { code: 'BHD', name: 'Bahraini Dinar', flag: is_flag, symbol: '.د.ب' },
+  { code: 'GBP', name: 'British Pound', flag: uk_flag, symbol: '£' },
 ];
 
 interface CurrencySelectDropdownProps {
@@ -37,8 +38,12 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
           }}
         >
           <div className="flex items-center gap-3">
-            {/* Placeholder for Flag */}
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs ${selectedCurrencyCode === currency.code ? 'bg-white text-black' : 'bg-gray-300 text-black'}`}> {currency.code.substring(0, 3)}</div>
+            {/* Flag */}
+            <img
+              src={currency.flag}
+              alt={`${currency.name} flag`}
+              className="w-8 h-8 rounded-full object-cover"
+            />
             <div>
               <span className="font-semibold text-lg">{currency.code}</span>
               <p className="text-sm opacity-80">{currency.name}</p>

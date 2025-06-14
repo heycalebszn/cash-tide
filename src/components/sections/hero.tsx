@@ -11,9 +11,6 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-5"></div>
-
       <div className="relative z-10 space-y-8 text-left flex justify-between items-center w-full mt-[230px]">
         <h2 className="text-8xl font-bold leading-[90px]">
           One app <br /> for all needs
