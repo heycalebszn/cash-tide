@@ -62,7 +62,7 @@ const JettonCardSection = () => {
         </video>
 
         <div className="flex flex-col gap-4 md:gap-8 items-center justify-center">
-          <h1 className="text-orange-600 md:text-[4rem] text-[2rem] md:w-[750px] w-[400px] text-center md:font-semibold font-bold md:leading-[80px] leading-[40px]">Jeton Card: Your Go-To for Every Purchase</h1>
+          <h1 className="text-orange-600 md:text-[4rem] text-[2rem] md:w-[750px] w-[380px] text-center md:font-semibold font-bold md:leading-[80px] leading-[40px]">Jeton Card: Your Go-To for Every Purchase</h1>
           <a href="#" className="p-4 bg-orange-500 text-white text-[1rem] rounded-[15px] w-[150px] text-center">Learn more</a>
         </div>
       </div>
