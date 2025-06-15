@@ -19,23 +19,23 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
     }
 
     const ctx = gsap.context(() => {
+      // Set initial state for images
       gsap.set([image1Ref.current, image2Ref.current, image3Ref.current, image4Ref.current], { 
         opacity: 1,
         scale: 0.5,
         position: 'absolute',
         top: '50%',
         left: '50%',
-        xPercent: -50, // Center horizontally
-        yPercent: -50,  // Center vertically
-        zIndex: 1 // Default z-index for images
+        xPercent: -50,
+        yPercent: -50,
+        zIndex: 1
       });
-      // Initial state for h1 is handled by its CSS class and will be animated
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
           start: 'top top',
-          end: '+=2000',    // Increased scroll distance to overlap with exchange section
+          end: '+=2000',
           scrub: 1,
           pin: true,
           anticipatePin: 1
@@ -43,29 +43,39 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
       });
 
       // Animate text to disappear
-      tl.to(h1Ref.current, { scale: 0, opacity: 0, ease: 'power2.out' }, 0);
+      tl.to(h1Ref.current, { 
+        scale: 0, 
+        opacity: 0, 
+        ease: 'power2.out' 
+      }, 0);
+
+      // Calculate viewport-based distances
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const distanceX = Math.max(viewportWidth * 0.4, 400); // At least 400px or 40% of viewport width
+      const distanceY = Math.max(viewportHeight * 0.2, 200); // At least 200px or 20% of viewport height
 
       // Animate image1 (top-left to center)
       tl.fromTo(image1Ref.current, 
-        { xPercent: -400, yPercent: -200, opacity: 1, scale: 0.5 }, 
+        { xPercent: -distanceX, yPercent: -distanceY, opacity: 1, scale: 0.5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image2 (top-right to center)
       tl.fromTo(image2Ref.current, 
-        { xPercent: 400, yPercent: -200, opacity: 1, scale: 0.5, zIndex: 3 }, 
+        { xPercent: distanceX, yPercent: -distanceY, opacity: 1, scale: 0.5, zIndex: 3 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image3 (bottom-left to center)
       tl.fromTo(image3Ref.current, 
-        { xPercent: -400, yPercent: 100, opacity: 1, scale: 0.5, zIndex: 4 }, 
+        { xPercent: -distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 4 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image4 (bottom-right to center)
       tl.fromTo(image4Ref.current, 
-        { xPercent: 400, yPercent: 100, opacity: 1, scale: 0.5, zIndex: 5 }, 
+        { xPercent: distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
