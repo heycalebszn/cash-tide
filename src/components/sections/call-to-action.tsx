@@ -24,7 +24,7 @@ const CallToActionSection = () => {
       gsap.set(h1TopRef.current, { color: '#FF4500' });
       gsap.set(h1BottomRef.current, { color: '#FF4500' });
       gsap.set(triangleBgRef.current, { 
-        clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)',
+        clipPath: 'polygon(0% 100%, 100% 100%, 50% 100%)',
         position: 'absolute',
         top: 0,
         left: 0,
@@ -38,32 +38,25 @@ const CallToActionSection = () => {
       gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", scrollTrigger: { trigger: appLinksRef.current, start: "top bottom", toggleActions: "play none none reverse" } });
 
       // Define the main animation timeline
-      tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 0.8 }, 0);
-      tl.to(h1TopRef.current, { color: '#FFFFFF', duration: 0.8 }, 0);
+      tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 0.4 }, 0);
+      tl.to(h1TopRef.current, { color: '#FFFFFF', duration: 0.4 }, 0);
       tl.to(triangleBgRef.current, { 
-        clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)', 
-        duration: 0.8,
+        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)',
+        duration: 0.4,
         ease: "power2.inOut"
       }, 0);
 
-      // Attach the timeline to a ScrollTrigger
+      // Attach the timeline to a ScrollTrigger with improved behavior
       ScrollTrigger.create({
         trigger: sectionBgRef.current,
         start: "top top",
         end: "+=100%",
-        scrub: 1,
+        scrub: 0.3,
         pin: true,
         anticipatePin: 1,
         onUpdate: self => {
-          if (self.direction === -1) {
-            if (self.progress < 1) {
-              tl.play();
-            }
-          } else {
-            if (self.progress > 0) {
-              tl.reverse();
-            }
-          }
+          // Smoothly control the timeline progress based on scroll position
+          tl.progress(self.progress);
         },
       });
 
