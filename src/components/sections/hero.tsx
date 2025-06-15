@@ -54,7 +54,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         {/* Content for mobile */}
         <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
           {/* Top part: H1 heading for mobile */}
-          <h2 className="text-[2.5rem] font-bold leading-[60px] text-left pt-[50px]">
+          <h2 className="text-[2.2rem] font-bold leading-[60px] text-left pt-[50px]">
             One app for all needs
           </h2>
 

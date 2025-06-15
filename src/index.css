@@ -5,23 +5,23 @@
 /* Font declarations */
 @font-face {
   font-family: 'Sequel Sans';
-  src: url('./assets/fonts/SequelSansBoldOblBody.otf') format('woff2');
-  font-weight: normal;
+  src: url('./assets/fonts/SequelSansHeavyBody.ttf') format('opentype');
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Sequel Sans';
-  src: url('./assets/fonts/SequelSansMediumOblBody.ttf') format('woff2'),;
-  font-weight: normal;
+  src: url('./assets/fonts/SequelSansMediumDisp.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Sequel Sans';
-  src: url('./assets/fonts/SequelSansLightOblHead.ttf') format('woff2'),;
-  font-weight: normal;
+  src: url('./assets/fonts/SequelSansLightDisp.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }

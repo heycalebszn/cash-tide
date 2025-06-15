@@ -47,25 +47,25 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
 
       // Animate image1 (top-left to center)
       tl.fromTo(image1Ref.current, 
-        { xPercent: -300, yPercent: -150, opacity: 1, scale: 0.5 }, 
+        { xPercent: -400, yPercent: -200, opacity: 1, scale: 0.5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image2 (top-right to center)
       tl.fromTo(image2Ref.current, 
-        { xPercent: 300, yPercent: -150, opacity: 1, scale: 0.5, zIndex: 3 }, 
+        { xPercent: 400, yPercent: -200, opacity: 1, scale: 0.5, zIndex: 3 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image3 (bottom-left to center)
       tl.fromTo(image3Ref.current, 
-        { xPercent: -300, yPercent: 50, opacity: 1, scale: 0.5, zIndex: 4 }, 
+        { xPercent: -400, yPercent: 100, opacity: 1, scale: 0.5, zIndex: 4 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
       // Animate image4 (bottom-right to center)
       tl.fromTo(image4Ref.current, 
-        { xPercent: 300, yPercent: 50, opacity: 1, scale: 0.5, zIndex: 5 }, 
+        { xPercent: 400, yPercent: 100, opacity: 1, scale: 0.5, zIndex: 5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
@@ -77,7 +77,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
   return (
     <div ref={ref} className="relative bg-white h-screen overflow-hidden">
       {/* H1: Mobile-first size, desktop override */}
-      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-center leading-[60px] text-orange-600 font-semibold whitespace-nowrap z-50 md:text-[200px] md:leading-[200px]">Unify your <br /> finances</h1>
+      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-center leading-[60px] text-orange-600 font-extrabold whitespace-nowrap z-50 md:text-[200px] md:leading-[200px]">Unify your <br /> finances</h1>
 
       {/* Images: Mobile-first width, desktop override */}
       <img ref={image1Ref} src={finance_image1} alt="" className="absolute w-[200px] md:w-[300px]" />
