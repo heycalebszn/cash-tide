@@ -12,19 +12,24 @@ const CallToActionSection = () => {
   const triangleBgRef = useRef(null);
   const sectionBgRef = useRef(null);
   const h1TopRef = useRef(null);
-  const h1BottomRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Create a timeline for the animation, paused initially
       const tl = gsap.timeline({ paused: true });
 
-      // Set initial states:
+      // Set initial states as per the latest requirements and images
       gsap.set(sectionBgRef.current, { backgroundColor: 'white' });
-      gsap.set(h1TopRef.current, { color: '#FF4500' });
-      gsap.set(h1BottomRef.current, { color: '#FF4500' });
+      gsap.set(h1TopRef.current, {
+        color: 'transparent',
+        webkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        backgroundImage: 'linear-gradient(to bottom, #FF4500 50%, #FFFFFF 50%)',
+        backgroundSize: '100% 200%', // Make background twice as tall to allow vertical scrolling
+        backgroundPosition: '0% 0%' // Start showing the orange part
+      });
       gsap.set(triangleBgRef.current, { 
-        clipPath: 'polygon(0% 100%, 100% 100%, 50% 100%)',
+        clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)', // Triangle initially a horizontal line at the top
         position: 'absolute',
         top: 0,
         left: 0,
@@ -37,11 +42,11 @@ const CallToActionSection = () => {
       gsap.to(pRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", scrollTrigger: { trigger: pRef.current, start: "top bottom", toggleActions: "play none none reverse" } });
       gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", scrollTrigger: { trigger: appLinksRef.current, start: "top bottom", toggleActions: "play none none reverse" } });
 
-      // Define the main animation timeline
+      // Define the main animation timeline (sectionBg, h1Top backgroundPosition, and triangle clipPath change)
       tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 0.4 }, 0);
-      tl.to(h1TopRef.current, { color: '#FFFFFF', duration: 0.4 }, 0);
+      tl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 0.4, ease: "power2.inOut" }, 0); // Animate background position to reveal white text
       tl.to(triangleBgRef.current, { 
-        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)',
+        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)', // Triangle animates to point up
         duration: 0.4,
         ease: "power2.inOut"
       }, 0);
