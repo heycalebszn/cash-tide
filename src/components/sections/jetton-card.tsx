@@ -35,7 +35,7 @@ const JettonCardSection = () => {
 
       // Simple bounce animation with varying final positions
       gsap.to(flagsRefs.current, {
-        y: (index) => index % 2 === 0 ? 720 : 370, // Adjusted middle position to land exactly at top edge of first form
+        y: (index) => index % 2 === 0 ? 720 : 350, // Adjusted middle position to land exactly at top edge of first form
         opacity: 1,
         duration: 2,
         ease: "bounce.out",
@@ -67,7 +67,7 @@ const JettonCardSection = () => {
         </div>
       </div>
 
-      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative overflow-hidden h-[800px] pb-[70px]">
+      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[70px]">
         {/* Bottom flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           {flagsData.filter((_, index) => index % 2 === 0).map((flag, index) => (
