@@ -7,11 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const CallToActionSection = () => {
-  const pRef = useRef(null);
-  const appLinksRef = useRef(null);
-  const triangleBgRef = useRef(null);
-  const sectionBgRef = useRef(null);
-  const h1TopRef = useRef(null);
+  const pRef = useRef<HTMLParagraphElement>(null);
+  const appLinksRef = useRef<HTMLDivElement>(null);
+  const triangleBgRef = useRef<HTMLDivElement>(null);
+  const sectionBgRef = useRef<HTMLElement>(null);
+  const h1TopRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,24 +43,27 @@ const CallToActionSection = () => {
       gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
 
       // Define the main animation timeline (sectionBg, h1Top backgroundPosition, and triangle clipPath change)
-      tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 0.4 }, 0);
-      tl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 0.4, ease: "power2.inOut" }, 0); // Animate background position to reveal white text
+      tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 2 }, 0);
+      tl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 2, ease: "power2.inOut" }, 0);
       tl.to(triangleBgRef.current, {
-        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)', // Triangle animates to full upward-pointing shape
-        duration: 0.4,
+        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)',
+        duration: 2,
         ease: "power2.inOut"
       }, 0);
 
       // Attach the timeline to a ScrollTrigger with improved behavior
       ScrollTrigger.create({
         trigger: sectionBgRef.current,
-        start: "top center",
-        end: "+=100%",
-        scrub: 0.3,
-        // pin: true, // Temporarily removed to debug animation playback
+        start: "top 5%",
+        end: "top -200%",
+        scrub: 2, // Much smoother scrubbing
         onUpdate: self => {
-          // Smoothly control the timeline progress based on scroll position
-          tl.progress(self.progress);
+          // Only animate when scrolling up (negative direction)
+          if (self.direction < 0) {
+            tl.progress(1 - self.progress);
+          } else {
+            tl.progress(0);
+          }
         },
       });
 
