@@ -35,8 +35,8 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
         scrollTrigger: {
           trigger: ref.current,
           start: 'top top',
-          end: '+=2000',
-          scrub: 1,
+          end: '+=1000',
+          scrub: 0.5,
           pin: true,
           anticipatePin: 1
         }
@@ -52,28 +52,25 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
       // Calculate viewport-based distances
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      const distanceX = Math.max(viewportWidth * 0.4, 400); // At least 400px or 40% of viewport width
-      const distanceY = Math.max(viewportHeight * 0.2, 200); // At least 200px or 20% of viewport height
+      const distanceX = Math.max(viewportWidth * 0.4, 400);
+      const distanceY = Math.max(viewportHeight * 0.2, 200);
 
-      // Animate image1 (top-left to center)
+      // Animate images with faster timing
       tl.fromTo(image1Ref.current, 
         { xPercent: -distanceX, yPercent: -distanceY, opacity: 1, scale: 0.5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
-      // Animate image2 (top-right to center)
       tl.fromTo(image2Ref.current, 
         { xPercent: distanceX, yPercent: -distanceY, opacity: 1, scale: 0.5, zIndex: 3 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
-      // Animate image3 (bottom-left to center)
       tl.fromTo(image3Ref.current, 
         { xPercent: -distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 4 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
-      // Animate image4 (bottom-right to center)
       tl.fromTo(image4Ref.current, 
         { xPercent: distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 5 }, 
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
