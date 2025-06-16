@@ -14,91 +14,74 @@ const CallToActionSection = () => {
   const h1TopRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    let lastScrollTop = 0;
-    let scrollDirection = 0;
+    // Set initial states
+    gsap.set(sectionBgRef.current, { backgroundColor: 'white' });
+    gsap.set(h1TopRef.current, {
+      color: '#FF4500', // Orange text
+      webkitBackgroundClip: 'text',
+      backgroundClip: 'text',
+      backgroundImage: 'linear-gradient(to bottom, #FF4500 50%, #FFFFFF 50%)',
+      backgroundSize: '100% 200%',
+      backgroundPosition: '0% 0%'
+    });
     
-    const handleScroll = () => {
-      const st = window.pageYOffset || document.documentElement.scrollTop;
-      scrollDirection = st > lastScrollTop ? 1 : -1; // 1 for down, -1 for up
-      lastScrollTop = st;
-    };
+    // Set initial triangle state
+    gsap.set(triangleBgRef.current, { 
+      clipPath: 'polygon(0% 100%, 100% 100%, 50% 100%)', // Triangle starts as a line at the bottom
+      backgroundColor: '#FF4500', // Triangle is orange
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      opacity: 1
+    });
+
+    // Animation for other elements
+    gsap.set([pRef.current, appLinksRef.current], { opacity: 0, y: 50 });
+    gsap.to(pRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
+    gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
+
+    // Create the main timeline for smooth animation
+    const tl = gsap.timeline({ paused: true });
     
-    window.addEventListener('scroll', handleScroll);
+    // Add animations to the timeline - background stays white
+    tl.to(h1TopRef.current, { 
+      backgroundPosition: '0% 100%', 
+      duration: 1,
+      ease: "none"
+    }, 0);
     
-    const ctx = gsap.context(() => {
-      // Set initial states
-      gsap.set(sectionBgRef.current, { backgroundColor: 'white' });
-      gsap.set(h1TopRef.current, {
-        color: '#FF4500', // Make text orange so it's visible when covered by triangle
-        webkitBackgroundClip: 'text',
-        backgroundClip: 'text',
-        backgroundImage: 'linear-gradient(to bottom, #FF4500 50%, #FFFFFF 50%)',
-        backgroundSize: '100% 200%',
-        backgroundPosition: '0% 0%'
-      });
-      
-      // Hide triangle initially
-      gsap.set(triangleBgRef.current, { 
-        clipPath: 'polygon(50% 0%, 50% 0%, 50% 0%)',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        opacity: 0,
-        backgroundColor: 'white' // Make sure triangle background is white
-      });
+    // Triangle grows from bottom to top (inverted)
+    tl.to(triangleBgRef.current, {
+      clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)', // Triangle grows upward from bottom
+      duration: 1,
+      ease: "none"
+    }, 0);
 
-      // Animation for other elements
-      gsap.set([pRef.current, appLinksRef.current], { opacity: 0, y: 50 });
-      gsap.to(pRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
-      gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
-
-      // Create a separate timeline for the triangle animation with smoother transition
-      const triangleTl = gsap.timeline({ paused: true });
-      triangleTl.to(triangleBgRef.current, {
-        clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)',
-        opacity: 1,
-        duration: 1.5, // Longer duration for smoother animation
-        ease: "power1.inOut" // Smoother easing
-      });
-      
-      // Create a timeline for the background and text
-      const bgTl = gsap.timeline({ paused: true });
-      bgTl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 1.5, ease: "power1.inOut" });
-      bgTl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 1.5, ease: "power1.inOut" }, 0);
-
-      // Create scroll trigger specifically for the paragraph
-      ScrollTrigger.create({
-        trigger: pRef.current,
-        start: "bottom bottom", // Start when bottom of paragraph touches bottom of viewport
-        end: "top -100%", // End when paragraph is well past the top of viewport
-        scrub: 0.5, // Make animation follow scroll position smoothly
-        onUpdate: (self) => {
-          // Only animate when scrolling up
-          if (scrollDirection === -1 && self.progress > 0) {
-            // Use the progress value directly for smooth animation
-            triangleTl.progress(self.progress);
-            bgTl.progress(self.progress);
-          } else {
-            // When scrolling down or not past start point, keep animation at 0
-            triangleTl.progress(0);
-            bgTl.progress(0);
-          }
-        }
-      });
+    // Create the scroll trigger with scrub for smooth animation
+    ScrollTrigger.create({
+      trigger: sectionBgRef.current,
+      start: "top bottom", // Start when the top of the section hits the bottom of the viewport
+      end: "bottom top", // End when the bottom of the section hits the top of the viewport
+      scrub: 1, // Smooth scrubbing effect with slight delay for smoother animation
+      onUpdate: (self) => {
+        // Always update the timeline progress based on scroll position
+        // This ensures smooth animation in both directions
+        tl.progress(self.progress);
+      }
     });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      ctx.revert();
+      // Cleanup
+      tl.kill();
     };
   }, []);
 
   return (
     <section ref={sectionBgRef} className="flex flex-col w-full items-center justify-center text-center h-screen gap-16 relative">
       {/* Triangle animation container */}
-      <div ref={triangleBgRef} className="absolute inset-0 bg-white z-0"></div>
+      <div ref={triangleBgRef} className="absolute inset-0 z-0"></div>
       
       {/* Content wrapper with original positioning */}
       <div className="overflow-hidden relative z-10">
