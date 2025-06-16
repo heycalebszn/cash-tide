@@ -14,30 +14,32 @@ const JettonCardSection = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Create a timeline for the animation
-      // const tl = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: exchangeSectionRef.current,
-      //     start: "top center",
-      //     onEnter: () => {
-      //       // Reset flags to initial state
-      //       gsap.set(flagsRefs.current, {
-      //         y: -100,
-      //         opacity: 0
-      //       });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: exchangeSectionRef.current,
+          start: "top center",
+          onEnter: () => {
+            // Reset flags to initial state
+            gsap.set(flagsRefs.current, {
+              y: -100,
+              opacity: 0
+            });
             
-      //       // Animate flags
-      //       gsap.to(flagsRefs.current, {
-      //         y: () => 720 - (Math.random() * 20),
-      //         x: () => -800 + Math.random() * 1600,
-      //         opacity: 1,
-      //         duration: 1.2,
-      //         ease: "bounce.out",
-      //         stagger: 0.05
-      //       });
-      //     }
-      //   }
-      // });
+            // Animate flags
+            gsap.to(flagsRefs.current, {
+              y: () => 720 - (Math.random() * 20),
+              x: () => -800 + Math.random() * 1600,
+              opacity: 1,
+              duration: 1.2,
+              ease: "bounce.out",
+              stagger: 0.05
+            });
+          }
+        }
+      });
+      console.log(tl)
     });
+
 
     return () => ctx.revert();
   }, []);
