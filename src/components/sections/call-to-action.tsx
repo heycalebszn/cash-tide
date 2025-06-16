@@ -15,7 +15,7 @@ const CallToActionSection = () => {
 
   useEffect(() => {
     // Set initial states
-    gsap.set(sectionBgRef.current, { backgroundColor: 'white' });
+    gsap.set(sectionBgRef.current, { backgroundColor: 'white' }); // Background stays white
     gsap.set(h1TopRef.current, {
       color: '#FF4500', // Orange text
       webkitBackgroundClip: 'text',
@@ -25,9 +25,9 @@ const CallToActionSection = () => {
       backgroundPosition: '0% 0%'
     });
     
-    // Set initial triangle state
+    // Set initial triangle state - start with no triangle
     gsap.set(triangleBgRef.current, { 
-      clipPath: 'polygon(0% 100%, 100% 100%, 50% 100%)', // Triangle starts as a line at the bottom
+      clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)', // Triangle starts as a line at the top
       backgroundColor: '#FF4500', // Triangle is orange
       position: 'absolute',
       top: 0,
@@ -52,23 +52,27 @@ const CallToActionSection = () => {
       ease: "none"
     }, 0);
     
-    // Triangle grows from bottom to top (inverted)
+    // Triangle grows from top down
     tl.to(triangleBgRef.current, {
-      clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)', // Triangle grows upward from bottom
+      clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)', // Triangle grows downward from top
       duration: 1,
       ease: "none"
     }, 0);
 
     // Create the scroll trigger with scrub for smooth animation
     ScrollTrigger.create({
-      trigger: sectionBgRef.current,
-      start: "top bottom", // Start when the top of the section hits the bottom of the viewport
-      end: "bottom top", // End when the bottom of the section hits the top of the viewport
-      scrub: 1, // Smooth scrubbing effect with slight delay for smoother animation
+      trigger: pRef.current, // Trigger on the paragraph
+      start: "bottom bottom", // Start when bottom of paragraph touches bottom of viewport
+      end: "top top", // End when top of paragraph touches top of viewport
+      scrub: 1, // Smooth scrubbing effect
       onUpdate: (self) => {
-        // Always update the timeline progress based on scroll position
-        // This ensures smooth animation in both directions
-        tl.progress(self.progress);
+        // Only animate when scrolling up
+        if (self.direction < 0) {
+          tl.progress(self.progress);
+        } else {
+          // Smoothly reverse when scrolling down
+          tl.progress(1 - self.progress);
+        }
       }
     });
 
