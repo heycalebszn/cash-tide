@@ -1,104 +1,35 @@
-import { au_flag, eu_flag, is_flag, jeton_card_video, sen_flag, uk_flag } from "../../assets";
+import {jeton_card_video} from "../../assets";
 import CurrencyExchange from '../CurrencyExchange';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { flagsData } from "../../static/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const JettonCardSection = () => {
   const flagsRefs = useRef<HTMLImageElement[]>([]);
   const exchangeSectionRef = useRef<HTMLElement>(null);
-
-  const flagsData = [
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: sen_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: eu_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: sen_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: eu_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: sen_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: eu_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: sen_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-    { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-    { src: eu_flag, alt: "Pakistan flag" },
-    { src: is_flag, alt: "Israel flag" },
-    { src: uk_flag, alt: "United Kingdom flag" },
-    { src: sen_flag, alt: "Senegal flag" },
-  ];
-
-  // Duplicate flagsData to have enough items to fill the section with rows
-  const extendedFlagsData = Array(2).fill(flagsData).flat(); // Creates 120 flags
-
+  
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial state for all flags
+      // Set initial state
       gsap.set(flagsRefs.current, {
-        opacity: 0,
-        top: -100, // Start off-screen above
-        // Remove initial random 'left' from JSX, control it with GSAP
+        y: -100,
+        opacity: 0
       });
 
-      const flagsPerRow = 12; // Estimate: 12 flags per row for a typical width
-      const flagSize = 80; // width and height of each flag
-      const sectionHeight = 800; // From h-[800px] on the section
-      const containerEffectiveWidth = 1000; // Estimated effective width for flags to spread
-
-      // Animate flags to fill the section and stack in rows
+      // Animate flags to fill the section and land at the bottom
       gsap.to(flagsRefs.current, {
-        top: (index) => {
-          const row = Math.floor(index / flagsPerRow);
-          // Calculate target top so the bottom of the flag is at the section bottom, and then stacks up
-          return (sectionHeight - ((row + 1) * flagSize)) + (Math.random() * 20 - 10); // Add small vertical jitter
-        },
-        left: (index) => {
-          const col = index % flagsPerRow;
-          // Calculate target left, centering the block of flags, adding small horizontal jitter
-          const startingLeftOffset = (containerEffectiveWidth - (flagsPerRow * flagSize)) / 2;
-          return startingLeftOffset + (col * flagSize) + (Math.random() * 20 - 10); // Add small horizontal jitter
-        },
+        y: (index) => 720 - (Math.random() * 20),
+        x: (index) => -800 + Math.random() * 1600,
         opacity: 1,
-        duration: 1.5, // Slightly longer duration for a more noticeable fall
-        ease: "bounce.out", // Bounce easing for falling illusion and landing
-        stagger: 0.03, // Small stagger for a distinct but rapid fill
+        duration: 1.2,
+        ease: "bounce.out",
+        stagger: 0.05,
         scrollTrigger: {
           trigger: exchangeSectionRef.current,
           start: "top center",
-          // markers: true, // Uncomment for debugging scroll trigger
         }
       });
     });
@@ -126,7 +57,7 @@ const JettonCardSection = () => {
       <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[70px]">
         {/* All flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {extendedFlagsData.map((flag, index) => (
+          {flagsData.map((flag, index) => (
             <img
               key={index}
               ref={el => {
@@ -135,7 +66,11 @@ const JettonCardSection = () => {
               src={flag.src}
               alt={flag.alt}
               className="rounded-full w-[80px] h-[80px] object-cover absolute pointer-events-none"
-              // REMOVED inline style: style={{ left: `${Math.random() * 80}%`, top: '0px', borderRadius: '50%' }}
+              style={{ 
+                left: `${Math.random() * 100}%`,
+                top: '0px',
+                borderRadius: '50%'
+              }}
             />
           ))}
         </div>
