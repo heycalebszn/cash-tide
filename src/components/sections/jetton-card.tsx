@@ -23,26 +23,82 @@ const JettonCardSection = () => {
     { src: is_flag, alt: "Israel flag" },
     { src: uk_flag, alt: "United Kingdom flag" },
     { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: sen_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: eu_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: sen_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: eu_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: sen_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
+    { src: eu_flag, alt: "European Union flag" },
+    { src: au_flag, alt: "Australian flag" },
+    { src: eu_flag, alt: "Pakistan flag" },
+    { src: is_flag, alt: "Israel flag" },
+    { src: uk_flag, alt: "United Kingdom flag" },
+    { src: sen_flag, alt: "Senegal flag" },
   ];
+
+  // Duplicate flagsData to have enough items to fill the section with rows
+  const extendedFlagsData = Array(2).fill(flagsData).flat(); // Creates 120 flags
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial state
+      // Set initial state for all flags
       gsap.set(flagsRefs.current, {
-        y: -100,
-        opacity: 0
+        opacity: 0,
+        top: -100, // Start off-screen above
+        // Remove initial random 'left' from JSX, control it with GSAP
       });
 
-      // Simple bounce animation with varying final positions
+      const flagsPerRow = 12; // Estimate: 12 flags per row for a typical width
+      const flagSize = 80; // width and height of each flag
+      const sectionHeight = 800; // From h-[800px] on the section
+      const containerEffectiveWidth = 1000; // Estimated effective width for flags to spread
+
+      // Animate flags to fill the section and stack in rows
       gsap.to(flagsRefs.current, {
-        y: (index) => index % 2 === 0 ? 720 : 350, // Adjusted middle position to land exactly at top edge of first form
+        top: (index) => {
+          const row = Math.floor(index / flagsPerRow);
+          // Calculate target top so the bottom of the flag is at the section bottom, and then stacks up
+          return (sectionHeight - ((row + 1) * flagSize)) + (Math.random() * 20 - 10); // Add small vertical jitter
+        },
+        left: (index) => {
+          const col = index % flagsPerRow;
+          // Calculate target left, centering the block of flags, adding small horizontal jitter
+          const startingLeftOffset = (containerEffectiveWidth - (flagsPerRow * flagSize)) / 2;
+          return startingLeftOffset + (col * flagSize) + (Math.random() * 20 - 10); // Add small horizontal jitter
+        },
         opacity: 1,
-        duration: 2,
-        ease: "bounce.out",
-        stagger: 0.1,
+        duration: 1.5, // Slightly longer duration for a more noticeable fall
+        ease: "bounce.out", // Bounce easing for falling illusion and landing
+        stagger: 0.03, // Small stagger for a distinct but rapid fill
         scrollTrigger: {
           trigger: exchangeSectionRef.current,
           start: "top center",
+          // markers: true, // Uncomment for debugging scroll trigger
         }
       });
     });
@@ -68,42 +124,18 @@ const JettonCardSection = () => {
       </div>
 
       <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[70px]">
-        {/* Bottom flags container - behind form */}
+        {/* All flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {flagsData.filter((_, index) => index % 2 === 0).map((flag, index) => (
+          {extendedFlagsData.map((flag, index) => (
             <img
               key={index}
               ref={el => {
-                if (el) flagsRefs.current[index * 2] = el;
+                if (el) flagsRefs.current[index] = el;
               }}
               src={flag.src}
               alt={flag.alt}
               className="rounded-full w-[80px] h-[80px] object-cover absolute pointer-events-none"
-              style={{ 
-                left: `${Math.random() * 80}%`,
-                top: '0px',
-                borderRadius: '50%'
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Middle flags container - in front of form */}
-        <div className="absolute inset-0 z-20 pointer-events-none">
-          {flagsData.filter((_, index) => index % 2 === 1).map((flag, index) => (
-            <img
-              key={index}
-              ref={el => {
-                if (el) flagsRefs.current[index * 2 + 1] = el;
-              }}
-              src={flag.src}
-              alt={flag.alt}
-              className="rounded-full w-[80px] h-[80px] object-cover absolute pointer-events-none"
-              style={{ 
-                left: `${Math.random() * 80}%`,
-                top: '0px',
-                borderRadius: '50%'
-              }}
+              // REMOVED inline style: style={{ left: `${Math.random() * 80}%`, top: '0px', borderRadius: '50%' }}
             />
           ))}
         </div>

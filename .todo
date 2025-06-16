@@ -1,2 +1,7 @@
-1. I need to make the trianfle animation smooth and not just pop
+1. I need to make the triangle animation smooth and not just pop
 2. And it should only start when i scroll up and at least reach the paragraph
+3. The middle texts the triangle covers should be orange orange so it can be visible
+
+# Jeton card section
+1. More balls
+2. The balls should fill the section bottom after they have fallen from the top with only few(2-3) falling on the form "from" card just like the current implementation.
