@@ -25,11 +25,11 @@ const CallToActionSection = () => {
         webkitBackgroundClip: 'text',
         backgroundClip: 'text',
         backgroundImage: 'linear-gradient(to bottom, #FF4500 50%, #FFFFFF 50%)',
-        backgroundSize: '100% 200%', // Make background twice as tall to allow vertical scrolling
-        backgroundPosition: '0% 0%' // Start showing the orange part
+        backgroundSize: '100% 200%',
+        backgroundPosition: '0% 0%'
       });
       gsap.set(triangleBgRef.current, { 
-        clipPath: 'polygon(50% 0%, 50% 0%, 50% 0%)', // Triangle initially a single point at the top center
+        clipPath: 'polygon(50% 100%, 50% 100%, 50% 100%)', // Triangle initially a single point at the bottom center
         position: 'absolute',
         top: 0,
         left: 0,
@@ -53,14 +53,14 @@ const CallToActionSection = () => {
 
       // Attach the timeline to a ScrollTrigger with improved behavior
       ScrollTrigger.create({
-        trigger: sectionBgRef.current,
-        start: "top 5%",
-        end: "top -200%",
-        scrub: 2, // Much smoother scrubbing
+        trigger: pRef.current,
+        start: "bottom bottom",
+        end: "top 20%",
+        scrub: 2,
         onUpdate: self => {
-          // Only animate when scrolling up (negative direction)
-          if (self.direction < 0) {
-            tl.progress(1 - self.progress);
+          // Only animate when scrolling up (negative direction) and when we're past the start point
+          if (self.direction < 0 && self.progress > 0) {
+            tl.progress(self.progress);
           } else {
             tl.progress(0);
           }
