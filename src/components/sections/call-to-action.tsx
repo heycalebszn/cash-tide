@@ -14,27 +14,39 @@ const CallToActionSection = () => {
   const h1TopRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
+    let lastScrollTop = 0;
+    let scrollDirection = 0;
+    
+    const handleScroll = () => {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      scrollDirection = st > lastScrollTop ? 1 : -1; // 1 for down, -1 for up
+      lastScrollTop = st;
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
     const ctx = gsap.context(() => {
-      // Create a timeline for the animation, paused initially
-      const tl = gsap.timeline({ paused: true });
-
-      // Set initial states as per the latest requirements and images
+      // Set initial states
       gsap.set(sectionBgRef.current, { backgroundColor: 'white' });
       gsap.set(h1TopRef.current, {
-        color: 'transparent',
+        color: '#FF4500', // Make text orange so it's visible when covered by triangle
         webkitBackgroundClip: 'text',
         backgroundClip: 'text',
         backgroundImage: 'linear-gradient(to bottom, #FF4500 50%, #FFFFFF 50%)',
         backgroundSize: '100% 200%',
         backgroundPosition: '0% 0%'
       });
+      
+      // Hide triangle initially
       gsap.set(triangleBgRef.current, { 
-        clipPath: 'polygon(50% 100%, 50% 100%, 50% 100%)', // Triangle initially a single point at the bottom center
+        clipPath: 'polygon(50% 0%, 50% 0%, 50% 0%)',
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
-        height: '100%'
+        height: '100%',
+        opacity: 0,
+        backgroundColor: 'white' // Make sure triangle background is white
       });
 
       // Animation for other elements
@@ -42,34 +54,45 @@ const CallToActionSection = () => {
       gsap.to(pRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
       gsap.to(appLinksRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
 
-      // Define the main animation timeline (sectionBg, h1Top backgroundPosition, and triangle clipPath change)
-      tl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 2 }, 0);
-      tl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 2, ease: "power2.inOut" }, 0);
-      tl.to(triangleBgRef.current, {
+      // Create a separate timeline for the triangle animation with smoother transition
+      const triangleTl = gsap.timeline({ paused: true });
+      triangleTl.to(triangleBgRef.current, {
         clipPath: 'polygon(0% 100%, 100% 100%, 50% 0%)',
-        duration: 2,
-        ease: "power2.inOut"
-      }, 0);
+        opacity: 1,
+        duration: 1.5, // Longer duration for smoother animation
+        ease: "power1.inOut" // Smoother easing
+      });
+      
+      // Create a timeline for the background and text
+      const bgTl = gsap.timeline({ paused: true });
+      bgTl.to(sectionBgRef.current, { backgroundColor: '#FF4500', duration: 1.5, ease: "power1.inOut" });
+      bgTl.to(h1TopRef.current, { backgroundPosition: '0% 100%', duration: 1.5, ease: "power1.inOut" }, 0);
 
-      // Attach the timeline to a ScrollTrigger with improved behavior
+      // Create scroll trigger specifically for the paragraph
       ScrollTrigger.create({
         trigger: pRef.current,
-        start: "bottom bottom",
-        end: "top 20%",
-        scrub: 2,
-        onUpdate: self => {
-          // Only animate when scrolling up (negative direction) and when we're past the start point
-          if (self.direction < 0 && self.progress > 0) {
-            tl.progress(self.progress);
+        start: "bottom bottom", // Start when bottom of paragraph touches bottom of viewport
+        end: "top -100%", // End when paragraph is well past the top of viewport
+        scrub: 0.5, // Make animation follow scroll position smoothly
+        onUpdate: (self) => {
+          // Only animate when scrolling up
+          if (scrollDirection === -1 && self.progress > 0) {
+            // Use the progress value directly for smooth animation
+            triangleTl.progress(self.progress);
+            bgTl.progress(self.progress);
           } else {
-            tl.progress(0);
+            // When scrolling down or not past start point, keep animation at 0
+            triangleTl.progress(0);
+            bgTl.progress(0);
           }
-        },
+        }
       });
-
     });
 
-    return () => ctx.revert();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      ctx.revert();
+    };
   }, []);
 
   return (
