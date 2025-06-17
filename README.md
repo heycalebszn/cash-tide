@@ -1,1 +1,1 @@
-they should only come in view only after the image has been fully entered(h-screen) then when i scroll they start to come in until the animation is done user can't leave the page as long as they keep scrolling 
+
