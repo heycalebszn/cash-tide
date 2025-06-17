@@ -123,5 +123,5 @@ export const flagsData = [
     { src: uk_flag, alt: "United Kingdom flag" },
     { src: sen_flag, alt: "Senegal flag" },
     { src: eu_flag, alt: "European Union flag" },
-    { src: au_flag, alt: "Australian flag" },
-  ];
+    { src: au_flag, alt: "Australian flag" }
+];

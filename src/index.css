@@ -52,47 +52,49 @@
   width: 100%;
 }
 
-/* Add these styles to your global CSS */
-html {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+/* GSAP ScrollSmoother styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Hide scrollbars but keep functionality */
+  height: 100%;
+  width: 100%;
 }
 
-body {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
-  scroll-padding: 0;
-  scroll-margin: 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.smooth-content {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Add these styles for scroll speed variations */
+[data-speed="0.8"] {
+  transform: translateY(0);
+  will-change: transform;
+}
+
+[data-speed="1.2"] {
+  transform: translateY(0);
+  will-change: transform;
 }
 
 /* Hide scrollbar but keep functionality */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
-/* Add momentum scrolling for iOS */
 * {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   -webkit-overflow-scrolling: touch;
-}
-
-/* Add resistance to scrolling */
-.scroll-container {
-  overscroll-behavior: contain;
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
-  scroll-padding: 0;
-  scroll-margin: 0;
-}
-
-/* Add smooth deceleration */
-.smooth-scroll {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
 }
