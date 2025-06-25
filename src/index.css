@@ -97,3 +97,21 @@ body::-webkit-scrollbar {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
+
+/* Text gradient with three-color shade */
+.text-gradient {
+  background: linear-gradient(to bottom, #0046FF, #00B7FF, #00FFE0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Horizontal version of the gradient */
+.text-gradient-horizontal {
+  background: linear-gradient(to right, #0046FF, #00B7FF, #00FFE0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
