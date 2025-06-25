@@ -40,11 +40,11 @@ const ChatSupportButton = () => {
           className="w-[300px] h-[400px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden border border-gray-200"
         >
           {/* Header */}
-          <div className="bg-[#FFE2DF] p-4 flex justify-between items-center rounded-t-lg">
-            <h2 className="text-lg font-semibold text-[#3182ce]">Support</h2>
+          <div className="bg-[#3182ce] p-4 flex justify-between items-center rounded-t-lg">
+            <h2 className="text-lg font-semibold text-white">Support</h2>
             <button 
               onClick={() => setShowChatSupport(false)} 
-              className="text-[#3182ce] hover:text-gray-700 text-2xl cursor-pointer"
+              className="text-white hover:text-gray-700 text-2xl cursor-pointer"
               aria-label="Minimize chat"
             >
               <FiMinus className="w-5 h-5" />
