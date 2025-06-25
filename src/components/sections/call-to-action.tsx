@@ -89,14 +89,14 @@ const CallToActionSection = () => {
         </p>
 
         <div className="flex items-center gap-4">
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-blue-500 px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-gradient px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
             <AiFillApple className="text-2xl md:text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">Download on the</span>
               <span className="text-base font-semibold md:text-lg">App Store</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-blue-500 px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-gradient px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
             <FaGooglePlay className="text-2xl md:text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">GET IT ON</span>
