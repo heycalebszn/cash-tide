@@ -28,7 +28,7 @@ const ChatSupportButton = () => {
       {!showChatSupport ? (
         // Message Icon (when chat is closed)
         <button 
-          className="p-3 rounded-full bg-gray-400 hover:bg-[#c42d28] transition-colors flex items-center justify-center text-white shadow-lg border border-gray-300 cursor-pointer"
+          className="p-3 rounded-full bg-gray-400 hover:bg-[#3182ce] transition-colors flex items-center justify-center text-white shadow-lg border border-gray-300 cursor-pointer"
           onClick={() => setShowChatSupport(true)}
         >
           <BiChat className='text-[25px]' />
@@ -41,10 +41,10 @@ const ChatSupportButton = () => {
         >
           {/* Header */}
           <div className="bg-[#FFE2DF] p-4 flex justify-between items-center rounded-t-lg">
-            <h2 className="text-lg font-semibold text-[#DE352F]">Support</h2>
+            <h2 className="text-lg font-semibold text-[#3182ce]">Support</h2>
             <button 
               onClick={() => setShowChatSupport(false)} 
-              className="text-[#DE352F] hover:text-gray-700 text-2xl cursor-pointer"
+              className="text-[#3182ce] hover:text-gray-700 text-2xl cursor-pointer"
               aria-label="Minimize chat"
             >
               <FiMinus className="w-5 h-5" />

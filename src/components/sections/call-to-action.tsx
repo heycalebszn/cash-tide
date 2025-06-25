@@ -14,12 +14,12 @@ const CallToActionSection = () => {
 
   useEffect(() => {
     // Initial states
-    gsap.set(headingRef.current, { color: '#ADD8E6' }); // Orange text initially
+    gsap.set(headingRef.current, { color: '#3182ce' }); // Orange text initially
     
     // Set initial triangle state - hidden at first
     gsap.set(triangleRef.current, { 
       clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)', // Triangle starts as a line at the top
-      backgroundColor: '#ADD8E6', // Triangle is orange
+      backgroundColor: '#3182ce', // Triangle is orange
       position: 'absolute',
       top: 0,
       left: 0,

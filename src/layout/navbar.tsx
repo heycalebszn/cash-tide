@@ -19,7 +19,7 @@ const Navbar = () => {
             <a 
               href="https://portal.jeton.com/signup" 
               target="_blank" 
-              className="px-7 py-3 bg-white text-red-500 rounded-xl hover:bg-gray-100 navbar-hover-animation"
+              className="px-7 py-3 bg-white text-blue-500 rounded-xl hover:bg-gray-100 navbar-hover-animation"
             >
               Sign up
             </a>

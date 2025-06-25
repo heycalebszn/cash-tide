@@ -49,8 +49,8 @@ const CurrencyExchange = () => {
         {/* From Currency Card */}
         <div className="relative">
           <div 
-            className={`bg-pink-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
-              isFromDropdownOpen ? 'border-red-400 shadow-xl' : 'border-gray-100'
+            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
+              isFromDropdownOpen ? 'border-blue-400 shadow-xl' : 'border-gray-100'
             }`}
             onClick={() => {
               setIsFromDropdownOpen(!isFromDropdownOpen);
@@ -67,9 +67,9 @@ const CurrencyExchange = () => {
                 </span>
               </div>
               {isFromDropdownOpen ? (
-                <FaChevronUp className="text-red-500 text-lg transition-transform duration-200" />
+                <FaChevronUp className="text-blue-500 text-lg transition-transform duration-200" />
               ) : (
-                <FaChevronDown className="text-red-500 text-lg transition-transform duration-200" />
+                <FaChevronDown className="text-blue-500 text-lg transition-transform duration-200" />
               )}
             </div>
             <input 
@@ -106,8 +106,8 @@ const CurrencyExchange = () => {
         {/* To Currency Card */}
         <div className="relative">
           <div 
-            className={`bg-pink-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
-              isToDropdownOpen ? 'border-red-400 shadow-xl' : 'border-gray-100 hover:border-gray-200'
+            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
+              isToDropdownOpen ? 'border-blue-400 shadow-xl' : 'border-gray-100 hover:border-gray-200'
             }`}
             onClick={() => {
               setIsToDropdownOpen(!isToDropdownOpen);
@@ -124,9 +124,9 @@ const CurrencyExchange = () => {
                 </span>
               </div>
               {isToDropdownOpen ? (
-                <FaChevronUp className="text-red-500 text-lg transition-transform duration-200" />
+                <FaChevronUp className="text-blue-500 text-lg transition-transform duration-200" />
               ) : (
-                <FaChevronDown className="text-red-500 text-lg transition-transform duration-200" />
+                <FaChevronDown className="text-blue-500 text-lg transition-transform duration-200" />
               )}
             </div>
             <input 
