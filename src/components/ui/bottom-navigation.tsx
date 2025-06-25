@@ -181,7 +181,7 @@ const BottomNav = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-orange-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg transition-all duration-300 ease-in-out ${
+  const navClass = `fixed bottom-4 left-0 right-0 mx-auto bg-blue-600 text-white py-2 px-2 flex justify-around items-center z-[100] shadow-lg transition-all duration-300 ease-in-out ${
     isAnyDropdownOpen
       ? 'rounded-b-full rounded-tl-none rounded-tr-none w-[400px] px-[20px]'
       : 'rounded-full md:w-[400px] w-fit'
@@ -250,13 +250,13 @@ const BottomNav = () => {
                   ref={dropdownRefs.current[key]}
                   onMouseEnter={(e) => openDropdown(key, e)}
                   onMouseLeave={() => closeDropdown(key)}
-                  className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[400px] bg-orange-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
+                  className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[400px] bg-blue-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
                 >
                   {DROPDOWNS.find(d => d.key === key)?.links.map((link, i) => (
                     <a
                       key={i}
                       href={link.href}
-                      className={`block px-3 py-1.5 hover:bg-red-700 rounded-md text-sm${link.highlight ? ' bg-red-700 font-semibold' : ''}`}
+                      className={`block px-3 py-1.5 hover:bg-blue-700 rounded-md text-sm${link.highlight ? ' bg-blue-700 font-semibold' : ''}`}
                     >
                       {link.text}
                     </a>

@@ -37,7 +37,7 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
       {currencies.map((currency) => (
         <div
           key={currency.code}
-          className={`flex items-center justify-between p-3 cursor-pointer rounded-md hover:bg-red-100 ${selectedCurrencyCode === currency.code ? 'bg-orange-500 text-white' : ''}`}
+          className={`flex items-center justify-between p-3 cursor-pointer rounded-md hover:bg-blue-100 ${selectedCurrencyCode === currency.code ? 'bg-blue-500 text-white' : ''}`}
           onClick={() => {
             onSelect(currency.code);
             onClose();

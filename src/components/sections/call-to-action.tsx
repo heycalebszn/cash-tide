@@ -14,12 +14,12 @@ const CallToActionSection = () => {
 
   useEffect(() => {
     // Initial states
-    gsap.set(headingRef.current, { color: '#FF4500' }); // Orange text initially
+    gsap.set(headingRef.current, { color: '#ADD8E6' }); // Orange text initially
     
     // Set initial triangle state - hidden at first
     gsap.set(triangleRef.current, { 
       clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)', // Triangle starts as a line at the top
-      backgroundColor: '#FF4500', // Triangle is orange
+      backgroundColor: '#ADD8E6', // Triangle is orange
       position: 'absolute',
       top: 0,
       left: 0,
@@ -84,19 +84,19 @@ const CallToActionSection = () => {
           </h1>
         </div>
 
-        <p className="text-[1rem] text-orange-500 md:text-[1.5rem]">
+        <p className="text-[1rem] text-blue-500 md:text-[1.5rem]">
           It only takes few seconds to get started.
         </p>
 
         <div className="flex items-center gap-4">
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-orange-500 text-orange-500 px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-blue-500 px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
             <AiFillApple className="text-2xl md:text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">Download on the</span>
               <span className="text-base font-semibold md:text-lg">App Store</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-orange-500 text-orange-500 px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-blue-500 px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
             <FaGooglePlay className="text-2xl md:text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">GET IT ON</span>

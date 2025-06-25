@@ -43,25 +43,25 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-white py-16 px-8 sm:px-16 text-orange-600 overflow-visible">
+    <footer className="bg-white py-16 px-8 sm:px-16 text-blue-600 overflow-visible">
       {/* Top Section - Links */}
       <div className="container mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
         <div>
-          <h3 className="text-[15px] mb-2 text-orange-300">Get Started</h3>
+          <h3 className="text-[15px] mb-2 text-blue-300">Get Started</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">Sign up</a></li>
             <li><a href="#" className="link-underline">Login</a></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[15px] mb-2 text-orange-300">Discover</h3>
+          <h3 className="text-[15px] mb-2 text-blue-300">Discover</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">Jeton Card</a></li>
             <li><a href="#" className="link-underline">Fees</a></li>
           </ul>
         </div>
         <div>
-          <h3 className="text-[15px] mb-2 text-orange-300">Company</h3>
+          <h3 className="text-[15px] mb-2 text-blue-300">Company</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">About</a></li>
             <li className="mb-2"><a href="#" className="link-underline">Newsroom</a></li>
@@ -70,7 +70,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-[15px] mb-2 text-orange-300">Legal</h3>
+          <h3 className="text-[15px] mb-2 text-blue-300">Legal</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">Cookie Policy</a></li>
             <li className="mb-2"><a href="#" className="link-underline">Privacy Policy</a></li>
@@ -80,7 +80,7 @@ const Footer = () => {
           </ul>
         </div>
     <div>
-          <h3 className="text-[15px] mb-2 text-orange-300">Help</h3>
+          <h3 className="text-[15px] mb-2 text-blue-300">Help</h3>
           <ul>
             <li className="mb-2"><a href="#" className="link-underline">Developers</a></li>
             <li className="mb-2"><a href="#" className="link-underline">FAQ</a></li>
@@ -91,9 +91,9 @@ const Footer = () => {
       </div>
 
       {/* Middle Section - App Downloads, Logos, Social Media */}
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between border-b border-orange-200 py-8 mb-12">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between border-b border-blue-200 py-8 mb-12">
         <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-0">
-          <a href="#" className="flex items-center space-x-2 border border-orange-300 rounded-lg px-4 py-2 hover:bg-orange-100 transition-colors">
+            <a href="#" className="flex items-center space-x-2 border border-blue-300 rounded-lg px-4 py-2 hover:bg-blue-100 transition-colors">
             {/* Placeholder for Google Play Icon */}
             <FaGooglePlay className="text-3xl" />
             <div className="flex flex-col text-left text-sm">
@@ -101,7 +101,7 @@ const Footer = () => {
               <span className="font-semibold text-base">Google Play</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 border border-orange-300 rounded-lg px-4 py-2 hover:bg-orange-100 transition-colors">
+          <a href="#" className="flex items-center space-x-2 border border-blue-300 rounded-lg px-4 py-2 hover:bg-blue-100 transition-colors">
             {/* Placeholder for Apple Icon */}
             <AiFillApple className="text-3xl" />
             <div className="flex flex-col text-left text-sm">
@@ -123,9 +123,9 @@ const Footer = () => {
 
         {/* Social Media Icons */}
         <div className="flex space-x-4">
-          <a href="#" className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white hover:bg-orange-300 transition-colors"><FaInstagram className="text-2xl" /></a>
-          <a href="#" className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white hover:bg-orange-300 transition-colors"><FaFacebook className="text-2xl" /></a>
-          <a href="#" className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white hover:bg-orange-300 transition-colors"><FaXTwitter className="text-2xl" /></a>
+          <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaInstagram className="text-2xl" /></a>
+          <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaFacebook className="text-2xl" /></a>
+          <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaXTwitter className="text-2xl" /></a>
         </div>
       </div>
 
@@ -135,14 +135,14 @@ const Footer = () => {
           <div className="relative">
             <button
               onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-              className="flex items-center space-x-2 px-4 py-2 border border-orange-300 rounded-full text-orange-600 hover:bg-orange-100 transition-colors cursor-pointer"
+              className="flex items-center space-x-2 px-4 py-2 border border-blue-300 rounded-full text-blue-600 hover:bg-blue-100 transition-colors cursor-pointer"
             >
               <FaGlobe className="text-lg" />
               <span>{selectedLanguage}</span>
               <FaChevronDown className={`text-xs transition-transform duration-200 ${isLangDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
             </button>
             {isLangDropdownOpen && (
-              <ul className="absolute top-full left-0 mb-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10">
+              <ul className="absolute top-full left-0 mb-2 w-full bg-white border border-blue-300 rounded-lg shadow-lg py-1 z-10">
                 {languages.map((lang) => (
                   <li
                     key={lang.code}
@@ -159,11 +159,11 @@ const Footer = () => {
             )}
           </div>
           
-          <p className="text-orange-600 text-sm">Made by Büro</p>
+          <p className="text-blue-600 text-sm">Made by Büro</p>
         </div>
-        <h1 ref={jetonH1Ref} className="text-center md:text-[23rem] text-[8rem] sm:text-[25rem] text-orange-500 font-bold leading-none mb-8 relative z-10">Jeton</h1>
-        <p className="mb-4 text-xs text-orange-500 text-left">© 2023 | www.jeton.com is owned and operated by LA Orange CY Limited (Gladstonos, 116 M. Kyprianou House, 3-4th Floor, 3032, Limassol, Cyprus.) LA Orange CY Limited trading as Jeton, is authorised by the Central Bank of Cyprus under the Electronic Money Law of 2012 and 2018 (Law 81(I)/2012) for distributing or redeeming electronic money (e-money), with Licence No: 115.1.3.66. LA Orange CY Limited has been incorporated in the Republic of Cyprus under the provisions of the Companies Law (Cap 113) with registration number HE 424807, with its registered office address at Gladstonos, 116 M. Kyprianou House, 3&4th Floor, 3032, Limassol, Cyprus.</p>
-        <p className="text-xs text-orange-500 text-left">LA Orange Limited, trading as Jeton, is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011 for distributing or redeeming electronic money (e-money) and providing certain payment services on behalf of an e-money institution, with FCA registration number 902088. Company Name: LA ORANGE LIMITED, LEI code: 8945009G46MP0DAD211, BIC Value: ORAGGB22 (Swift Code). LA Orange Limited is registered in England and Wales, Company Number 11535714, with its registered office address at The Shard Floor 24/25, 32 London Bridge Street, London, SE1 9SG, United Kingdom.</p>
+        <h1 ref={jetonH1Ref} className="text-center md:text-[23rem] text-[8rem] sm:text-[25rem] text-blue-500 font-bold leading-none mb-8 relative z-10">Jeton</h1>
+        <p className="mb-4 text-xs text-blue-500 text-left">© 2023 | www.jeton.com is owned and operated by LA Orange CY Limited (Gladstonos, 116 M. Kyprianou House, 3-4th Floor, 3032, Limassol, Cyprus.) LA Orange CY Limited trading as Jeton, is authorised by the Central Bank of Cyprus under the Electronic Money Law of 2012 and 2018 (Law 81(I)/2012) for distributing or redeeming electronic money (e-money), with Licence No: 115.1.3.66. LA Orange CY Limited has been incorporated in the Republic of Cyprus under the provisions of the Companies Law (Cap 113) with registration number HE 424807, with its registered office address at Gladstonos, 116 M. Kyprianou House, 3&4th Floor, 3032, Limassol, Cyprus.</p>
+        <p className="text-xs text-blue-500 text-left">LA Orange Limited, trading as Jeton, is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011 for distributing or redeeming electronic money (e-money) and providing certain payment services on behalf of an e-money institution, with FCA registration number 902088. Company Name: LA ORANGE LIMITED, LEI code: 8945009G46MP0DAD211, BIC Value: ORAGGB22 (Swift Code). LA Orange Limited is registered in England and Wales, Company Number 11535714, with its registered office address at The Shard Floor 24/25, 32 London Bridge Street, London, SE1 9SG, United Kingdom.</p>
       </div>
 
       {/* Partner/Ambassador Cards */}

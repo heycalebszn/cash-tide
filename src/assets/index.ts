@@ -24,6 +24,7 @@ import au_flag from "./images/countries/au.svg"
 import eu_flag from "./images/countries/eu.svg"
 import uk_flag from "./images/countries/uk.svg"
 import sen_flag from "./images/countries/sen.svg"
+import jeton_home from "./videos/Hero.mp4"
 
 export {
     playstore,
@@ -52,4 +53,5 @@ export {
     au_flag,
     eu_flag,
     uk_flag,
+    jeton_home,
 }

@@ -15,12 +15,12 @@ const ManageSection = () => {
                 <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[450px] w-[300px]">All your finances, in one app.</h1>
                 <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
                 
-                <a href="#" className="px-8 py-4 bg-white text-orange-500 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors mb-8">
+                <a href="#" className="px-8 py-4 bg-white text-blue-500 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors mb-8">
                     Get Started
                 </a>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[50px]">
-                    <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-6 py-2 hover:bg-white/10 transition-colors">
+                    <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-6 py-2 hover:bg-blue-500/10 transition-colors">
                         <FaGooglePlay className="text-2xl" />
                         <div className="flex flex-col text-left text-sm">
                             <span>GET IT ON</span>
