@@ -10,7 +10,7 @@ import TestimonialsSection from "./components/sections/testimonials";
 import CallToActionSection from "./components/sections/call-to-action";
 import Footer from "./layout/footer";
 import ManageSection from "./components/sections/manage";
-
+import ProductSection from "./components/sections/product";
 const App = () => {
   const financeSectionRef = useRef<HTMLDivElement>(null);
   const exchangeSectionRef = useRef<HTMLDivElement>(null);
@@ -28,6 +28,7 @@ const App = () => {
       <ChatSupportButton />
       <FinanceSection ref={financeSectionRef} />
       <ExchangeSection ref={exchangeSectionRef} />
+      <ProductSection />
       <ManageSection />
       <JettonCardSection />
       <TestimonialsSection ref={testimonialsSectionRef} />
