@@ -3,7 +3,7 @@ import { product_1, product_2 } from "../../assets";
 
 const ProductSection = () => {
   return (
-    <div className="flex flex-col bg-white px-6 py-12 gap-16 md:px-[50px] md:py-[60px] lg:px-[100px] lg:py-[100px] lg:gap-28 max-w-[1440px] mx-auto">
+    <div className="flex flex-col bg-white px-6 py-12 gap-16 md:px-[50px] md:py-[30px] lg:px-[100px] lg:py-[60px] lg:gap-28 max-w-[1440px] mx-auto">
       <div className="flex flex-col items-center md:flex-row md:justify-between gap-10">
         <div className="flex flex-col gap-6 mb-6 md:mb-0">
             <div className="flex gap-3 items-center">
