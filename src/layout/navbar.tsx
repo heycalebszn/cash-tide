@@ -1,9 +1,14 @@
+import { main2 } from "../assets";
+
 const Navbar = () => {
 
   return (
     <nav className="absolute top-0 flex justify-center bg-transparent w-full z-50">
       <div className="flex items-center justify-between w-full px-4 sm:px-6 md:px-10 lg:px-[50px] py-6">
-        <h1 className="text-white text-4xl font-semibold">CashTide</h1>
+        <div className="flex items-center gap-2">
+          <img src={main2} alt="CashTide" className="w-10 h-10" />
+          <p className="text-white text-2xl font-semibold">Numpay</p>
+        </div>
 
         <ul className="flex items-center gap-4">
           <li className="relative z-10">

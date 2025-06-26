@@ -27,6 +27,8 @@ import sen_flag from "./images/countries/sen.svg"
 import jeton_home from "./videos/manage/Hero.mp4"
 import product_1 from "./videos/product/product1.mp4"
 import product_2 from "./videos/product/product2.mp4"
+import main_logo from "./images/logos/company/main_logo.png"
+import main2 from "./images/logos/company/main2.png"
 
 export {
     playstore,
@@ -58,4 +60,6 @@ export {
     jeton_home,
     product_1,
     product_2,
+    main_logo,
+    main2,
 }

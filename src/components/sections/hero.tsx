@@ -15,7 +15,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
       {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
       <div className="relative z-10 space-y-8 text-left md:flex hidden justify-between items-center w-full mt-[350px] text-white">
         <h2 className="text-8xl font-bold leading-[90px] pl-[50px]">
-          Transfers <br /> made easy.
+          Transfers <br /> made easy
         </h2>
 
         <div className="flex flex-col mr-[50px]">
@@ -23,14 +23,14 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
           Single account for all your payments.
         </p>
         <div className="flex justify-start items-center gap-4 pt-8">
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">
             <AiFillApple className="text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">Download on the</span>
               <span className="text-lg font-semibold">App Store</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Get it on Google Play">
             <FaGooglePlay className="text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">GET IT ON</span>
@@ -56,7 +56,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
           {/* Top part: H1 heading for mobile */}
           <h2 className="text-[2.2rem] font-bold leading-[60px] text-left pt-[50px]">
-            One app for all needs
+            Transfers made easy
           </h2>
 
           {/* Spacer to push content to bottom on mobile */}
