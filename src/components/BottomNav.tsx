@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { BiMenu } from 'react-icons/bi';
-import { IoGlobeOutline } from 'react-icons/io5'; // For language icon
-import { FiCreditCard } from 'react-icons/fi'; // Placeholder icons for Jeton Card, Fees
-import { HiOutlineLightBulb, HiOutlineNewspaper, HiOutlineBriefcase, HiOutlineDocumentText } from 'react-icons/hi'; // Placeholder icons for Company section
+import { IoGlobeOutline } from 'react-icons/io5'; 
+import { FiCreditCard } from 'react-icons/fi';
+import { HiOutlineLightBulb, HiOutlineNewspaper, HiOutlineBriefcase, HiOutlineDocumentText } from 'react-icons/hi'; 
 
 const DROPDOWNS = [
   {
