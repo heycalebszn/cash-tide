@@ -13,7 +13,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
       </video>
 
       {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
-      <div className="relative z-10 space-y-8 text-left md:flex hidden justify-between items-center w-full mt-[350px] text-white">
+      <div className="absolute bottom-[55px] left-0 right-0 z-10 pb-[50px] text-left md:flex hidden justify-between items-center w-full text-white">
         <h2 className="text-8xl font-bold leading-[90px] pl-[50px]">
           Transfers <br /> made easy
         </h2>
