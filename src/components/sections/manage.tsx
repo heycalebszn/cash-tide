@@ -15,7 +15,7 @@ const ManageSection = () => {
                 <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[450px] w-[300px]">All your finances, in one app.</h1>
                 <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
                 
-                <a href="#" className="px-8 py-4 bg-white text-blue-500 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors mb-8">
+                <a href="#" className="px-6 py-2 md:py-4 md:px-8 bg-white text-blue-500 rounded-xl md:text-lg text-[0.9rem] font-semibold hover:bg-gray-100 transition-colors mb-8">
                     Get Started
                 </a>
 

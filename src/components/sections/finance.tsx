@@ -11,6 +11,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
   const image2Ref = useRef<HTMLImageElement>(null);
   const image3Ref = useRef<HTMLImageElement>(null);
   const image4Ref = useRef<HTMLImageElement>(null);
+  const image5Ref = useRef<HTMLImageElement>(null);
   console.log(props)
 
   useEffect(() => {
@@ -76,6 +77,11 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
+      tl.fromTo(image5Ref.current, 
+        { xPercent: distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 5 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
+      );
+
     }, ref);
 
     return () => ctx.revert();
@@ -91,6 +97,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
       <img ref={image2Ref} src={finance_image2} alt="" className="absolute w-[200px] md:w-[300px]" />
       <img ref={image3Ref} src={finance_image3} alt="" className="absolute w-[200px] md:w-[300px]" />
       <img ref={image4Ref} src={finance_image4} alt="" className="absolute w-[200px] md:w-[300px]" />
+      <img ref={image5Ref} src={finance_image4} alt="" className="absolute w-[200px] md:w-[300px]" />
     </div>
   );
 });
