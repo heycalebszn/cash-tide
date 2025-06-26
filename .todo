@@ -1,6 +1,6 @@
-1. I need to make the shape animation  highly smooth and standard
-2. And it should only start when i scroll up and at least reach the paragraph
+1. Hero section []
+2. Finance animation, first two image needs a change & and add one more image to make it 5 []
+3. Fix mobile responsiveness for the CTA []
 
-# Jeton card section
-1. More balls
-2. The balls should fill the section bottom after they have fallen from the top with only few(2-3) falling on the form "from" card just like the current implementation.
+(Additional)
+4. Fix the flags to use many countries and not duplicates []
