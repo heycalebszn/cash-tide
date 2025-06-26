@@ -7,7 +7,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
   return (
     <div className="relative h-screen overflow-x-hidden w-full">
       {/* Background Video (common to both mobile and desktop) */}
-      <video className="absolute inset-0 w-full h-full object-cover z-0 brightness-150" autoPlay loop muted playsInline preload="metadata">
+      <video className="absolute inset-0 w-full h-full object-cover z-0 brightness-100" autoPlay loop muted playsInline preload="metadata">
         <source src={jeton_home} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -15,7 +15,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
       {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
       <div className="relative z-10 space-y-8 text-left md:flex hidden justify-between items-center w-full mt-[350px] text-white">
         <h2 className="text-8xl font-bold leading-[90px] pl-[50px]">
-          One app <br /> for all needs
+          Transfers <br /> made easy.
         </h2>
 
         <div className="flex flex-col mr-[50px]">

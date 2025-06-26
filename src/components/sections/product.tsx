@@ -3,8 +3,8 @@ import { product_1, product_2 } from "../../assets";
 
 const ProductSection = () => {
   return (
-    <div className="flex flex-col bg-white px-6 py-12 gap-16 md:px-[50px] md:py-[60px] lg:px-[100px] lg:py-[100px] lg:gap-28">
-      <div className="flex flex-col items-center md:flex-row md:justify-between">
+    <div className="flex flex-col bg-white px-6 py-12 gap-16 md:px-[50px] md:py-[60px] lg:px-[100px] lg:py-[100px] lg:gap-28 max-w-[1440px] items-center justify-center">
+      <div className="flex flex-col items-center md:flex-row md:justify-between gap-10">
         <div className="flex flex-col gap-6 mb-6 md:mb-0">
             <div className="flex gap-3">
             <BiBookmark className="text-blue-500" />
@@ -18,7 +18,7 @@ const ProductSection = () => {
         <video src={product_1} autoPlay muted loop className="w-full md:w-[400px] lg:w-[500px] h-full object-cover rounded-lg" />
       </div>
 
-      <div className="flex flex-col items-center md:flex-row-reverse md:justify-between">
+      <div className="flex flex-col items-center md:flex-row-reverse md:justify-between gap-10">
         <div className="flex flex-col gap-6 mb-6 md:mb-0">
             <div className="flex gap-3">
             <BiBookmark className="text-blue-500" />

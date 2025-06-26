@@ -115,3 +115,7 @@ body::-webkit-scrollbar {
   color: transparent;
   display: inline-block;
 }
+
+.bg-gradient {
+  background: linear-gradient(to bottom, #0046FF, #00B7FF, #00FFE0);
+}
