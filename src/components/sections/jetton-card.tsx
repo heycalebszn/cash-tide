@@ -1,17 +1,72 @@
 import {jeton_card_video} from "../../assets";
 import CurrencyExchange from '../CurrencyExchange';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { flagsData } from "../../static/constants";
+import { fallbackFlagsData } from "../../static/constants";
 
 gsap.registerPlugin(ScrollTrigger);
+
+interface CountryFlag {
+  src: string;
+  alt: string;
+  code: string;
+}
 
 const JettonCardSection = () => {
   const flagsRefs = useRef<HTMLImageElement[]>([]);
   const exchangeSectionRef = useRef<HTMLElement>(null);
+  const [flags, setFlags] = useState<CountryFlag[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Fetch country flags from REST Countries API
+  useEffect(() => {
+    const fetchCountryFlags = async () => {
+      try {
+        setIsLoading(true);
+        // Get a subset of popular currencies to fetch flags for
+        // const currencyCodes = popularCurrencyCodes.slice(0, 30);
+        
+        // Fetch countries data from REST Countries API
+        const response = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2,flags');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch countries');
+        }
+        
+        const countries = await response.json();
+        
+        // Filter and map countries to get flags
+        const countryFlags: CountryFlag[] = countries
+          .filter((country: any) => country.flags && country.flags.png)
+          .slice(0, 50) // Limit to 50 flags for performance
+          .map((country: any) => ({
+            src: country.flags.png,
+            alt: `${country.name.common} flag`,
+            code: country.cca2
+          }));
+        
+        if (countryFlags.length > 0) {
+          setFlags(countryFlags);
+        } else {
+          // Use fallback flags if API returns empty
+          setFlags(fallbackFlagsData);
+        }
+      } catch (error) {
+        console.error('Error fetching country flags:', error);
+        // Use fallback flags if API fails
+        setFlags(fallbackFlagsData);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCountryFlags();
+  }, []);
   
   useEffect(() => {
+    if (isLoading || flags.length === 0) return;
+    
     const ctx = gsap.context(() => {
       // Create a timeline for the animation
       const tl = gsap.timeline({
@@ -40,9 +95,8 @@ const JettonCardSection = () => {
       console.log(tl)
     });
 
-
     return () => ctx.revert();
-  }, []);
+  }, [flags, isLoading]);
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 mt-[150px]">
@@ -64,7 +118,7 @@ const JettonCardSection = () => {
       <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[70px]">
         {/* All flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {flagsData.map((flag, index) => (
+          {!isLoading && flags.map((flag, index) => (
             <img
               key={index}
               ref={el => {
@@ -86,7 +140,7 @@ const JettonCardSection = () => {
 
         <div className="flex flex-col gap-[30px] items-center justify-center mt-[10px] z-10">
           <h1 className="text-gradient md:text-[4.5rem] text-[2.5rem] md:w-[500px] w-[250px] text-center font-semibold md:leading-[70px] leading-[50px]">Convert fiat cash easily.</h1>
-          <p className="text-blue-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*The displayed conversion rates and fees may vary during the currency exchange process, d the rates shown were last updated at 00:59 on 05:06.2025.</p>
+          <p className="text-blue-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*The displayed conversion rates and fees may vary during the currency exchange process, and the rates shown were last updated at {new Date().toLocaleTimeString()} on {new Date().toLocaleDateString()}.</p>
         </div>
 
         <div className="z-10">
