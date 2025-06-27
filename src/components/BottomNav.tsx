@@ -57,12 +57,20 @@ const BottomNav = () => {
       return acc;
     }, {} as Record<string, React.RefObject<HTMLDivElement | null>>)
   );
+  // Timeout references to handle dropdown closing delays
+  const closeTimeoutRefs = useRef<Record<string, NodeJS.Timeout | null>>({});
 
   // Derive if any dropdown is open
   const isAnyDropdownOpen = Object.values(dropdownState).some(d => d.open);
 
   // Handlers
   const openDropdown = (key: string, e: React.MouseEvent) => {
+    // Clear any pending close timeout for this dropdown
+    if (closeTimeoutRefs.current[key]) {
+      clearTimeout(closeTimeoutRefs.current[key]!);
+      closeTimeoutRefs.current[key] = null;
+    }
+    
     setClickX(e.clientX);
     setClickY(e.clientY);
     setDropdownState(prev => ({
@@ -70,17 +78,47 @@ const BottomNav = () => {
       [key]: { open: true, mounted: true },
     }));
   };
+  
   const closeDropdown = (key: string) => {
-    setDropdownState(prev => ({
-      ...prev,
-      [key]: { ...prev[key], open: false },
-    }));
-    setTimeout(() => {
+    // Use timeout to delay closing, giving user time to move to the dropdown content
+    closeTimeoutRefs.current[key] = setTimeout(() => {
       setDropdownState(prev => ({
         ...prev,
-        [key]: { ...prev[key], mounted: false },
+        [key]: { ...prev[key], open: false },
       }));
-    }, 300);
+      setTimeout(() => {
+        setDropdownState(prev => ({
+          ...prev,
+          [key]: { ...prev[key], mounted: false },
+        }));
+      }, 300);
+    }, 200); // Delay closing to give time to move to dropdown content
+  };
+
+  // Toggle dropdown on click
+  const toggleDropdown = (key: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (dropdownState[key].open) {
+      // If open, close immediately without delay
+      setDropdownState(prev => ({
+        ...prev,
+        [key]: { ...prev[key], open: false },
+      }));
+      setTimeout(() => {
+        setDropdownState(prev => ({
+          ...prev,
+          [key]: { ...prev[key], mounted: false },
+        }));
+      }, 300);
+    } else {
+      openDropdown(key, e);
+    }
+  };
+
+  // Handle clicks on dropdown items
+  const handleDropdownItemClick = (e: React.MouseEvent) => {
+    // Prevent event bubbling which might close the dropdown
+    e.stopPropagation();
   };
 
   // GSAP animation for dropdowns
@@ -206,13 +244,6 @@ const BottomNav = () => {
   //   }, 300); // Reduced delay for better responsiveness
   // };
 
-  // Add click handler for dropdown items
-  // const handleDropdownItemClick = (e: React.MouseEvent) => {
-  //   e.preventDefault();
-  //   // Prevent the dropdown from closing immediately
-  //   e.stopPropagation();
-  // };
-
   return (
     <nav className={navClass}>
       <div className="flex items-center space-x-2">
@@ -238,7 +269,11 @@ const BottomNav = () => {
               onMouseEnter={(e) => openDropdown(key, e)}
               onMouseLeave={() => closeDropdown(key)}
             >
-              <a href="#" className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-blue-600">
+              <a 
+                href="#" 
+                className="flex items-center space-x-1 px-3 py-1.5 rounded-full transition-colors group-hover:bg-blue-600"
+                onClick={(e) => toggleDropdown(key, e)}
+              >
                 <span className='text-[0.8rem]'>{label}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -248,7 +283,13 @@ const BottomNav = () => {
               {dropdownState[key].mounted && (
                 <div
                   ref={dropdownRefs.current[key]}
-                  onMouseEnter={(e) => openDropdown(key, e)}
+                  onMouseEnter={() => {
+                    // Clear any pending close timeout
+                    if (closeTimeoutRefs.current[key]) {
+                      clearTimeout(closeTimeoutRefs.current[key]!);
+                      closeTimeoutRefs.current[key] = null;
+                    }
+                  }}
                   onMouseLeave={() => closeDropdown(key)}
                   className="fixed bottom-[60px] left-1/2 -translate-x-1/2 w-[400px] bg-blue-600 text-white rounded-t-3xl py-4 px-2 md:flex md:flex-col z-60"
                 >
@@ -256,7 +297,8 @@ const BottomNav = () => {
                     <a
                       key={i}
                       href={link.href}
-                        className={`block px-3 py-1.5 hover:bg-blue-700 rounded-md text-sm${link.highlight ? ' bg-blue-700 font-semibold' : ''}`}
+                      onClick={handleDropdownItemClick}
+                      className={`block px-3 py-1.5 hover:bg-blue-700 rounded-md text-sm${link.highlight ? ' bg-blue-700 font-semibold' : ''}`}
                     >
                       {link.text}
                     </a>

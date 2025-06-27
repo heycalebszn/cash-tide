@@ -17,6 +17,7 @@ const CurrencyExchange = () => {
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [isLoading, setIsLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  console.log(lastUpdated)
 
   // Fetch exchange rates from API
   useEffect(() => {
@@ -235,7 +236,7 @@ const CurrencyExchange = () => {
         </div>
         
         {/* Exchange rate info */}
-        {!isLoading && fromAmount && toAmount && (
+        {/* {!isLoading && fromAmount && toAmount && (
           <div className="text-center text-sm text-blue-500 mt-2">
             <p>1 {fromCurrency} = {exchangeRates[toCurrency] / exchangeRates[fromCurrency]} {toCurrency}</p>
             {lastUpdated && (
@@ -244,7 +245,7 @@ const CurrencyExchange = () => {
               </p>
             )}
           </div>
-        )}
+        )} */}
         
         {isLoading && (
           <div className="flex justify-center mt-4">
