@@ -1,7 +1,7 @@
 import { forwardRef, useRef, useEffect, type Ref } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { finance_image1, finance_image2, finance_image3, finance_image4 } from '../../assets';
+import { finance_image1, finance_image2, finance_image3, finance_image4, finance_image5 } from '../../assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +11,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
   const image2Ref = useRef<HTMLImageElement>(null);
   const image3Ref = useRef<HTMLImageElement>(null);
   const image4Ref = useRef<HTMLImageElement>(null);
-  // const image5Ref = useRef<HTMLImageElement>(null);
+  const image5Ref = useRef<HTMLImageElement>(null);
   console.log(props)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
 
     const ctx = gsap.context(() => {
       // Set initial state for images
-      gsap.set([image1Ref.current, image2Ref.current, image3Ref.current, image4Ref.current], { 
+      gsap.set([image1Ref.current, image2Ref.current, image3Ref.current, image4Ref.current, image5Ref.current], { 
         opacity: 1,
         scale: 0.5,
         position: 'absolute',
@@ -77,10 +77,10 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
         { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
       );
 
-      // tl.fromTo(image5Ref.current, 
-      //   { xPercent: distanceX, yPercent: distanceY, opacity: 1, scale: 0.5, zIndex: 5 }, 
-      //   { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
-      // );
+      tl.fromTo(image5Ref.current, 
+        { xPercent: 0, yPercent: -distanceY * 1.5, opacity: 1, scale: 0.5, zIndex: 6 }, 
+        { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, ease: 'power2.out' }, 0
+      );
 
     }, ref);
 
@@ -97,7 +97,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
       <img ref={image2Ref} src={finance_image2} alt="" className="absolute w-[200px] md:w-[300px]" />
       <img ref={image3Ref} src={finance_image3} alt="" className="absolute w-[200px] md:w-[300px]" />
       <img ref={image4Ref} src={finance_image4} alt="" className="absolute w-[200px] md:w-[300px]" />
-      {/* <img ref={image5Ref} src={finance_image4} alt="" className="absolute w-[200px] md:w-[300px]" /> */}
+      <img ref={image5Ref} src={finance_image5} alt="" className="absolute w-[200px] h-[300px] object-cover md:w-[300px] rounded-[30px]" />
     </div>
   );
 });

@@ -4,6 +4,7 @@ import finance_image1 from "./images/finance/image1.png"
 import finance_image2 from "./images/finance/image2.png"
 import finance_image3 from "./images/finance/image3.png"
 import finance_image4 from "./images/finance/image4.png"
+import finance_image5 from "./images/finance/image5.png"
 import jeton_card_video from "./videos/jeton-card/jeton-card.mp4"
 import testimonials_bg from "./images/testimonials/testimonials.jpg"
 import liverpool from "./images/football/liverpool.jpg"
@@ -37,6 +38,7 @@ export {
     finance_image2,
     finance_image3,
     finance_image4,
+    finance_image5,
     jeton_card_video,
     testimonials_bg,
     liverpool,
