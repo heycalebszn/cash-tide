@@ -1,6 +1,6 @@
 import { AiFillApple } from "react-icons/ai";
 import { FaGooglePlay } from "react-icons/fa";
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,14 +11,26 @@ const CallToActionSection = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const triangleRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile based on screen width
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Listen for resize events
+    window.addEventListener('resize', checkMobile);
+
     // Initial states
     gsap.set(headingRef.current, { color: '#3182ce' }); 
     
-    // Set initial triangle state - hidden at first
+    // Set initial background state
     gsap.set(triangleRef.current, { 
-      clipPath: 'polygon(0% 0%, 100% 0%, 50% 0%)',
+      clipPath: isMobile ? 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' : 'polygon(0% 0%, 100% 0%, 50% 0%)',
       background: 'linear-gradient(to bottom, #0046FF, #00B7FF, #00FFE0)', 
       position: 'absolute',
       top: 0,
@@ -39,14 +51,24 @@ const CallToActionSection = () => {
       }
     });
 
-    // Triangle animation - grows from top
-    tl.to(triangleRef.current, {
-      clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)', // Triangle expands downward
-      duration: 1,
-      ease: "power1.inOut"
-    }, 0);
+    // Animation based on device type
+    if (isMobile) {
+      // Full screen animation for mobile
+      tl.to(triangleRef.current, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Full rectangle
+        duration: 1,
+        ease: "power1.inOut"
+      }, 0);
+    } else {
+      // Triangle animation for desktop
+      tl.to(triangleRef.current, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)', // Triangle expands downward
+        duration: 1,
+        ease: "power1.inOut"
+      }, 0);
+    }
 
-    // Text color animation - changes from orange to white
+    // Text color animation - changes from blue to white
     tl.to(headingRef.current, {
       color: '#FFFFFF', // Text becomes white
       duration: 1,
@@ -68,15 +90,16 @@ const CallToActionSection = () => {
       if (tl.scrollTrigger) {
         tl.scrollTrigger.kill();
       }
+      window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section ref={sectionRef} className="flex flex-col w-full items-center justify-center text-center h-screen gap-16 relative bg-white">
-      {/* Triangle background */}
+      {/* Background element */}
       <div ref={triangleRef} className="absolute inset-0 z-0"></div>
       
-      {/* Content with z-index to stay above triangle */}
+      {/* Content with z-index to stay above background */}
       <div ref={contentRef} className="flex flex-col items-center justify-center gap-16 z-10 relative">
         <div className="relative z-10">
           <h1 ref={headingRef} className="text-[4rem] w-[400px] font-bold leading-[3.5rem] md:text-[8rem] md:w-[1000px] md:leading-[130px]">
@@ -88,22 +111,22 @@ const CallToActionSection = () => {
           It only takes few seconds to get started.
         </p>
 
-        <div className="flex items-center gap-4">
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-gradient px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
-            <AiFillApple className="text-2xl md:text-3xl" />
+        <div className="flex justify-start items-center gap-4 pt-8">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">
+            <AiFillApple className="text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">Download on the</span>
-              <span className="text-base font-semibold md:text-lg">App Store</span>
+              <span className="text-lg font-semibold">App Store</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-blue-500 text-gradient px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
-            <FaGooglePlay className="text-2xl md:text-3xl" />
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Get it on Google Play">
+            <FaGooglePlay className="text-3xl" />
             <div className="flex flex-col text-left">
               <span className="text-xs">GET IT ON</span>
-              <span className="text-base font-semibold md:text-lg">Google Play</span>
+              <span className="text-lg font-semibold">Google Play</span>
             </div>
           </a>
-        </div>
+          </div>
       </div>
     </section>
   );
