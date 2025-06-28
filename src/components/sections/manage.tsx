@@ -226,7 +226,7 @@ const ManageSection = () => {
           {(currentTab.textPosition === "left" || currentTab.textPosition === "both") && (
             <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
               <div className="h-[2px] w-full bg-white mb-8"></div>
-              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight">
+              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
                 {currentTab.heading}
               </h1>
               <p className="text-white/90 text-base mb-8">
@@ -242,7 +242,7 @@ const ManageSection = () => {
           {(currentTab.textPosition === "right" || currentTab.textPosition === "both") && (
             <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
               <div className="h-[2px] w-full bg-white mb-8"></div>
-              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight">
+              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
                 {currentTab.heading}
               </h1>
               <p className="text-white/90 text-base mb-8">
@@ -292,7 +292,7 @@ const ManageSection = () => {
                           left: '3px',
                           right: '3px',
                           bottom: '3px',
-                          background: 'var(--bg-gradient, #0f172a)', // Match component background
+                          background: 'var(--bg-gradient, #0f172a)',
                           zIndex: 1
                         }}
                       />
@@ -302,13 +302,13 @@ const ManageSection = () => {
                   {/* Tab button */}
                   <button 
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full cursor-pointer ${
+                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-10 md:h-10 rounded-full cursor-pointer ${
                       isActive
-                        ? "bg-white text-gradient" 
+                        ? "bg-white text-gradient text-center" 
                         : "border-2 border-white text-white"
                     }`}
                   >
-                    <span className="font-bold text-sm md:text-base">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
+                    <span className="font-bold text-sm md:text-[0.8rem] text-center">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
                   </button>
                 </div>
                 
