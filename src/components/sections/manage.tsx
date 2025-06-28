@@ -254,34 +254,60 @@ const ManageSection = () => {
 
         {/* Tab navigation - at the bottom left with animated borders */}
         <div ref={tabsRef} className="absolute bottom-8 left-8 flex gap-4 z-30">
-          {tabData.map((tab) => {
+          {tabData.map((tab, index) => {
             // Calculate border animation for active tab
             const isActive = activeTab === tab.id;
-            const borderStyle = isActive 
-              ? {
-                  borderColor: 'white',
-                  background: `conic-gradient(white ${animationProgress * 360}deg, transparent ${animationProgress * 360}deg)`,
-                }
-              : {};
-              
+            
             return (
-              <button 
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all ${
-                  isActive
-                    ? "border-white bg-white text-gradient" 
-                    : "border-white text-white"
-                }`}
-                style={isActive ? borderStyle : {}}
-              >
-                <span className="font-bold">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
-              </button>
+              <div key={tab.id} className="relative">
+                {/* Animated border for active tab */}
+                {isActive && (
+                  <div className="absolute inset-0 rounded-full overflow-hidden" style={{
+                    width: '48px',
+                    height: '48px',
+                    transform: 'translate(-2px, -2px)',
+                  }}>
+                    {/* Outer ring with conic gradient */}
+                    <div className="absolute inset-0"
+                      style={{
+                        background: `conic-gradient(white ${animationProgress * 360}deg, transparent ${animationProgress * 360}deg)`,
+                      }}
+                    />
+                    {/* Inner circle to create the ring effect */}
+                    <div className="absolute rounded-full"
+                      style={{
+                        top: '3px',
+                        left: '3px',
+                        right: '3px',
+                        bottom: '3px',
+                        background: 'var(--bg-gradient, #0f172a)', // Match component background
+                        zIndex: 1
+                      }}
+                    />
+                  </div>
+                )}
+                
+                {/* Tab button */}
+                <button 
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative z-10 flex items-center justify-center w-11 h-11 rounded-full ${
+                    isActive
+                      ? "bg-white text-gradient" 
+                      : "border-2 border-white text-white"
+                  }`}
+                >
+                  <span className="font-bold">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
+                </button>
+                
+                {/* Display title next to the active tab */}
+                {isActive && (
+                  <div className="absolute left-full ml-4 whitespace-nowrap flex items-center text-white font-medium">
+                    {tab.title}
+                  </div>
+                )}
+              </div>
             );
           })}
-          <div className="flex items-center ml-4 text-white font-medium">
-            {activeTab === 3 ? "Method" : tabData.find(tab => tab.id === activeTab)?.title}
-          </div>
         </div>
       </section>
 
