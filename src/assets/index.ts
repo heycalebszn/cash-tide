@@ -30,6 +30,8 @@ import product_1 from "./videos/product/product1.mp4"
 import product_2 from "./videos/product/product2.mp4"
 import main_logo from "./images/logos/company/main_logo.png"
 import main2 from "./images/logos/company/main2.png"
+import hero_bg from "./videos/numpay/NumpayHero.mp4"
+import numpay_m from "./videos/numpay/NumpayM.mp4"
 
 export {
     playstore,
@@ -64,4 +66,6 @@ export {
     product_2,
     main_logo,
     main2,
+    hero_bg,
+    numpay_m,
 }

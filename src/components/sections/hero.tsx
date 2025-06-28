@@ -1,14 +1,14 @@
 import { BsArrowDown } from "react-icons/bs";
 import { AiFillApple } from "react-icons/ai";
 import { FaGooglePlay } from "react-icons/fa";
-import { jeton_home } from "../../assets";
+import { hero_bg } from "../../assets";
 
 const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void }) => {
   return (
     <div className="relative h-screen overflow-x-hidden w-full">
       {/* Background Video (common to both mobile and desktop) */}
       <video className="absolute inset-0 w-full h-full object-cover z-0 brightness-100" autoPlay loop muted playsInline preload="metadata">
-        <source src={jeton_home} type="video/mp4" />
+        <source src={hero_bg} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { manage_bg, jeton_home, product_1, product_2, jeton_card_video } from "../../assets";
+import { manage_bg, jeton_home, product_1, product_2, jeton_card_video, numpay_m } from "../../assets";
 import { FaGooglePlay, FaApple } from "react-icons/fa";
 import { gsap } from "gsap";
 
@@ -43,7 +43,7 @@ const tabData = [
   },
   {
     id: 5,
-    title: "Support",
+    title: "Done",
     heading: "24/7 customer support",
     description: "Our team is always available to help you with any questions.",
     video: manage_bg,
@@ -201,7 +201,7 @@ const ManageSection = () => {
         <div className="w-full max-w-6xl mx-auto flex items-center justify-center relative">
           {/* Phone mockup - always in center */}
           <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="relative w-[220px] md:w-[280px] h-[430px] md:h-[550px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-white">
+            <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-white">
               <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
                 <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
               </div>
@@ -225,8 +225,8 @@ const ManageSection = () => {
           {/* Text content - positioned based on currentTab.textPosition */}
           {(currentTab.textPosition === "left" || currentTab.textPosition === "both") && (
             <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
-              <div className="h-1 w-16 bg-white mb-8"></div>
-              <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+              <div className="h-[2px] w-full bg-white mb-8"></div>
+              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight">
                 {currentTab.heading}
               </h1>
               <p className="text-white/90 text-base mb-8">
@@ -241,8 +241,8 @@ const ManageSection = () => {
           {/* Right side text */}
           {(currentTab.textPosition === "right" || currentTab.textPosition === "both") && (
             <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
-              <div className="h-1 w-16 bg-white mb-8"></div>
-              <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
+              <div className="h-[2px] w-full bg-white mb-8"></div>
+              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight">
                 {currentTab.heading}
               </h1>
               <p className="text-white/90 text-base mb-8">
@@ -302,7 +302,7 @@ const ManageSection = () => {
                   {/* Tab button */}
                   <button 
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full ${
+                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full cursor-pointer ${
                       isActive
                         ? "bg-white text-gradient" 
                         : "border-2 border-white text-white"
@@ -314,7 +314,7 @@ const ManageSection = () => {
                 
                 {/* Display title right after the active tab */}
                 {isActive && (
-                  <div key={`title-${tab.id}`} className="text-white font-medium text-sm md:text-base mr-2 md:mr-4">
+                  <div key={`title-${tab.id}`} className="text-white font-medium text-sm md:text-[0.9rem] mr-2 md:mr-4">
                     {tab.title}
                   </div>
                 )}
@@ -328,7 +328,7 @@ const ManageSection = () => {
       <section className="relative h-screen w-full flex flex-col items-center justify-center text-white overflow-hidden">
         {/* Background Video */}
         <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
-          <source src={manage_bg} type="video/mp4" />
+          <source src={numpay_m} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
