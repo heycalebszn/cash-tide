@@ -3,6 +3,12 @@ import { FaGooglePlay, FaApple } from "react-icons/fa";
 
 const ManageSection = () => {
     return(
+        <main className="flex flex-col">
+            <section className="bg-gradient-to-b from-blue-500 to-blue-600 h-screen">
+                <div className="flex flex-col items-center justify-center h-screen">
+                    <h1 className="text-4xl font-bold text-white">Manage your finances</h1>
+                </div>
+            </section>
         <section className="relative h-screen w-full flex flex-col items-center justify-center text-white overflow-hidden">
             {/* Background Video */}
             <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
@@ -37,6 +43,7 @@ const ManageSection = () => {
                 </div>
             </div>
         </section>
+        </main>
     )
 }
 
