@@ -1,4 +1,5 @@
 import { main2 } from "../assets";
+import { FaTwitter, FaTelegram } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -11,6 +12,28 @@ const Navbar = () => {
         </div>
 
         <ul className="flex items-center gap-4">
+          <li className="relative z-10">
+            <a 
+              href="https://twitter.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 hover:text-gray-200 transition-colors"
+              aria-label="Twitter"
+            >
+              <FaTwitter className="w-5 h-5" />
+            </a>
+          </li>
+          <li className="relative z-10">
+            <a 
+              href="https://t.me" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 hover:text-gray-200 transition-colors"
+              aria-label="Telegram"
+            >
+              <FaTelegram className="w-5 h-5" />
+            </a>
+          </li>
           <li className="relative z-10">
             <a 
               href="https://portal.jeton.com/login" 
@@ -26,7 +49,7 @@ const Navbar = () => {
               target="_blank" 
               className="px-7 py-3 bg-white text-blue-500 rounded-xl hover:bg-gray-100 navbar-hover-animation"
             >
-              Enter Dapp
+              Whitepaper
             </a>
           </li>
         </ul>

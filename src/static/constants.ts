@@ -31,7 +31,6 @@ export const testimonialsData = [
     },
 ]
 
-// Fallback flags in case API fails
 export const fallbackFlagsData = [
     { src: eu_flag, alt: "European Union flag", code: "EU" },
     { src: au_flag, alt: "Australian flag", code: "AU" },
@@ -40,7 +39,6 @@ export const fallbackFlagsData = [
     { src: uk_flag, alt: "United Kingdom flag", code: "GB" }
 ];
 
-// Popular currency codes for the exchange API
 export const popularCurrencyCodes = [
     "USD", "EUR", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "HKD", "NZD", 
     "SEK", "KRW", "SGD", "NOK", "MXN", "INR", "RUB", "ZAR", "TRY", "BRL",

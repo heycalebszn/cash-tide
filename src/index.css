@@ -2,7 +2,6 @@
 
 @import "tailwindcss";
 
-/* Font declarations */
 @font-face {
   font-family: 'Sequel Sans';
   src: url('./assets/fonts/Aktiv/AktivGrotesk-Bold.ttf') format('opentype');
@@ -32,28 +31,26 @@
   font-family: 'Sequel Sans', arial, sans-serif;
 }
 
-/* Custom styles for smooth underline animation */
 .link-underline {
   position: relative;
-  text-decoration: none; /* Remove default underline */
+  text-decoration: none; 
 }
 
 .link-underline::after {
   content: '';
   position: absolute;
   width: 0%;
-  height: 2px; /* Underline thickness */
+  height: 2px; 
   bottom: 0;
   left: 0;
-  background-color: currentColor; /* Use current text color for underline */
-  transition: width 0.3s ease-out; /* Smooth transition */
+  background-color: currentColor; 
+  transition: width 0.3s ease-out; 
 }
 
 .link-underline:hover::after {
   width: 100%;
 }
 
-/* Add these styles to your global CSS */
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -72,17 +69,14 @@ body {
   scrollbar-width: none;
 }
 
-/* Hide scrollbar but keep functionality */
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* Add momentum scrolling for iOS */
 * {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Add resistance to scrolling */
 .scroll-container {
   overscroll-behavior: contain;
   scroll-snap-type: y mandatory;
@@ -91,14 +85,12 @@ body::-webkit-scrollbar {
   scroll-margin: 0;
 }
 
-/* Add smooth deceleration */
 .smooth-scroll {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 }
 
-/* Text gradient with three-color shade */
 .text-gradient {
   background: linear-gradient(to bottom, #0046FF, #00B7FF, #00FFE0);
   -webkit-background-clip: text;
@@ -107,7 +99,6 @@ body::-webkit-scrollbar {
   display: inline-block;
 }
 
-/* Horizontal version of the gradient */
 .text-gradient-horizontal {
   background: linear-gradient(to right, #0046FF, #00B7FF, #00FFE0);
   -webkit-background-clip: text;

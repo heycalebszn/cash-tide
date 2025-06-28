@@ -9,7 +9,6 @@ interface CurrencyOption {
   flag?: string;
 }
 
-// Fallback currencies in case API fails
 export const fallbackCurrencies: CurrencyOption[] = [
   { code: 'AUD', name: 'Australian Dollar', flag: au_flag, symbol: 'A$' },
   { code: 'EUR', name: 'Euro', flag: eu_flag, symbol: '€' },
@@ -17,7 +16,6 @@ export const fallbackCurrencies: CurrencyOption[] = [
   { code: 'GBP', name: 'British Pound', flag: uk_flag, symbol: '£' },
 ];
 
-// Export an empty array that will be populated by the API
 export let currencies: CurrencyOption[] = [];
 
 interface CurrencySelectDropdownProps {
@@ -33,7 +31,6 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch currency data when component mounts
     const fetchCurrencies = async () => {
       try {
         setIsLoading(true);

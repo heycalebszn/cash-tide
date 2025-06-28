@@ -112,6 +112,7 @@ const JettonCardSection = () => {
         <div className="flex flex-col gap-4 md:gap-8 items-center justify-center">
           <h1 className="text-gradient md:text-[4rem] text-[2rem] md:w-[750px] w-[380px] text-center md:font-semibold font-bold md:leading-[80px] leading-[40px]">Jeton Card: Your Go-To for Every Purchase</h1>
           <a href="#" className="p-4 bg-blue-500 text-white text-[1rem] rounded-[15px] w-[150px] text-center">Learn more</a>
+          <p className="text-blue-500 text-[1rem] rounded-[15px] w-full text-center">Contract Address: 0x0000000000000000000000000000000000000000</p>
         </div>
       </div>
 

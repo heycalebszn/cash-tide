@@ -1,6 +1,12 @@
 1. Hero section [done]
-2. Finance animation, add one more image to make it 5 & Fix the animation flow []
+2. Finance animation, add one more image to make it 5 & Fix the animation flow, the animation should happen as i scroll not that i have to wait in the page until it's done but gradually as i scroll and it must complete of course before the next section []
 3. Please help Fix mobile responsiveness for the CTA triangle animation as it looks awful on mobile i.e instead of it being a triangle on mobile it should actually be the full section [done]
 
 (Additional)
 4. Fix the flags to use many countries and not duplicates [done]
+
+[Must Have]
+1. You need to have Twitter Telegram on navbar.
+2. Whitepaper Button in the homepage is a must have. [done]
+3. Contract address to be there somewhere in the website [done]
+4. You need to have a Buy button that redirects to Uniswap. If you do not have space for Buy button in the homepage then add it in the navbar. For Example if there is not enough space in the navbar for Buy, Chart buttons then you can swap some irrelevant buttons with Buy and Chart.

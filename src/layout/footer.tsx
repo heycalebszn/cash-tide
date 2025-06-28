@@ -34,7 +34,6 @@ const Footer = () => {
           start: "bottom center",
           end: "top top",
           scrub: 1,
-          // markers: true, // Re-enable if needed for further debugging
         }
       });
     }, jetonH1Ref);
