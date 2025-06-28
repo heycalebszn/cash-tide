@@ -196,12 +196,12 @@ const ManageSection = () => {
   return(
     <main className="flex flex-col">
       {/* First section with dynamic tabs - styled like the screenshot */}
-      <section className="bg-gradient h-screen relative flex flex-col items-center justify-center px-12 overflow-hidden">
+      <section className="bg-gradient h-screen relative flex flex-col items-center justify-center px-4 md:px-12 overflow-hidden">
         {/* Content layout based on textPosition */}
         <div className="w-full max-w-6xl mx-auto flex items-center justify-center relative">
           {/* Phone mockup - always in center */}
           <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="relative w-[280px] h-[550px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-white">
+            <div className="relative w-[220px] md:w-[280px] h-[430px] md:h-[550px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-white">
               <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
                 <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
               </div>
@@ -224,7 +224,7 @@ const ManageSection = () => {
 
           {/* Text content - positioned based on currentTab.textPosition */}
           {(currentTab.textPosition === "left" || currentTab.textPosition === "both") && (
-            <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4">
+            <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
               <div className="h-1 w-16 bg-white mb-8"></div>
               <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
                 {currentTab.heading}
@@ -236,11 +236,11 @@ const ManageSection = () => {
           )}
 
           {/* Spacer for center phone */}
-          <div className="w-[280px] mx-8 invisible">Spacer</div>
+          <div className="w-[220px] md:w-[280px] mx-8 invisible">Spacer</div>
 
           {/* Right side text */}
           {(currentTab.textPosition === "right" || currentTab.textPosition === "both") && (
-            <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4">
+            <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
               <div className="h-1 w-16 bg-white mb-8"></div>
               <h1 className="text-4xl font-bold text-white mb-6 leading-tight">
                 {currentTab.heading}
@@ -252,66 +252,79 @@ const ManageSection = () => {
           )}
         </div>
 
+        {/* Mobile text content - shown only on small screens */}
+        <div className="md:hidden z-10 text-center px-4 absolute top-8 left-0 right-0">
+          <div className="h-1 w-16 bg-white mb-4 mx-auto"></div>
+          <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
+            {currentTab.heading}
+          </h1>
+          <p className="text-white/90 text-sm mb-4">
+            {currentTab.description}
+          </p>
+        </div>
+
         {/* Tab navigation - at the bottom left with animated borders */}
-        <div ref={tabsRef} className="absolute bottom-8 left-8 flex gap-4 z-30">
-          {tabData.map((tab, index) => {
+        <div ref={tabsRef} className="absolute bottom-8 left-4 md:left-8 flex flex-wrap gap-3 md:gap-4 z-30 items-center">
+          {tabData.map((tab) => {
             // Calculate border animation for active tab
             const isActive = activeTab === tab.id;
             
             return (
-              <div key={tab.id} className="relative">
-                {/* Animated border for active tab */}
-                {isActive && (
-                  <div className="absolute inset-0 rounded-full overflow-hidden" style={{
-                    width: '48px',
-                    height: '48px',
-                    transform: 'translate(-2px, -2px)',
-                  }}>
-                    {/* Outer ring with conic gradient */}
-                    <div className="absolute inset-0"
-                      style={{
-                        background: `conic-gradient(white ${animationProgress * 360}deg, transparent ${animationProgress * 360}deg)`,
-                      }}
-                    />
-                    {/* Inner circle to create the ring effect */}
-                    <div className="absolute rounded-full"
-                      style={{
-                        top: '3px',
-                        left: '3px',
-                        right: '3px',
-                        bottom: '3px',
-                        background: 'var(--bg-gradient, #0f172a)', // Match component background
-                        zIndex: 1
-                      }}
-                    />
-                  </div>
-                )}
+              <>
+                <div key={`tab-${tab.id}`} className="relative">
+                  {/* Animated border for active tab */}
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-full overflow-hidden" style={{
+                      width: '44px',
+                      height: '44px',
+                      transform: 'translate(-2px, -2px)',
+                    }}>
+                      {/* Outer ring with conic gradient */}
+                      <div className="absolute inset-0"
+                        style={{
+                          background: `conic-gradient(white ${animationProgress * 360}deg, transparent ${animationProgress * 360}deg)`,
+                        }}
+                      />
+                      {/* Inner circle to create the ring effect */}
+                      <div className="absolute rounded-full"
+                        style={{
+                          top: '3px',
+                          left: '3px',
+                          right: '3px',
+                          bottom: '3px',
+                          background: 'var(--bg-gradient, #0f172a)', // Match component background
+                          zIndex: 1
+                        }}
+                      />
+                    </div>
+                  )}
+                  
+                  {/* Tab button */}
+                  <button 
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full ${
+                      isActive
+                        ? "bg-white text-gradient" 
+                        : "border-2 border-white text-white"
+                    }`}
+                  >
+                    <span className="font-bold text-sm md:text-base">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
+                  </button>
+                </div>
                 
-                {/* Tab button */}
-                <button 
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`relative z-10 flex items-center justify-center w-11 h-11 rounded-full ${
-                    isActive
-                      ? "bg-white text-gradient" 
-                      : "border-2 border-white text-white"
-                  }`}
-                >
-                  <span className="font-bold">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
-                </button>
-                
-                {/* Display title next to the active tab */}
+                {/* Display title right after the active tab */}
                 {isActive && (
-                  <div className="absolute left-full ml-4 whitespace-nowrap flex items-center text-white font-medium">
+                  <div key={`title-${tab.id}`} className="text-white font-medium text-sm md:text-base mr-2 md:mr-4">
                     {tab.title}
                   </div>
                 )}
-              </div>
+              </>
             );
           })}
         </div>
       </section>
 
-      {/* Second section - unchanged */}
+      {/* Second section - add responsive styles */}
       <section className="relative h-screen w-full flex flex-col items-center justify-center text-white overflow-hidden">
         {/* Background Video */}
         <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
@@ -328,19 +341,19 @@ const ManageSection = () => {
             Get Started
           </a>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[50px]">
-            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-6 py-2 hover:bg-blue-500/10 transition-colors">
-              <FaGooglePlay className="text-2xl" />
-              <div className="flex flex-col text-left text-sm">
+          <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[30px] md:mt-[50px]">
+            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors">
+              <FaGooglePlay className="text-xl md:text-2xl" />
+              <div className="flex flex-col text-left text-xs md:text-sm">
                 <span>GET IT ON</span>
-                <span className="font-semibold text-base">Google Play</span>
+                <span className="font-semibold text-sm md:text-base">Google Play</span>
               </div>
             </a>
-            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-6 py-2 hover:bg-white/10 transition-colors">
-              <FaApple className="text-2xl" />
-              <div className="flex flex-col text-left text-sm">
+            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-6 py-2 hover:bg-white/10 transition-colors">
+              <FaApple className="text-xl md:text-2xl" />
+              <div className="flex flex-col text-left text-xs md:text-sm">
                 <span>Download on the</span>
-                <span className="font-semibold text-base">App Store</span>
+                <span className="font-semibold text-sm md:text-base">App Store</span>
               </div>
             </a>
           </div>
