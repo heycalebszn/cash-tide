@@ -68,14 +68,14 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
               Single account for all your payments.
             </p>
             <div className="flex justify-start items-start gap-4">
-              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Download on the App Store">
+              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">
                 <AiFillApple className="text-2xl" />
                 <div className="flex flex-col text-left">
                   <span className="text-xs">Download on the</span>
                   <span className="text-base font-semibold">App Store</span>
                 </div>
               </a>
-              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors" aria-label="Get it on Google Play">
+              <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Get it on Google Play">
                 <FaGooglePlay className="text-2xl" />
                 <div className="flex flex-col text-left">
                   <span className="text-xs">GET IT ON</span>

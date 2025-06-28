@@ -4,6 +4,7 @@ import { BiMenu } from 'react-icons/bi';
 import { IoGlobeOutline } from 'react-icons/io5'; 
 import { FiCreditCard } from 'react-icons/fi';
 import { HiOutlineLightBulb, HiOutlineNewspaper, HiOutlineBriefcase, HiOutlineDocumentText } from 'react-icons/hi'; 
+import { FaTwitter, FaTelegram } from 'react-icons/fa';
 
 const DROPDOWNS = [
   {
@@ -329,8 +330,34 @@ const BottomNav = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
-            {/* Sign up button */}
-            <a href="#" className="px-4 py-2 bg-white text-blue-600 rounded-full font-semibold">Sign up</a>
+            {/* Whitepaper up button */}
+            <div className='flex items-center gap-4'>
+            <a href="#" className="px-4 py-2 bg-white text-blue-600 rounded-full font-semibold">Whitepaper</a>
+            <ul className='flex items-center gap-2'>
+            <li className="relative z-10">
+            <a 
+              href="https://twitter.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 hover:text-gray-200 transition-colors"
+              aria-label="Twitter"
+            >
+              <FaTwitter className="w-5 h-5" />
+            </a>
+          </li>
+          <li className="relative z-10">
+            <a 
+              href="https://t.me" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 hover:text-gray-200 transition-colors"
+              aria-label="Telegram"
+            >
+              <FaTelegram className="w-5 h-5" />
+            </a>
+          </li>
+          </ul>
+          </div>
           </div>
 
           {/* Menu Items */}

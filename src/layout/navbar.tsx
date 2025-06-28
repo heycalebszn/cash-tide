@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
 
         <ul className="flex items-center gap-4">
-          <li className="relative z-10">
+          <li className="relative z-10 md:flex hidden">
             <a 
               href="https://twitter.com" 
               target="_blank" 
@@ -23,7 +23,7 @@ const Navbar = () => {
               <FaTwitter className="w-5 h-5" />
             </a>
           </li>
-          <li className="relative z-10">
+          <li className="relative z-10 md:flex hidden">
             <a 
               href="https://t.me" 
               target="_blank" 
