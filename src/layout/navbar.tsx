@@ -11,13 +11,14 @@ const Navbar = () => {
           <p className="text-white text-2xl font-semibold">Numpay</p>
         </div>
 
-        <ul className="flex items-center gap-4">
-          <li className="relative z-10 md:flex hidden">
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-white p-2 hover:text-gray-200 transition-colors"
+        <ul className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            <li className="relative z-10 md:flex hidden">
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white p-2 hover:text-gray-200 transition-colors"
               aria-label="Twitter"
             >
               <FaTwitter className="w-5 h-5" />
@@ -34,6 +35,7 @@ const Navbar = () => {
               <FaTelegram className="w-5 h-5" />
             </a>
           </li>
+          </div>
           <li className="relative z-10">
             <a 
               href="https://portal.jeton.com/login" 
