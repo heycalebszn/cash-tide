@@ -58,7 +58,7 @@ const BottomNav = () => {
     }, {} as Record<string, React.RefObject<HTMLDivElement | null>>)
   );
   // Timeout references to handle dropdown closing delays
-  const closeTimeoutRefs = useRef<Record<string, NodeJS.Timeout | null>>({});
+  const closeTimeoutRefs = useRef<Record<any, any>>({});
 
   // Derive if any dropdown is open
   const isAnyDropdownOpen = Object.values(dropdownState).some(d => d.open);
