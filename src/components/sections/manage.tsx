@@ -253,8 +253,7 @@ const ManageSection = () => {
         </div>
 
         {/* Mobile text content - shown only on small screens */}
-        <div className="md:hidden z-10 text-center px-4 absolute top-8 left-0 right-0">
-          <div className="h-1 w-16 bg-white mb-4 mx-auto"></div>
+        <div className="md:hidden z-10 px-4 absolute bottom-8 left-0 right-0 text-left">
           <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
             {currentTab.heading}
           </h1>
@@ -263,8 +262,59 @@ const ManageSection = () => {
           </p>
         </div>
 
-        {/* Tab navigation - at the bottom left with animated borders */}
-        <div ref={tabsRef} className="absolute bottom-8 left-4 md:left-8 flex flex-wrap gap-3 md:gap-4 z-30 items-center">
+        {/* Tab navigation - at the bottom left with animated borders(Desktop) */}
+        <div ref={tabsRef} className="absolute bottom-8 left-4 md:left-8 md:flex hidden flex-wrap gap-3 md:gap-4 z-30 items-center">
+          {tabData.map((tab) => {
+            // Calculate border animation for active tab
+            const isActive = activeTab === tab.id;
+            
+            return (
+              <div key={`tab-${tab.id}`} className="flex items-center">
+                <div className="relative">
+                  {/* Tab button with static border for inactive tabs */}
+                  <button 
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`relative z-10 flex items-center justify-center w-[30px] h-[30px] rounded-full cursor-pointer bg-transparent ${
+                      isActive
+                        ? "" 
+                        : "border-[1.5px] border-white/50 text-white/50"
+                    }`}
+                  >
+                    {/* Animated border for active tab */}
+                    {isActive && (
+                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 30 30">
+                        <circle 
+                          cx="15" 
+                          cy="15" 
+                          r="14" 
+                          fill="none" 
+                          stroke="white" 
+                          strokeWidth="1.5"
+                          strokeDasharray={`${animationProgress * 88} 88`} 
+                          style={{
+                            transformOrigin: 'center',
+                            transform: 'rotate(-90deg)',
+                          }}
+                        />
+                      </svg>
+                    )}
+                    <span className="font-medium text-xs text-white">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
+                  </button>
+                </div>
+                
+                {/* Display title right after the active tab */}
+                {isActive && (
+                  <div className="text-white font-medium text-xs ml-2">
+                    {tab.title}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Tab navigation - at the bottom left with animated borders (Mobile) */}
+        <div ref={tabsRef} className="absolute top-8 left-0 right-0 mx-auto md:hidden flex flex-wrap gap-3 z-30 items-center justify-center">
           {tabData.map((tab) => {
             // Calculate border animation for active tab
             const isActive = activeTab === tab.id;
@@ -323,8 +373,36 @@ const ManageSection = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* Content */}
-        <div className="relative z-20 flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between">
+        {/* Content - Mobile */}
+        <div className="absolute z-20 md:hidden flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between flex top-0 left-0">
+          
+          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">All your finances, in one app.</h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
+          
+          <a href="#" className="px-6 py-2 md:py-4 md:px-8 bg-white text-blue-500 rounded-xl md:text-[1rem] text-[0.9rem] font-medium hover:bg-gray-100 transition-colors mb-8">
+            Get Started
+          </a>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[30px] md:mt-[50px]">
+            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors">
+              <FaGooglePlay className="text-xl md:text-2xl" />
+              <div className="flex flex-col text-left text-xs md:text-sm">
+                <span>GET IT ON</span>
+                <span className="font-semibold text-sm md:text-base">Google Play</span>
+              </div>
+            </a>
+            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-6 py-2 hover:bg-white/10 transition-colors">
+              <FaApple className="text-xl md:text-2xl" />
+              <div className="flex flex-col text-left text-xs md:text-sm">
+                <span>Download on the</span>
+                <span className="font-semibold text-sm md:text-base">App Store</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {/* Content - Desktop */}
+        <div className="relative z-20 md:flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between hidden">
           <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">All your finances, in one app.</h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
           
