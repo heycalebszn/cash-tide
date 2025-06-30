@@ -270,55 +270,46 @@ const ManageSection = () => {
             const isActive = activeTab === tab.id;
             
             return (
-              <>
-                <div key={`tab-${tab.id}`} className="relative">
-                  {/* Animated border for active tab */}
-                  {isActive && (
-                    <div className="absolute inset-0 rounded-full overflow-hidden" style={{
-                      width: '44px',
-                      height: '44px',
-                      transform: 'translate(-2px, -2px)',
-                    }}>
-                      {/* Outer ring with conic gradient */}
-                      <div className="absolute inset-0"
-                        style={{
-                          background: `conic-gradient(white ${animationProgress * 360}deg, transparent ${animationProgress * 360}deg)`,
-                        }}
-                      />
-                      {/* Inner circle to create the ring effect */}
-                      <div className="absolute rounded-full"
-                        style={{
-                          top: '3px',
-                          left: '3px',
-                          right: '3px',
-                          bottom: '3px',
-                          background: 'var(--bg-gradient, #0f172a)',
-                          zIndex: 1
-                        }}
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Tab button */}
+              <div key={`tab-${tab.id}`} className="flex items-center">
+                <div className="relative">
+                  {/* Tab button with static border for inactive tabs */}
                   <button 
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative z-10 flex items-center justify-center w-10 h-10 md:w-10 md:h-10 rounded-full cursor-pointer ${
+                    className={`relative z-10 flex items-center justify-center w-[30px] h-[30px] rounded-full cursor-pointer bg-transparent ${
                       isActive
-                        ? "bg-white text-gradient text-center" 
-                        : "border-2 border-white text-white"
+                        ? "" 
+                        : "border-[1.5px] border-white/50 text-white/50"
                     }`}
                   >
-                    <span className="font-bold text-sm md:text-[0.8rem] text-center">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
+                    {/* Animated border for active tab */}
+                    {isActive && (
+                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 30 30">
+                        <circle 
+                          cx="15" 
+                          cy="15" 
+                          r="14" 
+                          fill="none" 
+                          stroke="white" 
+                          strokeWidth="1.5"
+                          strokeDasharray={`${animationProgress * 88} 88`} 
+                          style={{
+                            transformOrigin: 'center',
+                            transform: 'rotate(-90deg)',
+                          }}
+                        />
+                      </svg>
+                    )}
+                    <span className="font-medium text-xs text-white">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
                   </button>
                 </div>
                 
                 {/* Display title right after the active tab */}
                 {isActive && (
-                  <div key={`title-${tab.id}`} className="text-white font-medium text-sm md:text-[0.9rem] mr-2 md:mr-4">
+                  <div className="text-white font-medium text-xs ml-2">
                     {tab.title}
                   </div>
                 )}
-              </>
+              </div>
             );
           })}
         </div>
