@@ -3,43 +3,42 @@ import { manage_bg, jeton_home, product_1, product_2, jeton_card_video, numpay_m
 import { FaGooglePlay, FaApple } from "react-icons/fa";
 import { gsap } from "gsap";
 
-// Define tab content data
 const tabData = [
   {
     id: 1,
     title: "Payment",
-    heading: "50+ payment methods across Europe",
+    heading: "Move money across europe",
     description: "Jeton is seamlessly connected with more than 25 countries, and 50 payment methods.",
     video: jeton_home,
-    textPosition: "right", // Text on the right
-    duration: 8 // Duration in seconds
+    textPosition: "right", 
+    duration: 8 
   },
   {
     id: 2,
     title: "Send",
-    heading: "Send money instantly to anyone",
+    heading: "Add or send in few taps",
     description: "Transfer funds quickly and securely to friends and family worldwide.",
     video: product_1,
-    textPosition: "left", // Text on the left
-    duration: 8 // Duration in seconds
+    textPosition: "left", 
+    duration: 8 
   },
   {
     id: 3,
     title: "Method",
-    heading: "Choose your preferred payment method",
+    heading: "50+ payment methods across Europe",
     description: "From bank transfers to digital wallets, we've got you covered.",
     video: product_2,
-    textPosition: "right", // Text on the right
-    duration: 8 // Duration in seconds
+    textPosition: "right", 
+    duration: 8 
   },
   {
     id: 4,
     title: "Security",
-    heading: "Bank-grade security for your peace of mind",
+    heading: "Fast & Safe transactions",
     description: "Your transactions and data are protected with the highest security standards.",
     video: jeton_card_video,
-    textPosition: "left", // Text on the left
-    duration: 8 // Duration in seconds
+    textPosition: "left",
+    duration: 8 
   },
   {
     id: 5,
@@ -49,18 +48,21 @@ const tabData = [
     headingRight: "Fast & Safe",
     descriptionRight: "Experience quick and secure transactions every time.",
     video: manage_bg,
-    textPosition: "both", // Text on both sides
-    duration: 8 // Duration in seconds
+    textPosition: "both", 
+    duration: 8
   }
 ];
 
 const ManageSection = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [animationProgress, setAnimationProgress] = useState(0);
+  const [completedTabs, setCompletedTabs] = useState<number[]>([]); // Track completed tabs
   const videoRef = useRef<HTMLVideoElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const leftTextRef = useRef<HTMLDivElement>(null);
   const rightTextRef = useRef<HTMLDivElement>(null);
+  const leftLineRef = useRef<HTMLDivElement>(null);
+  const rightLineRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const progressIntervalRef = useRef<number | null>(null);
   
@@ -84,11 +86,14 @@ const ManageSection = () => {
     setAnimationProgress(0);
     
     const handleVideoEnded = () => {
-      // Move to the next tab, or back to the first if we're at the last one
-      setActiveTab(prev => {
-        const nextTab = prev + 1;
-        return nextTab <= tabData.length ? nextTab : 1;
+      // Mark all previous tabs as completed
+      setCompletedTabs((prev) => {
+        const maxId = Math.max(activeTab, ...prev);
+        return tabData.filter(tab => tab.id <= maxId).map(tab => tab.id);
       });
+      if (activeTab < tabData.length) {
+        setActiveTab(activeTab + 1);
+      }
     };
     
     if (videoElement) {
@@ -141,38 +146,74 @@ const ManageSection = () => {
       );
     }
 
-    // Animate left text if it exists and should be shown
-    if (leftTextRef.current && (currentTab.textPosition === "left" || currentTab.textPosition === "both")) {
-      gsap.fromTo(
-        leftTextRef.current,
-        { 
-          x: -50,
-          opacity: 0
-        },
-        { 
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out"
-        }
-      );
-    }
+    // Special animation for fifth tab text
+    if (currentTab.textPosition === "both" && currentTab.id === 5) {
+      if (leftTextRef.current) {
+        gsap.fromTo(
+          leftTextRef.current,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+        );
+      }
+      if (rightTextRef.current) {
+        gsap.fromTo(
+          rightTextRef.current,
+          { y: -40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+        );
+      }
+    } else {
+      // Animate left line
+      if (leftLineRef.current && (currentTab.textPosition === "left" || currentTab.textPosition === "both") && !(currentTab.textPosition === "both" && currentTab.id === 5)) {
+        gsap.fromTo(
+          leftLineRef.current,
+          { scaleX: 0, transformOrigin: "left" },
+          { scaleX: 1, duration: 0.7, ease: "power2.out" }
+        );
+      }
 
-    // Animate right text if it exists and should be shown
-    if (rightTextRef.current && (currentTab.textPosition === "right" || currentTab.textPosition === "both")) {
-      gsap.fromTo(
-        rightTextRef.current,
-        { 
-          x: 50,
-          opacity: 0
-        },
-        { 
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out"
-        }
-      );
+      // Animate right line
+      if (rightLineRef.current && (currentTab.textPosition === "right" || currentTab.textPosition === "both") && !(currentTab.textPosition === "both" && currentTab.id === 5)) {
+        gsap.fromTo(
+          rightLineRef.current,
+          { scaleX: 0, transformOrigin: "right" },
+          { scaleX: 1, duration: 0.7, ease: "power2.out" }
+        );
+      }
+
+      // Animate left text if it exists and should be shown
+      if (leftTextRef.current && (currentTab.textPosition === "left" || currentTab.textPosition === "both")) {
+        gsap.fromTo(
+          leftTextRef.current,
+          { 
+            x: -50,
+            opacity: 0
+          },
+          { 
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+      }
+
+      // Animate right text if it exists and should be shown
+      if (rightTextRef.current && (currentTab.textPosition === "right" || currentTab.textPosition === "both")) {
+        gsap.fromTo(
+          rightTextRef.current,
+          { 
+            x: 50,
+            opacity: 0
+          },
+          { 
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+      }
     }
 
     // Animate tab buttons
@@ -201,68 +242,94 @@ const ManageSection = () => {
       <section className="bg-gradient h-screen relative flex flex-col items-center justify-center px-4 md:px-12 overflow-hidden">
         {/* Content layout based on textPosition */}
         <div className="w-full max-w-6xl mx-auto flex items-center justify-center relative">
-          {/* Phone mockup - always in center */}
-          <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
-              <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
-                <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
-              </div>
-              <video 
-                ref={videoRef}
-                key={currentTab.id}
-                className="w-full h-full object-cover" 
-                autoPlay 
-                loop={false} // Don't loop so we can detect when it ends
-                muted 
-                playsInline
+          {currentTab.textPosition === "both" && currentTab.id === 5 ? (
+            <div className="flex w-full items-center justify-between gap-8">
+              <div
+                ref={leftTextRef}
+                className="z-10 hidden md:flex flex-col items-end min-w-[180px] max-w-xs"
               >
-                <source src={currentTab.video} type="video/mp4" />
-              </video>
-              <div className="absolute bottom-0 left-0 right-0 h-1 flex justify-center">
-                <div className="w-32 h-1 bg-[#e0e0e0] rounded-full"></div>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
+                  {currentTab.headingLeft}
+                </h1>
+              </div>
+              {/* Phone mockup - always in center */}
+              <div ref={phoneRef} className="relative z-10">
+                <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
+                  <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
+                    <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
+                  </div>
+                  <video 
+                    ref={videoRef}
+                    key={currentTab.id}
+                    className="w-full h-full object-cover" 
+                    autoPlay 
+                    loop={false} 
+                    muted 
+                    playsInline
+                  >
+                    <source src={currentTab.video} type="video/mp4" />
+                  </video>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 flex justify-center">
+                    <div className="w-32 h-1 bg-[#e0e0e0] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                ref={rightTextRef}
+                className="z-10 hidden md:flex flex-col items-start min-w-[180px] max-w-xs"
+              >
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
+                  {currentTab.headingRight}
+                </h1>
               </div>
             </div>
-          </div>
-
-          {/* Text content - positioned based on currentTab.textPosition */}
-          {(currentTab.textPosition === "left" || currentTab.textPosition === "both") && (
-            <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
-              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
-                <div className="h-[2px] w-full bg-white mb-8"></div>
+          ) : (
+            <>
+              {(currentTab.textPosition === "left") && (
+                <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
+                  <div ref={leftLineRef} className="h-[2px] w-full bg-white mb-8" style={{transform: 'scaleX(0)'}}></div>
+                  <h1 className="text-[1.8rem] font-bold text-white mb-6 leading-tight w-[250px]">
+                    {currentTab.heading}
+                  </h1>
+                  <p className="text-white/100 text-[0.9rem] mb-8">
+                    {currentTab.description}
+                  </p>
+                </div>
               )}
-              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
-                {currentTab.textPosition === "both" && currentTab.id === 5
-                  ? currentTab.headingLeft
-                  : currentTab.heading}
-              </h1>
-              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
-                <p className="text-white/90 text-base mb-8">
-                  {currentTab.description}
-                </p>
+              {/* Phone mockup - always in center */}
+              <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
+                  <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
+                    <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
+                  </div>
+                  <video 
+                    ref={videoRef}
+                    key={currentTab.id}
+                    className="w-full h-full object-cover" 
+                    autoPlay 
+                    loop={false} // Don't loop so we can detect when it ends
+                    muted 
+                    playsInline
+                  >
+                    <source src={currentTab.video} type="video/mp4" />
+                  </video>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 flex justify-center">
+                    <div className="w-32 h-1 bg-[#e0e0e0] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              {(currentTab.textPosition === "right") && (
+                <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
+                  <div ref={rightLineRef} className="h-[2px] w-full bg-white mb-8" style={{transform: 'scaleX(0)'}}></div>
+                  <h1 className="text-[1.8rem] font-bold text-white mb-6 leading-tight w-[250px]">
+                    {currentTab.heading}
+                  </h1>
+                  <p className="text-white/100 text-[0.9rem] mb-8">
+                    {currentTab.description}
+                  </p>
+                </div>
               )}
-            </div>
-          )}
-
-          {/* Spacer for center phone */}
-          <div className="w-[220px] md:w-[280px] mx-8 invisible">Spacer</div>
-
-          {/* Right side text */}
-          {(currentTab.textPosition === "right" || currentTab.textPosition === "both") && (
-            <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
-              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
-                <div className="h-[2px] w-full bg-white mb-8"></div>
-              )}
-              <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
-                {currentTab.textPosition === "both" && currentTab.id === 5
-                  ? currentTab.headingRight
-                  : currentTab.heading}
-              </h1>
-              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
-                <p className="text-white/90 text-base mb-8">
-                  {currentTab.description}
-                </p>
-              )}
-            </div>
+            </>
           )}
         </div>
 
@@ -271,7 +338,7 @@ const ManageSection = () => {
           <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
             {currentTab.heading}
           </h1>
-          <p className="text-white/90 text-sm mb-4">
+          <p className="text-white/100 text-[0.9rem] mb-4">
             {currentTab.description}
           </p>
         </div>
@@ -281,31 +348,37 @@ const ManageSection = () => {
           {tabData.map((tab) => {
             // Calculate border animation for active tab
             const isActive = activeTab === tab.id;
-            
+            const isCompleted = completedTabs.includes(tab.id);
             return (
               <div key={`tab-${tab.id}`} className="flex items-center">
                 <div className="relative">
                   {/* Tab button with static border for inactive tabs */}
-                  <button 
-                    onClick={() => setActiveTab(tab.id)}
+                  <button
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      // If revisiting, remove all completed tabs with id > selected
+                      setCompletedTabs((prev) => prev.filter((id) => id < tab.id));
+                    }}
                     className={`relative z-10 flex items-center justify-center w-[30px] h-[30px] rounded-full cursor-pointer bg-transparent ${
-                      isActive
-                        ? "" 
-                        : "border-[1.5px] border-white/50 text-white/50"
+                      isCompleted
+                        ? "border-[1.5px] border-white text-white"
+                        : "border-[1.5px] border-white/50 text-white"
                     }`}
                   >
                     {/* Animated border for active tab */}
-                    {isActive && (
-                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 30 30">
-                        <circle 
-                          cx="15" 
-                          cy="15" 
-                          r="14" 
-                          fill="none" 
-                          stroke="white" 
-                          strokeWidth="1.5"
-                          strokeDasharray={`${animationProgress * 88} 88`} 
+                    {isActive && !isCompleted && (
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 30 30">
+                        <circle
+                          cx="15"
+                          cy="15"
+                          r="14"
+                          fill="none"
+                          stroke="#fff"
+                          strokeWidth="2.5"
+                          strokeDasharray={88}
+                          strokeDashoffset={88 - animationProgress * 88}
                           style={{
+                            transition: 'stroke-dashoffset 0.1s linear',
                             transformOrigin: 'center',
                             transform: 'rotate(-90deg)',
                           }}
@@ -315,7 +388,6 @@ const ManageSection = () => {
                     <span className="font-medium text-xs text-white">{tab.id < 10 ? `0${tab.id}` : tab.id}</span>
                   </button>
                 </div>
-                
                 {/* Display title right after the active tab */}
                 {isActive && (
                   <div className="text-white font-medium text-xs ml-2">
@@ -332,6 +404,7 @@ const ManageSection = () => {
           {tabData.map((tab) => {
             // Calculate border animation for active tab
             const isActive = activeTab === tab.id;
+            const isCompleted = completedTabs.includes(tab.id);
             
             return (
               <div key={`tab-${tab.id}`} className="flex items-center">
@@ -346,17 +419,19 @@ const ManageSection = () => {
                     }`}
                   >
                     {/* Animated border for active tab */}
-                    {isActive && (
-                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 30 30">
-                        <circle 
-                          cx="15" 
-                          cy="15" 
-                          r="14" 
-                          fill="none" 
-                          stroke="white" 
-                          strokeWidth="1.5"
-                          strokeDasharray={`${animationProgress * 88} 88`} 
+                    {isActive && !isCompleted && (
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 30 30">
+                        <circle
+                          cx="15"
+                          cy="15"
+                          r="14"
+                          fill="none"
+                          stroke="#fff"
+                          strokeWidth="2.5"
+                          strokeDasharray={88}
+                          strokeDashoffset={88 - animationProgress * 88}
                           style={{
+                            transition: 'stroke-dashoffset 0.1s linear',
                             transformOrigin: 'center',
                             transform: 'rotate(-90deg)',
                           }}
