@@ -201,7 +201,7 @@ const ManageSection = () => {
         <div className="w-full max-w-6xl mx-auto flex items-center justify-center relative">
           {/* Phone mockup - always in center */}
           <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-white">
+            <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
               <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
                 <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
               </div>
