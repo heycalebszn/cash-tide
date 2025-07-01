@@ -44,8 +44,10 @@ const tabData = [
   {
     id: 5,
     title: "Done",
-    heading: "24/7 customer support",
-    description: "Our team is always available to help you with any questions.",
+    headingLeft: "Simple",
+    descriptionLeft: "Our team is always available to help you with any questions.",
+    headingRight: "Fast & Safe",
+    descriptionRight: "Experience quick and secure transactions every time.",
     video: manage_bg,
     textPosition: "both", // Text on both sides
     duration: 8 // Duration in seconds
@@ -225,13 +227,19 @@ const ManageSection = () => {
           {/* Text content - positioned based on currentTab.textPosition */}
           {(currentTab.textPosition === "left" || currentTab.textPosition === "both") && (
             <div ref={leftTextRef} className="z-10 max-w-xs mr-auto pl-4 hidden md:block">
-              <div className="h-[2px] w-full bg-white mb-8"></div>
+              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
+                <div className="h-[2px] w-full bg-white mb-8"></div>
+              )}
               <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
-                {currentTab.heading}
+                {currentTab.textPosition === "both" && currentTab.id === 5
+                  ? currentTab.headingLeft
+                  : currentTab.heading}
               </h1>
-              <p className="text-white/90 text-base mb-8">
-                {currentTab.description}
-              </p>
+              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
+                <p className="text-white/90 text-base mb-8">
+                  {currentTab.description}
+                </p>
+              )}
             </div>
           )}
 
@@ -241,13 +249,19 @@ const ManageSection = () => {
           {/* Right side text */}
           {(currentTab.textPosition === "right" || currentTab.textPosition === "both") && (
             <div ref={rightTextRef} className="z-10 max-w-xs ml-auto pr-4 hidden md:block">
-              <div className="h-[2px] w-full bg-white mb-8"></div>
+              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
+                <div className="h-[2px] w-full bg-white mb-8"></div>
+              )}
               <h1 className="text-[1.5rem] font-bold text-white mb-6 leading-tight w-[250px]">
-                {currentTab.heading}
+                {currentTab.textPosition === "both" && currentTab.id === 5
+                  ? currentTab.headingRight
+                  : currentTab.heading}
               </h1>
-              <p className="text-white/90 text-base mb-8">
-                {currentTab.description}
-              </p>
+              {!(currentTab.textPosition === "both" && currentTab.id === 5) && (
+                <p className="text-white/90 text-base mb-8">
+                  {currentTab.description}
+                </p>
+              )}
             </div>
           )}
         </div>
