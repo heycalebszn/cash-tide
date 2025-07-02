@@ -463,7 +463,7 @@ const ManageSection = () => {
         </video>
 
         {/* Content - Mobile */}
-        <div className="absolute z-20 md:hidden flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between flex top-0 left-0">
+        <div className="absolute z-20 md:hidden flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between top-0 left-0 bottom-[30px] pb-6">
           
           <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">All your finances, in one app.</h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Join 1M+ happy users today.</p>
@@ -472,7 +472,7 @@ const ManageSection = () => {
             Get Started
           </a>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[30px] md:mt-[50px]">
+          <div className="flex flex-row gap-4 justify-center mt-auto w-full">
             <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors">
               <FaGooglePlay className="text-xl md:text-2xl" />
               <div className="flex flex-col text-left text-xs md:text-sm">

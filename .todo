@@ -4,7 +4,7 @@
 2. Finance animation, add one more image to make it 5 & Fix the animation flow, the animation should happen as i scroll not that i have to wait in the page until it's done but gradually as i scroll and it must complete of course before the next section like in call to action section [not-mandatory]
 3. Please help Fix mobile responsiveness for the CTA triangle animation as it looks awful on mobile i.e instead of it being a triangle on mobile it should actually be the full section [done]
 4. Make Phone mock design border/design look more identical
-5. Fix Store buttons positioning on mobile in manage.tsx components (Should be closer to the bottom and flex display)
+5. Fix Store buttons positioning on mobile in manage.tsx components (Should be closer to the bottom and flex display) [done]
 6. Fix width issue on bigger device
 
 # (Additional)
