@@ -248,7 +248,7 @@ const ManageSection = () => {
                 ref={leftTextRef}
                 className="z-10 hidden md:flex flex-col items-end min-w-[180px] max-w-xs"
               >
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
+                <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
                   {currentTab.headingLeft}
                 </h1>
               </div>
@@ -278,7 +278,7 @@ const ManageSection = () => {
                 ref={rightTextRef}
                 className="z-10 hidden md:flex flex-col items-start min-w-[180px] max-w-xs"
               >
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
+                <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight w-auto" style={{lineHeight: 1.1}}>
                   {currentTab.headingRight}
                 </h1>
               </div>
@@ -390,7 +390,7 @@ const ManageSection = () => {
                 </div>
                 {/* Display title right after the active tab */}
                 {isActive && (
-                  <div className="text-white font-medium text-xs ml-2">
+                  <div className="text-white font-medium text-[1rem] ml-2">
                     {tab.title}
                   </div>
                 )}
