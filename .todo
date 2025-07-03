@@ -1,17 +1,8 @@
 # (Fixes)
 
-1. Hero section [done]
-2. Finance animation, add one more image to make it 5 & Fix the animation flow, the animation should happen as i scroll not that i have to wait in the page until it's done but gradually as i scroll and it must complete of course before the next section like in call to action section [not-mandatory]
-3. Please help Fix mobile responsiveness for the CTA triangle animation as it looks awful on mobile i.e instead of it being a triangle on mobile it should actually be the full section [done]
-4. Make Phone mock design border/design look more identical
-5. Fix Store buttons positioning on mobile in manage.tsx components (Should be closer to the bottom and flex display) [done]
-6. Fix width issue on bigger device
-
-# (Additional)
-4. Fix the flags to use many countries and not duplicates [done]
-
-# [Must Have]
-1. You need to have Twitter Telegram on navbar. [done]
-2. Whitepaper Button in the homepage is a must have. [done]
-3. Contract address to be there somewhere in the website [done]
-4. You need to have a Buy button that redirects to Uniswap. If you do not have space for Buy button in the homepage then add it in the navbar. For Example if there is not enough space in the navbar for Buy, Chart buttons then you can swap some irrelevant buttons with Buy and Chart. [not-mandatory]
+1. Bottom navigation 
+2. Footer 
+3. Turn Card section to FAQ section with the current video being in flex display with the faq tabs
+4. Fix CTA/triangle responsiveness 
+5. Make sure testimonials has the stack/wrap animation
+6. Replace the "Jeton Card: Your Go-To for Every Purchase" to the token contract section with the input field that has the address and then a copy icon by its side
