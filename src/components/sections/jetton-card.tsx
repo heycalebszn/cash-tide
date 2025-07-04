@@ -105,7 +105,7 @@ const JettonCardSection = () => {
       <div className="flex flex-col gap-[50px] md:gap-[100px] items-center justify-center">
         <h1 className="text-gradient md:text-[2.5rem] text-[1.5rem] md:w-[650px] w-[450px] text-center font-semibold md:leading-normal leading-[40px]">Contactless payments? Sure.<br/>Spending limits? Check.<br/>Card freezing? Also check.</h1>
 
-        <video autoPlay loop muted playsInline className="h-[400px] md:h-[800px] md:w-[800px] w-[350px] rounded-xl object-cover">
+        <video autoPlay loop muted playsInline className="h-[400px] md:h-[700px] md:w-[700px] w-[350px] rounded-xl object-cover">
           <source src={jeton_card_video} />
         </video>
 
