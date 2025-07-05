@@ -146,7 +146,7 @@ const JettonCardSection = () => {
           <p className="text-blue-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*Conversion powered by MoonPay. Rates may vary based on provider fees and market conditions. at {new Date().toLocaleTimeString()} on {new Date().toLocaleDateString()}.</p>
         </div>
 
-        <div className="z-10 overflow-hidden">
+        <div className="z-10">
           <CurrencyExchange />
         </div>
       </section>

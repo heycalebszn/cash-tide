@@ -415,17 +415,17 @@ const BottomNav = () => {
               <HiOutlineNewspaper className="text-2xl w-8 h-8 rounded-lg bg-blue-800 p-1" /> 
               <span className="text-lg font-semibold">Newsroom</span>
             </a>
-            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-red-700">
+            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-blue-700">
               {/* Partnerships Icon */}
-              <HiOutlineBriefcase className="text-2xl w-8 h-8 rounded-lg bg-red-800 p-1" /> 
+              <HiOutlineBriefcase className="text-2xl w-8 h-8 rounded-lg bg-blue-800 p-1" /> 
               <span className="text-lg font-semibold">Partnerships</span>
             </a>
-            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-red-700">
+            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-blue-700">
               {/* Media Assets Icon */}
-              <HiOutlineDocumentText className="text-2xl w-8 h-8 rounded-lg bg-red-800 p-1" /> 
+              <HiOutlineDocumentText className="text-2xl w-8 h-8 rounded-lg bg-red-blue p-1" /> 
               <span className="text-lg font-semibold">Media Assets</span>
             </a>
-            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-red-700">
+            <a href="#" className="flex items-center gap-4 py-3 px-2 rounded-lg hover:bg-blue-700">
               {/* Release Notes Icon */}
               <HiOutlineDocumentText className="text-2xl w-8 h-8 rounded-lg bg-blue-800 p-1" /> 
               <span className="text-lg font-semibold">Release Notes</span>

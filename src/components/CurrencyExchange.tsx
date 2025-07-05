@@ -132,7 +132,7 @@ const CurrencyExchange = () => {
         {/* From Currency Card */}
         <div className="relative">
           <div 
-            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
+            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[250px] h-fit ${
               isFromDropdownOpen ? 'border-blue-400 shadow-xl' : 'border-gray-100'
             }`}
             onClick={() => {
@@ -144,12 +144,12 @@ const CurrencyExchange = () => {
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
                   {getSelectedCurrency(fromCurrency).flag ? (
-                    <img src={getSelectedCurrency(fromCurrency).flag} alt="" className="w-full h-full rounded-full object-cover" />
+                    <img src={getSelectedCurrency(fromCurrency).flag} alt="" className="md:w-full md:h-full w-[30px] h-[30px] rounded-full object-cover" />
                   ) : (
                     <span>{fromCurrency.substring(0, 2)}</span>
                   )}
                 </div>
-                <span className="font-semibold text-gray-800 text-lg">
+                <span className="font-medium text-gray-800 md:text-lg text-[0.8rem]">
                   {fromCurrency}
                 </span>
               </div>
@@ -161,7 +161,7 @@ const CurrencyExchange = () => {
             </div>
             <input 
               type="text" 
-              className="text-2xl font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
+              className="md:text-2xl text-[1.3rem] font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
               value={fromAmount}
               onChange={handleFromAmountChange}
               onClick={(e) => e.stopPropagation()}
@@ -190,7 +190,7 @@ const CurrencyExchange = () => {
         {/* To Currency Card */}
         <div className="relative">
           <div 
-            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[350px] h-fit ${
+            className={`bg-blue-50 rounded-2xl p-5 transition-all border duration-200 cursor-pointer md:w-[450px] w-[250px] h-fit ${
               isToDropdownOpen ? 'border-blue-400 shadow-xl' : 'border-gray-100 hover:border-gray-200'
             }`}
             onClick={() => {
@@ -200,14 +200,14 @@ const CurrencyExchange = () => {
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
+                <div className="md:w-full md:h-full w-[30px] h-[30px] rounded-full object-cover">
                 {getSelectedCurrency(toCurrency).flag ? (
                   <img src={getSelectedCurrency(toCurrency).flag} alt="" className="w-full h-full rounded-full object-cover" />
                 ) : (
                   <span>{toCurrency.substring(0, 2)}</span>
                 )}
                 </div>
-                <span className="font-semibold text-gray-800 text-lg">
+                <span className="font-medium text-gray-800 md:text-lg text-[0.8rem]">
                   {toCurrency}
                 </span>
               </div>
@@ -219,7 +219,7 @@ const CurrencyExchange = () => {
             </div>
             <input 
               type="text" 
-              className="text-2xl font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
+              className="md:text-2xl text-[1.3rem] font-bold text-gray-800 bg-transparent border-none outline-none w-full placeholder-gray-400"
               value={toAmount}
               onChange={handleToAmountChange}
               onClick={(e) => e.stopPropagation()}

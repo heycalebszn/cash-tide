@@ -99,7 +99,7 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
       left: '50%',
       transform: 'translate(-50%, -50%)',
       maxWidth: '450px',
-      maxHeight: '80vh',
+      maxHeight: '40vh',
       overflowY: 'auto'
     }}>
       {isLoading ? (
@@ -122,7 +122,7 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
                 <img
                   src={currency.flag}
                   alt={`${currency.name} flag`}
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="md:w-8 md:h-8 w-[30px] h-[30px] rounded-full object-cover"
                 />
               ) : (
                 <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
@@ -130,8 +130,8 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
                 </div>
               )}
               <div>
-                <span className="font-semibold text-lg">{currency.code}</span>
-                <p className="text-sm opacity-80">{currency.name}</p>
+                <span className="font-semibold md:text-lg">{currency.code}</span>
+                <p className="md:text-sm text-[0.7rem] opacity-80">{currency.name}</p>
               </div>
             </div>
             {selectedCurrencyCode === currency.code && <FaCheck className={selectedCurrencyCode === currency.code ? "text-white" : "text-blue-500"} />}
