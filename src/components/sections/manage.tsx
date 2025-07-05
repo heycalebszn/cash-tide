@@ -253,7 +253,7 @@ const ManageSection = () => {
                 </h1>
               </div>
               {/* Phone mockup - always in center */}
-              <div ref={phoneRef} className="relative z-10">
+              <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               <div className="relative w-fit md:w-fit h-[350px] md:h-[450px] bg-white rounded-[15px] shadow-2xl overflow-hidden border-4 border-blue-200">
                   <video 
                     ref={videoRef}
