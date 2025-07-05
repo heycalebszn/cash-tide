@@ -11,7 +11,7 @@ const tabData = [
     description: "Jeton is seamlessly connected with more than 25 countries, and 50 payment methods.",
     video: mock,
     textPosition: "right", 
-    duration: 8 
+    duration: 4 
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const tabData = [
     description: "Transfer funds quickly and securely to friends and family worldwide.",
     video: mock,
     textPosition: "left", 
-    duration: 8 
+    duration: 4
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const tabData = [
     description: "From bank transfers to digital wallets, we've got you covered.",
     video: mock,
     textPosition: "right", 
-    duration: 8 
+    duration: 4
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const tabData = [
     description: "Your transactions and data are protected with the highest security standards.",
     video: mock,
     textPosition: "left",
-    duration: 8 
+    duration: 4
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ const tabData = [
     descriptionRight: "Experience quick and secure transactions every time.",
     video: mock,
     textPosition: "both", 
-    duration: 8
+    duration: 4
   }
 ];
 
@@ -254,10 +254,7 @@ const ManageSection = () => {
               </div>
               {/* Phone mockup - always in center */}
               <div ref={phoneRef} className="relative z-10">
-                <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
-                  <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
-                    <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
-                  </div>
+              <div className="relative w-fit md:w-fit h-[350px] md:h-[450px] bg-white rounded-[15px] shadow-2xl overflow-hidden border-4 border-blue-200">
                   <video 
                     ref={videoRef}
                     key={currentTab.id}
@@ -269,9 +266,6 @@ const ManageSection = () => {
                   >
                     <source src={currentTab.video} type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 flex justify-center">
-                    <div className="w-32 h-1 bg-[#e0e0e0] rounded-full"></div>
-                  </div>
                 </div>
               </div>
               <div
@@ -291,31 +285,25 @@ const ManageSection = () => {
                   <h1 className="text-[1.8rem] font-bold text-white mb-6 leading-tight w-[250px]">
                     {currentTab.heading}
                   </h1>
-                  <p className="text-white/100 text-[0.9rem] mb-8">
+                  <p className="text-white/100 text-[0.9rem] mb-8 w-[250px]">
                     {currentTab.description}
                   </p>
                 </div>
               )}
               {/* Phone mockup - always in center */}
               <div ref={phoneRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="relative w-[200px] md:w-[240px] h-[350px] md:h-[450px] bg-white rounded-[40px] shadow-2xl overflow-hidden border-8 border-blue-200">
-                  <div className="absolute top-0 left-0 right-0 h-6 bg-[#f8f8f8] flex items-center justify-center">
-                    <div className="w-20 h-4 bg-[#e0e0e0] rounded-full"></div>
-                  </div>
+                <div className="relative w-fit md:w-fit h-[350px] md:h-[450px] bg-white rounded-[15px] shadow-2xl overflow-hidden border-4 border-blue-200">
                   <video 
                     ref={videoRef}
                     key={currentTab.id}
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full" 
                     autoPlay 
-                    loop={false} // Don't loop so we can detect when it ends
+                    loop={false} 
                     muted 
                     playsInline
                   >
                     <source src={currentTab.video} type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 flex justify-center">
-                    <div className="w-32 h-1 bg-[#e0e0e0] rounded-full"></div>
-                  </div>
                 </div>
               </div>
               {(currentTab.textPosition === "right") && (
@@ -324,7 +312,7 @@ const ManageSection = () => {
                   <h1 className="text-[1.8rem] font-bold text-white mb-6 leading-tight w-[250px]">
                     {currentTab.heading}
                   </h1>
-                  <p className="text-white/100 text-[0.9rem] mb-8">
+                  <p className="text-white/100 text-[0.9rem] mb-8 w-[250px]">
                     {currentTab.description}
                   </p>
                 </div>
