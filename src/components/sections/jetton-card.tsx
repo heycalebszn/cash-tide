@@ -18,6 +18,7 @@ const JettonCardSection = () => {
   const exchangeSectionRef = useRef<HTMLElement>(null);
   const [flags, setFlags] = useState<CountryFlag[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showFlags, setShowFlags] = useState(false);
   
   // Fetch country flags from REST Countries API
   useEffect(() => {
@@ -68,31 +69,82 @@ const JettonCardSection = () => {
     if (isLoading || flags.length === 0) return;
     
     const ctx = gsap.context(() => {
+      // Set initial state - hide all flags
+      gsap.set(flagsRefs.current, {
+        y: -100,
+        opacity: 0
+      });
+      
+      // Function to calculate max Y position
+      const calculateMaxY = () => {
+        const sectionHeight = exchangeSectionRef.current?.offsetHeight || 800;
+        const flagSize = window.innerWidth < 768 ? 30 : 80; // Mobile vs desktop flag size
+        return sectionHeight - flagSize; // Ensure flags land at the bottom
+      };
+      
       // Create a timeline for the animation
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: exchangeSectionRef.current,
           start: "top center",
           onEnter: () => {
-            // Reset flags to initial state
-            gsap.set(flagsRefs.current, {
-              y: -100,
-              opacity: 0
-            });
+            // Show flags first
+            setShowFlags(true);
             
-            // Animate flags
-            gsap.to(flagsRefs.current, {
-              y: () => 720 - (Math.random() * 20),
-              x: () => -800 + Math.random() * 1600,
-              opacity: 1,
-              duration: 1.2,
-              ease: "bounce.out",
-              stagger: 0.05
-            });
+            // Small delay to ensure flags are rendered
+            setTimeout(() => {
+              // Reset flags to initial state
+              gsap.set(flagsRefs.current, {
+                y: -100,
+                opacity: 0
+              });
+              
+              // Calculate dynamic height based on section height
+              const maxY = calculateMaxY();
+              
+              // Animate flags
+              gsap.to(flagsRefs.current, {
+                y: () => maxY - (Math.random() * 20),
+                x: () => -800 + Math.random() * 1600,
+                opacity: 1,
+                duration: 1.2,
+                ease: "bounce.out",
+                stagger: 0.05
+              });
+            }, 50);
+          },
+          onLeave: () => {
+            // Hide flags when leaving the section
+            setShowFlags(false);
+          },
+          onEnterBack: () => {
+            // Show flags again when scrolling back up
+            setShowFlags(true);
+          },
+          onLeaveBack: () => {
+            // Hide flags when scrolling back up past the trigger
+            setShowFlags(false);
           }
         }
       });
+      
+      // Handle resize events to recalculate positions
+      const handleResize = () => {
+        if (tl.scrollTrigger?.isActive) {
+          const maxY = calculateMaxY();
+          gsap.set(flagsRefs.current, {
+            y: () => maxY - (Math.random() * 20)
+          });
+        }
+      };
+      
+      window.addEventListener('resize', handleResize);
+      
       console.log(tl)
+      
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     });
 
     return () => ctx.revert();
@@ -120,7 +172,7 @@ const JettonCardSection = () => {
       <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[150px]">
         {/* All flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          {!isLoading && flags.map((flag, index) => (
+          {!isLoading && showFlags && flags.map((flag, index) => (
             <img
               key={index}
               ref={el => {

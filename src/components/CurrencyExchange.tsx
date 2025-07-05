@@ -200,9 +200,9 @@ const CurrencyExchange = () => {
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="md:w-full md:h-full w-[30px] h-[30px] rounded-full object-cover">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-50">
                 {getSelectedCurrency(toCurrency).flag ? (
-                  <img src={getSelectedCurrency(toCurrency).flag} alt="" className="w-full h-full rounded-full object-cover" />
+                  <img src={getSelectedCurrency(toCurrency).flag} alt="" className="md:w-full md:h-full w-[30px] h-[30px] rounded-full object-cover" />
                 ) : (
                   <span>{toCurrency.substring(0, 2)}</span>
                 )}
