@@ -19,7 +19,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         </h2>
 
         <div className="flex flex-col mr-[50px]">
-        <p className="text-2xl pt-4 w-[400px]">
+        <p className="text-[1.3rem] pt-4 w-[400px]">
         Crypto transfers simplified, no wallet address needed.
         </p>
         <div className="flex justify-start items-center gap-4 pt-8">
@@ -56,7 +56,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
           {/* Top part: H1 heading for mobile */}
           <h2 className="text-[2.2rem] font-bold leading-[60px] text-left pt-[50px]">
-            Transfers made easy
+          Tap. Type. <br /> Transferred.
           </h2>
 
           {/* Spacer to push content to bottom on mobile */}
@@ -64,8 +64,8 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
           {/* Bottom part: Paragraph and Buttons for mobile */}
           <div className="flex flex-col text-left ml-0">
-            <p className="text-[1.5rem] mb-4">
-              Single account for all your payments.
+            <p className="text-[1.5rem] mb-4 w-[350px]">
+            Crypto transfers simplified, no wallet address needed.
             </p>
             <div className="flex justify-start items-start gap-4">
               <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">

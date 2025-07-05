@@ -465,7 +465,7 @@ const ManageSection = () => {
         {/* Content - Mobile */}
         <div className="absolute z-20 md:hidden flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between top-0 left-0 bottom-[30px] pb-6">
           
-          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">Move money like you message.</h1>
+          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">Move money like your message.</h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Send or request USDC on Base from anyone, anywhere, using just a phone number.
           </p>
           
@@ -493,7 +493,7 @@ const ManageSection = () => {
 
         {/* Content - Desktop */}
         <div className="relative z-20 md:flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between hidden">
-          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">Move money like you message.</h1>
+          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">Move money like your message.</h1>
           <p className="text-lg md:text-xl mb-8 w-[450px] text-left">Send or request USDC on Base from anyone, anywhere, using just a phone number.</p>
           
           <a href="#" className="px-6 py-2 md:py-4 md:px-8 bg-white text-blue-500 rounded-xl md:text-[1rem] text-[0.9rem] font-medium hover:bg-gray-100 transition-colors mb-8">

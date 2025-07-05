@@ -105,19 +105,19 @@ const JettonCardSection = () => {
       <div className="flex flex-col gap-[50px] md:gap-[100px] items-center justify-center">
         <h1 className="text-gradient md:text-[2.5rem] text-[1.5rem] md:w-[650px] w-[450px] text-center font-semibold md:leading-normal leading-[40px]">Need money? ask.<br/>Send a Request.<br/>They get a WhatsApp alert.</h1>
 
-        <video autoPlay loop muted playsInline className="h-[400px] md:h-[700px] md:w-[700px] w-[350px] rounded-xl object-cover">
+        <video autoPlay loop muted playsInline className="h-[400px] md:h-[500px] md:w-[700px] w-[350px] rounded-xl object-cover">
           <source src={jeton_card_video} />
         </video>
 
         <div className="flex flex-col gap-4 md:gap-8 items-center justify-center text-center">
-          <h1 className="text-gradient md:text-[4rem] text-[2rem] md:w-[750px] w-[380px] text-center md:font-semibold font-bold md:leading-[80px] leading-[40px]">No wallet address needed. Just a number, and you're funded.
+          <h1 className="text-gradient md:text-[3.5rem] text-[2rem] md:w-[750px] w-[380px] text-center md:font-semibold font-bold md:leading-[55px] leading-[40px]">No wallet address needed. Just a number, and you're funded.
           </h1>
           <a href="#" className="p-4 bg-blue-500 text-white text-[1rem] rounded-[15px] w-[150px] text-center">Learn more</a>
           {/* <p className="text-blue-500 md:text-[1rem] text-[0.8rem] md:w-full w-[300px] text-center">Contract Address: 0x0000000000000000000000000000000000000000</p> */}
         </div>
       </div>
 
-      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[70px]">
+      <section ref={exchangeSectionRef} className="flex flex-col items-center justify-center relative h-[800px] pb-[150px]">
         {/* All flags container - behind form */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           {!isLoading && flags.map((flag, index) => (
@@ -142,7 +142,7 @@ const JettonCardSection = () => {
         </div>
 
         <div className="flex flex-col gap-[30px] items-center justify-center mt-[10px] z-10">
-          <h1 className="text-gradient md:text-[4rem] text-[2.5rem] md:w-[500px] w-[250px] text-center font-semibold md:leading-[70px] leading-[50px]">Convert fiat to USDC in seconds.</h1>
+          <h1 className="text-gradient md:text-[3.5rem] text-[2.5rem] md:w-[500px] w-[250px] text-center font-semibold md:leading-[70px] leading-[50px]">Convert fiat to USDC in seconds.</h1>
           <p className="text-blue-500 text-[0.8rem] md:w-[450px] w-[300px] text-center">*Conversion powered by MoonPay. Rates may vary based on provider fees and market conditions. at {new Date().toLocaleTimeString()} on {new Date().toLocaleDateString()}.</p>
         </div>
 

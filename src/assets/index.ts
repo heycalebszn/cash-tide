@@ -32,6 +32,10 @@ import main_logo from "./images/logos/company/main_logo.png"
 import main2 from "./images/logos/company/main2.png"
 import hero_bg from "./videos/numpay/NumpayHero.mp4"
 import numpay_m from "./videos/numpay/NumpayM.mp4"
+import slide_1 from "./videos/slide/1.mp4"
+import slide_2 from "./videos/slide/2.mp4"
+import slide_3 from "./videos/slide/3.mp4"
+import mock from "./videos/slide/mock.mp4"
 
 export {
     playstore,
@@ -68,4 +72,8 @@ export {
     main2,
     hero_bg,
     numpay_m,
+    slide_1,
+    slide_2,
+    slide_3,
+    mock,
 }
