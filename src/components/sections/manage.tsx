@@ -470,8 +470,8 @@ const ManageSection = () => {
         {/* Content - Mobile */}
         <div className="absolute z-20 md:hidden flex flex-col px-4 pt-[50px] w-full max-w-6xl mx-auto items-start justify-between top-0 left-0 bottom-[30px] pb-6">
           
-          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[300px]">Move money like your message.</h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl text-left">Send or request USDC on Base from anyone, anywhere, using just a phone number.
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-2xl text-left md:w-[500px] w-[350px]">Move money like your message.</h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl text-left w-[250px]">Send or request USDC on Base from anyone, anywhere, using just a phone number.
           </p>
           
           <a href="#" className="px-6 py-2 md:py-4 md:px-8 bg-white text-blue-500 rounded-xl md:text-[1rem] text-[0.9rem] font-medium hover:bg-gray-100 transition-colors mb-8">
@@ -479,18 +479,18 @@ const ManageSection = () => {
           </a>
 
           <div className="flex flex-row gap-4 justify-center mt-auto w-full">
-            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors">
+            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors h-fit">
               <FaGooglePlay className="text-xl md:text-2xl" />
-              <div className="flex flex-col text-left text-xs md:text-sm">
-                <span>GET IT ON</span>
-                <span className="font-semibold text-sm md:text-base">Google Play</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.6rem]">GET IT ON</span>
+                <span className="font-semibold text-sm md:text-[1rem]">Google Play</span>
               </div>
             </a>
-            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-6 py-2 hover:bg-white/10 transition-colors">
+            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-6 py-2 hover:bg-white/10 transition-colors h-fit">
               <FaApple className="text-xl md:text-2xl" />
-              <div className="flex flex-col text-left text-xs md:text-sm">
-                <span>Download on the</span>
-                <span className="font-semibold text-sm md:text-base">App Store</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.6rem]">Download on the</span>
+                <span className="font-semibold text-sm md:text-[1rem]">App Store</span>
               </div>
             </a>
           </div>
@@ -506,18 +506,18 @@ const ManageSection = () => {
           </a>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-start mt-[30px] md:mt-[50px]">
-            <a href="#" className="flex items-center space-x-2 border border-blue-500 rounded-lg px-4 md:px-6 py-2 hover:bg-blue-500/10 transition-colors">
+          <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-4 md:py-1 py-2 hover:bg-white/10 transition-colors h-fit">
               <FaGooglePlay className="text-xl md:text-2xl" />
-              <div className="flex flex-col text-left text-xs md:text-sm">
-                <span>GET IT ON</span>
-                <span className="font-semibold text-sm md:text-base">Google Play</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.6rem]">GET IT ON</span>
+                <span className="font-semibold text-sm md:text-[1rem]">Google Play</span>
               </div>
             </a>
-            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-6 py-2 hover:bg-white/10 transition-colors">
+            <a href="#" className="flex items-center space-x-2 border border-white rounded-lg px-4 md:px-4 md:py-1 py-2 hover:bg-white/10 transition-colors h-fit">
               <FaApple className="text-xl md:text-2xl" />
-              <div className="flex flex-col text-left text-xs md:text-sm">
-                <span>Download on the</span>
-                <span className="font-semibold text-sm md:text-base">App Store</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.6rem]">Download on the</span>
+                <span className="font-semibold text-sm md:text-[1rem]">App Store</span>
               </div>
             </a>
           </div>

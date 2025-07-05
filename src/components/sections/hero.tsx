@@ -14,7 +14,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
       {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
       <div className="absolute bottom-[55px] left-0 right-0 z-10 pb-[50px] text-left md:flex hidden justify-between items-center w-full text-white">
-        <h2 className="text-6xl font-bold leading-[80px] pl-[50px]">
+        <h2 className="text-7xl font-bold leading-[80px] pl-[50px]">
         Tap. Type. <br /> Transferred.
         </h2>
 
@@ -23,18 +23,18 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         Crypto transfers simplified, no wallet address needed.
         </p>
         <div className="flex justify-start items-center gap-4 pt-8">
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-[5px]" aria-label="Download on the App Store">
             <AiFillApple className="text-3xl" />
             <div className="flex flex-col text-left">
-              <span className="text-xs">Download on the</span>
-              <span className="text-lg font-semibold">App Store</span>
+            <span className="text-[0.6rem]">Download on the</span>
+            <span className="font-semibold text-sm md:text-[1rem]">App Store</span>
             </div>
           </a>
-          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Get it on Google Play">
+          <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-[5px]" aria-label="Get it on Google Play">
             <FaGooglePlay className="text-3xl" />
             <div className="flex flex-col text-left">
-              <span className="text-xs">GET IT ON</span>
-              <span className="text-lg font-semibold">Google Play</span>
+            <span className="text-[0.6rem]">GET IT ON</span>
+            <span className="font-semibold text-sm md:text-[1rem]">Google Play</span>
             </div>
           </a>
           </div>
@@ -55,7 +55,7 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
         {/* Content for mobile */}
         <div className="absolute inset-0 z-10 flex flex-col text-white px-4 pt-8 pb-[150px]">
           {/* Top part: H1 heading for mobile */}
-          <h2 className="text-[2.2rem] font-bold leading-[60px] text-left pt-[50px]">
+          <h2 className="text-[2.5rem] font-medium leading-[50px] text-left pt-[80px]">
           Tap. Type. <br /> Transferred.
           </h2>
 
@@ -63,24 +63,24 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
           <div className="flex-grow"></div> 
 
           {/* Bottom part: Paragraph and Buttons for mobile */}
-          <div className="flex flex-col text-left ml-0">
-            <p className="text-[1.5rem] mb-4 w-[350px]">
+          <div className="flex flex-col text-left mt-[250px]">
+            <p className="text-[1.3rem] mb-4 w-[350px]">
             Crypto transfers simplified, no wallet address needed.
             </p>
             <div className="flex justify-start items-start gap-4">
               <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">
                 <AiFillApple className="text-2xl" />
                 <div className="flex flex-col text-left">
-                  <span className="text-xs">Download on the</span>
-                  <span className="text-base font-semibold">App Store</span>
-                </div>
+                <span className="text-[0.6rem]">Download on the</span>
+                <span className="font-semibold text-sm md:text-[1rem]">App Store</span>
+              </div>
               </a>
               <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Get it on Google Play">
                 <FaGooglePlay className="text-2xl" />
                 <div className="flex flex-col text-left">
-                  <span className="text-xs">GET IT ON</span>
-                  <span className="text-base font-semibold">Google Play</span>
-                </div>
+                <span className="text-[0.6rem]">GET IT ON</span>
+                <span className="font-semibold text-sm md:text-[1rem]">Google Play</span>
+              </div>
               </a>
             </div>
           </div>

@@ -24,14 +24,14 @@ const ChatSupportButton = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-10 z-[9999]">
+    <div className="fixed bottom-4 right-[15px] z-[9999]">
       {!showChatSupport ? (
         // Message Icon (when chat is closed)
         <button 
-          className="p-3 rounded-full bg-gray-400 hover:bg-[#3182ce] transition-colors flex items-center justify-center text-white shadow-lg border border-gray-300 cursor-pointer"
+          className="p-3 rounded-full bg-blue-300 hover:bg-[#3182ce] transition-colors flex items-center justify-center text-white shadow-lg border border-gray-300 cursor-pointer"
           onClick={() => setShowChatSupport(true)}
         >
-          <BiChat className='text-[25px]' />
+          <BiChat className='text-[22px]' />
         </button>
       ) : (
         // Chat Support Popup (when chat is open)

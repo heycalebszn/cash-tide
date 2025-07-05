@@ -256,7 +256,7 @@ const BottomNav = () => {
         </a>
 
         {/* Mobile view - Toggle button for the full-screen menu */}
-        <div className='md:hidden flex gap-3 items-center w-fit'>
+        <div className='md:hidden flex gap-3 items-center w-fit p-2'>
           <h1>Menu</h1>
           <BiMenu onClick={openMenu} />
         </div>

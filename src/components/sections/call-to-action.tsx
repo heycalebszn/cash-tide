@@ -102,9 +102,8 @@ const CallToActionSection = () => {
       {/* Content with z-index to stay above background */}
       <div ref={contentRef} className="flex flex-col items-center justify-center gap-16 z-10 relative">
         <div className="relative z-10">
-          <h1 ref={headingRef} className="text-[4rem] w-[400px] font-bold leading-[3.5rem] md:text-[5rem] md:w-[1000px] md:leading-[100px]">
+          <h1 ref={headingRef} className="text-[3rem] w-[350px] font-bold leading-[3.5rem] md:text-[5rem] md:w-[1000px] md:leading-[100px]">
           Built for the next billion transfers.
-
           </h1>
         </div>
 
