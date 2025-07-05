@@ -14,13 +14,13 @@ const HeroSection = ({ onScrollButtonClick }: { onScrollButtonClick: () => void 
 
       {/* Desktop View (hidden on mobile) - Your perfect desktop code goes here */}
       <div className="absolute bottom-[55px] left-0 right-0 z-10 pb-[50px] text-left md:flex hidden justify-between items-center w-full text-white">
-        <h2 className="text-8xl font-bold leading-[90px] pl-[50px]">
-          Transfers <br /> made easy
+        <h2 className="text-6xl font-bold leading-[80px] pl-[50px]">
+        Tap. Type. <br /> Transferred.
         </h2>
 
         <div className="flex flex-col mr-[50px]">
-        <p className="text-2xl pt-4">
-          Single account for all your payments.
+        <p className="text-2xl pt-4 w-[400px]">
+        Crypto transfers simplified, no wallet address needed.
         </p>
         <div className="flex justify-start items-center gap-4 pt-8">
           <a href="#" className="flex items-center space-x-2 bg-transparent border border-white text-white px-4 h-fit rounded-lg transition-colors py-1" aria-label="Download on the App Store">

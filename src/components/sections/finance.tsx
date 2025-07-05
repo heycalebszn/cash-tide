@@ -90,7 +90,7 @@ const FinanceSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivElemen
   return (
     <div ref={ref} className="relative bg-white h-screen overflow-hidden">
       {/* H1: Mobile-first size, desktop override */}
-      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl leading-[60px] text-gradient font-extrabold z-50 w-full text-center md:text-[200px] md:leading-[200px]">Unify your <br /> finances</h1>
+      <h1 ref={h1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl leading-[60px] text-gradient font-extrabold z-50 w-full text-center md:text-[180px] md:leading-[200px]">Frictionless <br /> Crypto Flow</h1>
 
       {/* Images: Mobile-first width, desktop override */}
       <img ref={image1Ref} src={finance_image1} alt="" className="absolute w-[200px] md:w-[300px] rounded-[30px]" />

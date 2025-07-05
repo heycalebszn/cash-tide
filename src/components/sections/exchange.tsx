@@ -82,7 +82,7 @@ const ExchangeSection = forwardRef<HTMLDivElement>((props, ref: Ref<HTMLDivEleme
       </div>
       <div ref={exchangeRef} className="flex gap-3 items-center">
         <SiExpertsexchange className="bg-red-400 rounded-[15px] md:text-[4rem] text-[2.5rem] sm:text-[3rem] p-1 text-white" />
-        <span className="text-red-400 md:text-[7rem] text-[2.5rem] sm:text-[3rem] font-semibold">Exchange</span>
+        <span className="text-red-400 md:text-[7rem] text-[2.5rem] sm:text-[3rem] font-semibold">Request</span>
       </div>
     </div>
   )

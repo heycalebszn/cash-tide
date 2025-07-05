@@ -11,16 +11,16 @@ const DROPDOWNS = [
     key: 'personal',
     label: 'Personal',
     links: [
-      { text: 'About', href: '#' },
-      { text: 'Newsroom', href: '#' },
-      { text: 'Partnerships', href: '#' },
-      { text: 'Media Assets', href: '#' },
-      { text: 'Release Notes', href: '#', highlight: true },
+      { text: 'Send Crypto', href: '#' },
+      { text: 'Request Money', href: '#' },
+      { text: 'On-Ramp', href: '#' },
+      { text: 'Mobile Login', href: '#' },
+      { text: 'Get the App', href: '#', highlight: true },
     ],
   },
   {
     key: 'business',
-    label: 'Business',
+    label: ' How it works',
     links: [
       { text: 'Option A', href: '#' },
       { text: 'Option B', href: '#' },
@@ -31,9 +31,9 @@ const DROPDOWNS = [
     key: 'company',
     label: 'Company',
     links: [
-      { text: 'Item X', href: '#' },
-      { text: 'Item Y', href: '#' },
-      { text: 'Item Z', href: '#' },
+      { text: 'About Us', href: '#' },
+      { text: 'Whitepaper', href: '#' },
+      { text: 'Support', href: '#' },
     ],
   },
 ];

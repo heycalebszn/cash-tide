@@ -102,13 +102,14 @@ const CallToActionSection = () => {
       {/* Content with z-index to stay above background */}
       <div ref={contentRef} className="flex flex-col items-center justify-center gap-16 z-10 relative">
         <div className="relative z-10">
-          <h1 ref={headingRef} className="text-[4rem] w-[400px] font-bold leading-[3.5rem] md:text-[8rem] md:w-[1000px] md:leading-[130px]">
-            1 million users, plus you.
+          <h1 ref={headingRef} className="text-[4rem] w-[400px] font-bold leading-[3.5rem] md:text-[5rem] md:w-[1000px] md:leading-[100px]">
+          Built for the next billion transfers.
+
           </h1>
         </div>
 
         <p className="text-[1rem] text-blue-500 md:text-[1.5rem]">
-          It only takes few seconds to get started.
+        Getting started takes less than 30 seconds.
         </p>
 
         <div className="flex justify-start items-center gap-4 pt-8">

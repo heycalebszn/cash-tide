@@ -1,9 +1,10 @@
 import { AiFillApple } from "react-icons/ai";
-import { FaGooglePlay, FaInstagram, FaFacebook, FaXTwitter, FaGlobe, FaChevronDown } from "react-icons/fa6";
+import { FaGooglePlay, FaInstagram, FaXTwitter, FaGlobe, FaChevronDown } from "react-icons/fa6";
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { westham, lyon, liverpool, logo1, logo2, logo3, logo4, logo5, logo6, lyon_logo, westham_logo } from "../assets";
+import { FaTelegram } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,7 +124,7 @@ const Footer = () => {
         {/* Social Media Icons */}
         <div className="flex space-x-4">
           <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaInstagram className="text-2xl" /></a>
-          <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaFacebook className="text-2xl" /></a>
+          <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaTelegram className="text-2xl" /></a>
           <a href="#" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-300 transition-colors"><FaXTwitter className="text-2xl" /></a>
         </div>
       </div>
@@ -160,7 +161,7 @@ const Footer = () => {
           
           <p className="text-blue-600 text-sm">Made by Büro</p>
         </div>
-        <h1 ref={jetonH1Ref} className="text-center md:text-[16rem] text-[5rem] sm:text-[17rem] text-gradient font-bold leading-none mb-8 relative z-10">CashTide</h1>
+        <h1 ref={jetonH1Ref} className="text-center md:text-[16rem] text-[5rem] sm:text-[17rem] text-gradient font-bold leading-none mb-8 relative z-10">Numpay</h1>
         <p className="mb-4 text-xs text-blue-500 text-left">© 2023 | www.cash tide.com is owned and operated by LA Orange CY Limited (Gladstonos, 116 M. Kyprianou House, 3-4th Floor, 3032, Limassol, Cyprus.) LA Orange CY Limited trading as CashTide, is authorised by the Central Bank of Cyprus under the Electronic Money Law of 2012 and 2018 (Law 81(I)/2012) for distributing or redeeming electronic money (e-money), with Licence No: 115.1.3.66. LA Orange CY Limited has been incorporated in the Republic of Cyprus under the provisions of the Companies Law (Cap 113) with registration number HE 424807, with its registered office address at Gladstonos, 116 M. Kyprianou House, 3&4th Floor, 3032, Limassol, Cyprus.</p>
         <p className="text-xs text-blue-500 text-left">LA Orange Limited, trading as CashTide, is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011 for distributing or redeeming electronic money (e-money) and providing certain payment services on behalf of an e-money institution, with FCA registration number 902088. Company Name: LA ORANGE LIMITED, LEI code: 8945009G46MP0DAD211, BIC Value: ORAGGB22 (Swift Code). LA Orange Limited is registered in England and Wales, Company Number 11535714, with its registered office address at The Shard Floor 24/25, 32 London Bridge Street, London, SE1 9SG, United Kingdom.</p>
       </div>
