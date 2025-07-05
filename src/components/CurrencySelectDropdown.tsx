@@ -130,7 +130,7 @@ const CurrencySelectDropdown: React.FC<CurrencySelectDropdownProps> = ({ isOpen,
                 </div>
               )}
               <div>
-                <span className="font-semibold md:text-lg">{currency.code}</span>
+                <span className="font-medium md:text-lg">{currency.code}</span>
                 <p className="md:text-sm text-[0.7rem] opacity-80">{currency.name}</p>
               </div>
             </div>

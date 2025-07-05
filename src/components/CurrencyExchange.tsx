@@ -156,7 +156,7 @@ const CurrencyExchange = () => {
               {isFromDropdownOpen ? (
                 <FaChevronUp className="text-blue-500 text-lg transition-transform duration-200" />
               ) : (
-                <FaChevronDown className="text-blue-500 text-lg transition-transform duration-200" />
+                <FaChevronDown className="text-blue-500 text-[30px] transition-transform duration-200 bg-blue-200 rounded-full p-2" />
               )}
             </div>
             <input 
@@ -214,7 +214,7 @@ const CurrencyExchange = () => {
               {isToDropdownOpen ? (
                 <FaChevronUp className="text-blue-500 text-lg transition-transform duration-200" />
               ) : (
-                <FaChevronDown className="text-blue-500 text-lg transition-transform duration-200" />
+                <FaChevronDown className="text-blue-500 text-[30px] transition-transform duration-200 bg-blue-200 rounded-full p-2" />
               )}
             </div>
             <input 
