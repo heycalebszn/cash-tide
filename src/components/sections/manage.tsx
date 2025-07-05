@@ -323,12 +323,29 @@ const ManageSection = () => {
 
         {/* Mobile text content - shown only on small screens */}
         <div className="md:hidden z-10 px-4 absolute bottom-8 left-0 right-0 text-left">
-          <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
-            {currentTab.heading}
-          </h1>
-          <p className="text-white/100 text-[0.9rem] mb-4">
-            {currentTab.description}
-          </p>
+          {currentTab.textPosition === "both" && currentTab.id === 5 ? (
+            <div className="flex flex-col gap-4">
+              <div>
+                <h1 className="text-2xl font-bold text-white mb-2 leading-tight">
+                  {currentTab.headingLeft}
+                </h1>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white mb-2 leading-tight">
+                  {currentTab.headingRight}
+                </h1>
+              </div>
+            </div>
+          ) : (
+            <>
+              <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
+                {currentTab.heading}
+              </h1>
+              <p className="text-white/100 text-[0.9rem] mb-4">
+                {currentTab.description}
+              </p>
+            </>
+          )}
         </div>
 
         {/* Tab navigation - at the bottom left with animated borders(Desktop) */}
