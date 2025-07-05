@@ -1,8 +1,5 @@
 # (Fixes)
 
 1. Bottom navigation 
-2. Footer 
-3. Turn Card section to FAQ section with the current video being in flex display with the faq tabs
-4. Fix CTA/triangle responsiveness 
-5. Make sure testimonials has the stack/wrap animation
-6. Replace the "Jeton Card: Your Go-To for Every Purchase" to the token contract section with the input field that has the address and then a copy icon by its side
+2. Smooth page scroll effect 
+3. 

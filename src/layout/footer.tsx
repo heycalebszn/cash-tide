@@ -131,7 +131,7 @@ const Footer = () => {
 
       {/* Bottom Section - Copyright and Legal Text */}
       <div className="container mx-auto text-center relative overflow-visible">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-8 z-50">
           <div className="relative">
             <button
               onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
