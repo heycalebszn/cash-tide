@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { manage_bg, jeton_home, product_1, product_2, jeton_card_video, numpay_m } from "../../assets";
+import { numpay_m, mock } from "../../assets";
 import { FaGooglePlay, FaApple } from "react-icons/fa";
 import { gsap } from "gsap";
 
@@ -9,7 +9,7 @@ const tabData = [
     title: "Payment",
     heading: "Move money across europe",
     description: "Jeton is seamlessly connected with more than 25 countries, and 50 payment methods.",
-    video: jeton_home,
+    video: mock,
     textPosition: "right", 
     duration: 8 
   },
@@ -18,7 +18,7 @@ const tabData = [
     title: "Send",
     heading: "Add or send in few taps",
     description: "Transfer funds quickly and securely to friends and family worldwide.",
-    video: product_1,
+    video: mock,
     textPosition: "left", 
     duration: 8 
   },
@@ -27,7 +27,7 @@ const tabData = [
     title: "Method",
     heading: "50+ payment methods across Europe",
     description: "From bank transfers to digital wallets, we've got you covered.",
-    video: product_2,
+    video: mock,
     textPosition: "right", 
     duration: 8 
   },
@@ -36,7 +36,7 @@ const tabData = [
     title: "Security",
     heading: "Fast & Safe transactions",
     description: "Your transactions and data are protected with the highest security standards.",
-    video: jeton_card_video,
+    video: mock,
     textPosition: "left",
     duration: 8 
   },
@@ -47,7 +47,7 @@ const tabData = [
     descriptionLeft: "Our team is always available to help you with any questions.",
     headingRight: "Fast & Safe",
     descriptionRight: "Experience quick and secure transactions every time.",
-    video: manage_bg,
+    video: mock,
     textPosition: "both", 
     duration: 8
   }
